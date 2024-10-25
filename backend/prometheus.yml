@@ -1,0 +1,11 @@
+global:
+  scrape_interval: 105s
+
+scrape_configs:
+  - job_name: "node-backend"
+    static_configs:
+      - targets: ["node-backend:5000"] # Apontando para o container do backend, na porta 5000
+
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["localhost:9090"]

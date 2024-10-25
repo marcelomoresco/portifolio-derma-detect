@@ -3,6 +3,7 @@ const mongoSanitize = require("express-mongo-sanitize");
 const morgan = require("morgan");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
+const prometheusClient = require("prom-client");
 
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
@@ -15,6 +16,9 @@ connectDB();
 
 const app = express();
 
+const collectDefaultMetrics = client.collectDefaultMetrics;
+collectDefaultMetrics();
+
 app.use(express.json());
 app.use(mongoSanitize());
 app.use(morgan("dev"));
@@ -25,6 +29,12 @@ const limiter = rateLimit({
   max: 100,
   message:
     "Muitas requisições feitas pelo mesmo IP, por favor tente novamente mais tarde",
+});
+
+//Route to monitor metrics
+app.get("/metrics", async (req, res) => {
+  res.set("Content-Type", client.register.contentType);
+  res.end(await client.register.metrics());
 });
 
 app.use(limiter);
