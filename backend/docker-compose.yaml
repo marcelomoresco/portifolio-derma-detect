@@ -1,0 +1,30 @@
+version: "3"
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    volumes:
+      - mongo-data:/data/db
+
+  backend:
+    build: ./backend
+    container_name: node-backend
+    ports:
+      - "5000:5000"
+    environment:
+      MONGO_URI: mongodb://admin:password@mongodb:27017/derma-detect
+      JWT_SECRET: sua_chave_secreta_para_jwt
+    depends_on:
+      - mongodb
+    volumes:
+      - ./backend:/app
+    command: npm start
+
+volumes:
+  mongo-data:
+    driver: local
