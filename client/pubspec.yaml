@@ -5,13 +5,12 @@ publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.5.2
+  sdk: ^3.3.4
 
 dependencies:
   flutter:
     sdk: flutter
 
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   flutter_modular: 6.3.3
   flutter_bloc: ^8.1.2
@@ -23,6 +22,23 @@ dependencies:
   bloc: ^8.0.1
   google_fonts: 6.1.0
   equatable: ^2.0.3
+  internet_connection_checker: 1.0.0+1
+  intl: ^0.18.0
+  open_filex: ^4.1.1
+  package_info_plus: ^8.0.0
+  path_provider: ^2.0.10
+  permission_handler: ^10.4.3
+  url_launcher: ^6.2.1
+  uuid: ^4.4.2
+  gap: ^3.0.1
+  awesome_dio_interceptor: ^1.2.0
+  font_awesome_flutter: ^10.7.0
+  smooth_page_indicator: ^1.2.0+3
+  expandable_page_view: ^1.0.17
+  design_system:
+    path: ./packages/design_system
+  flutter_localizations:
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:
@@ -37,9 +53,9 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/vectors/
     - assets/images/
-    - assets/google_fonts
+    - assets/google_fonts/
 
 flutter_native_splash:
   background_image: assets/images/bg_splash.png
+  color: "#C1D4CE"

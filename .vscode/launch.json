@@ -1,0 +1,60 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "client",
+      "cwd": "client",
+      "request": "launch",
+      "type": "dart"
+    },
+    {
+      "name": "client (profile mode)",
+      "cwd": "client",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile"
+    },
+    {
+      "name": "client (release mode)",
+      "cwd": "client",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release"
+    },
+    {
+      "name": "design_system",
+      "cwd": "client/packages/design_system",
+      "request": "launch",
+      "type": "dart"
+    },
+    {
+      "name": "design_system (profile mode)",
+      "cwd": "client/packages/design_system",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile"
+    },
+    {
+      "name": "design_system (release mode)",
+      "cwd": "client/packages/design_system",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release"
+    },
+    {
+      "name": "backend (Node.js)",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/backend/index.js", // Certifique-se de que esse seja o caminho correto do seu arquivo Node.js
+      "cwd": "${workspaceFolder}/backend",
+      "console": "integratedTerminal",
+      "runtimeExecutable": "node"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Run Client and Backend",
+      "configurations": ["client", "backend (Node.js)"]
+    }
+  ]
+}

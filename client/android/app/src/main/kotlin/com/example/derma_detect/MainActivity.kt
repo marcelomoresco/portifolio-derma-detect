@@ -1,4 +1,4 @@
-package com.example.derma_detect
+package com.catolica.derma_detect
 
 import io.flutter.embedding.android.FlutterActivity
 

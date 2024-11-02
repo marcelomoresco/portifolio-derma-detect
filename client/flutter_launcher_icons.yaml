@@ -1,5 +1,16 @@
-flutter_icons:
-  android: true
+flutter_launcher_icons:
+  image_path: "assets/images/design.png"
+
+  android: "launcher_icon"
+  # image_path_android: "assets/icon/icon.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  # adaptive_icon_background: "assets/icon/background.png"
+  adaptive_icon_background: "#ffffff" # Cor de fundo ou imagem para o ícone adaptativo
+  adaptive_icon_foreground: "assets/images/design.png" # A imagem do ícone principal
+
   ios: true
-  image_path: "assets/images/dermacheck.png"
-  remove_alpha_ios: true
+  # image_path_ios: "assets/icon/icon.png"
+  remove_alpha_channel_ios: true
+  # image_path_ios_dark_transparent: "assets/icon/icon_dark.png"
+  # image_path_ios_tinted_grayscale: "assets/icon/icon_tinted.png"
+  # desaturate_tinted_to_grayscale_ios: true
