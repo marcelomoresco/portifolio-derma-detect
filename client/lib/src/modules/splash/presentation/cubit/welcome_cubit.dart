@@ -52,7 +52,11 @@ class WelcomeCubit extends DermaCubit<WelcomeState> {
   //   }
   // }
 
-  void onLoginTap() {}
+  void onLoginTap() {
+    _sharedNavigator.openLogin();
+  }
 
-  void onRegisterTap() {}
+  void onRegisterTap() {
+    _sharedNavigator.openRegister();
+  }
 }

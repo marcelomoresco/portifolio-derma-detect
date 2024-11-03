@@ -35,6 +35,7 @@ dependencies:
   font_awesome_flutter: ^10.7.0
   smooth_page_indicator: ^1.2.0+3
   expandable_page_view: ^1.0.17
+  flutter_svg: ^1.1.6
   design_system:
     path: ./packages/design_system
   flutter_localizations:

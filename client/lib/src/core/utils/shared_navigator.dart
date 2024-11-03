@@ -1,17 +1,15 @@
+import 'package:derma_detect/src/modules/login/login_module.dart';
+import 'package:derma_detect/src/modules/login/presentation/pages/register_page.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+
 class SharedNavigator {
   const SharedNavigator();
 
-  // void openMain({bool cameFromLogin = false, bool goAffiliate = false}) {
-  //   Modular.to.navigate(
-  //     MainModule.moduleName,
-  //     arguments: {
-  //       'cameFromLogin': cameFromLogin,
-  //       'goAffiliate': goAffiliate,
-  //     },
-  //   );
-  // }
+  void openLogin() {
+    Modular.to.navigate(LoginModule.moduleName);
+  }
 
-  // void openFirstAccessModule() {
-  //   Modular.to.navigate(FirstAccessModule.moduleName);
-  // }
+  void openRegister() {
+    Modular.to.pushNamed(RegisterPage.routePath);
+  }
 }

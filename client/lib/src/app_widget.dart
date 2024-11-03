@@ -1,3 +1,4 @@
+import 'package:derma_detect/src/core/consts/app_assets.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,6 +10,8 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    _precacheImages(context);
+
     return MaterialApp.router(
       title: 'DermaCheck App',
       debugShowCheckedModeBanner: false,
@@ -27,5 +30,11 @@ class AppWidget extends StatelessWidget {
         );
       },
     );
+  }
+
+  void _precacheImages(BuildContext context) {
+    precacheImage(const AssetImage(AppAssets.welcomeImg1), context);
+    precacheImage(const AssetImage(AppAssets.welcomeImg2), context);
+    precacheImage(const AssetImage(AppAssets.welcomeImg3), context);
   }
 }
