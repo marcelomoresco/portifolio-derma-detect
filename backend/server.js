@@ -8,15 +8,15 @@ const prometheusClient = require("prom-client");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 
-const userRoutes = require("./routes/userRoutes");
-const analysisRoutes = require("./routes/analysisRoutes");
+const userRoutes = require("./routes/authRouter");
+const analysisRoutes = require("./routes/analysisRouter");
 
 dotenv.config();
 connectDB();
 
 const app = express();
 
-const collectDefaultMetrics = client.collectDefaultMetrics;
+const collectDefaultMetrics = prometheusClient.collectDefaultMetrics;
 collectDefaultMetrics();
 
 app.use(express.json());
@@ -33,8 +33,8 @@ const limiter = rateLimit({
 
 //Route to monitor metrics
 app.get("/metrics", async (req, res) => {
-  res.set("Content-Type", client.register.contentType);
-  res.end(await client.register.metrics());
+  res.set("Content-Type", prometheusClient.register.contentType);
+  res.end(await prometheusClient.register.metrics());
 });
 
 app.use(limiter);
