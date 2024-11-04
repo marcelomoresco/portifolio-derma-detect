@@ -3,6 +3,7 @@ import 'package:derma_detect/src/core/services/network/dio/dio_client_impl.dart'
 import 'package:derma_detect/src/core/services/network/network_service.dart';
 import 'package:derma_detect/src/core/utils/shared_navigator.dart';
 import 'package:derma_detect/src/modules/login/login_module.dart';
+import 'package:derma_detect/src/modules/main/main_module.dart';
 import 'package:derma_detect/src/modules/splash/splash_module.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -35,6 +36,10 @@ class AppModule extends Module {
     r.module(
       LoginModule.moduleName,
       module: LoginModule(),
+    );
+    r.module(
+      MainModule.moduleName,
+      module: MainModule(),
     );
   }
 }

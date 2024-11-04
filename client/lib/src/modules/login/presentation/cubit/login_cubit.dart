@@ -25,6 +25,7 @@ class LoginCubit extends DermaCubit<LoginState> {
   }
 
   void onLoginTap() {
+    _sharedNavigator.openMain();
     // _sharedNavigator.openRegister();
   }
 }

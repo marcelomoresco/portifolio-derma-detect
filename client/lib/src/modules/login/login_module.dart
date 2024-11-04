@@ -1,5 +1,4 @@
 import 'package:derma_detect/src/app_module.dart';
-import 'package:derma_detect/src/core/utils/shared_navigator.dart';
 import 'package:derma_detect/src/modules/login/presentation/cubit/login_cubit.dart';
 import 'package:derma_detect/src/modules/login/presentation/cubit/register_cubit.dart';
 import 'package:derma_detect/src/modules/login/presentation/pages/login_page.dart';
@@ -11,9 +10,12 @@ class LoginModule extends Module {
   static const routePath = AppModule.routePath + moduleName;
 
   @override
-  void binds(Injector i) {
-    i.addLazySingleton(() => const SharedNavigator());
+  List<Module> get imports => [
+        AppModule(),
+      ];
 
+  @override
+  void binds(Injector i) {
     i.addLazySingleton(
       () => LoginCubit(
         sharedNavigator: i(),
