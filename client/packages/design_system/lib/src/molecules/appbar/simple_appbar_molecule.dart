@@ -1,5 +1,4 @@
 import 'package:design_system/design_system.dart';
-import 'package:design_system/src/molecules/appbar/back_button_atom.dart';
 import 'package:flutter/material.dart';
 
 class SimpleAppBarMolecule extends StatefulWidget implements PreferredSizeWidget {

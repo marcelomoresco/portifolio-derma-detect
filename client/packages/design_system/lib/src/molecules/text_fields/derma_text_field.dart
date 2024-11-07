@@ -93,42 +93,6 @@ class DermaTextField extends StatelessWidget {
     );
   }
 
-  InputBorder _getFocusedBorder(BorderType borderType, {bool isValid = true}) {
-    final borderColor = isValid ? const Color(0XFFECFDEC) : const Color(0xFFF97066);
-    if (borderType == BorderType.none) {
-      return InputBorder.none;
-    } else if (borderType == BorderType.underline) {
-      return UnderlineInputBorder(
-        borderSide: BorderSide(color: borderColor),
-      );
-    } else if (borderType == BorderType.outline) {
-      return OutlineInputBorder(
-        borderSide: BorderSide(color: borderColor, width: 1),
-        borderRadius: BorderRadius.circular(8),
-      );
-    } else {
-      return InputBorder.none;
-    }
-  }
-
-  InputBorder _getBorder(BorderType borderType, {bool isValid = true}) {
-    final borderColor = isValid ? const Color(0xFFF4F5F4) : const Color(0xFFFEF3F2);
-    if (borderType == BorderType.none) {
-      return InputBorder.none;
-    } else if (borderType == BorderType.underline) {
-      return UnderlineInputBorder(
-        borderSide: BorderSide(color: borderColor),
-      );
-    } else if (borderType == BorderType.outline) {
-      return OutlineInputBorder(
-        borderSide: BorderSide(color: borderColor),
-        borderRadius: BorderRadius.circular(8),
-      );
-    } else {
-      return InputBorder.none;
-    }
-  }
-
   Widget? getPrefixIcon() {
     if (prefixIcon == null) {
       return null;

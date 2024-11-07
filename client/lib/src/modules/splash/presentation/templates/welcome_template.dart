@@ -4,7 +4,6 @@ import 'package:derma_detect/src/modules/splash/presentation/organism/carousel_o
 import 'package:derma_detect/src/modules/splash/splash_strings.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 
 import '../molecules/carousel_background_molecule.dart';

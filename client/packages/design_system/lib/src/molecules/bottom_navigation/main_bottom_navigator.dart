@@ -1,5 +1,4 @@
 import 'package:design_system/design_system.dart';
-import 'package:design_system/src/molecules/bottom_navigation/navigation_bar_item.dart';
 import 'package:flutter/material.dart';
 
 class MainBottomNavigationBarOrganism extends StatefulWidget {

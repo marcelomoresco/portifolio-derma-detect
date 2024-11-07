@@ -1,5 +1,4 @@
 import 'package:derma_detect/src/modules/main/main_module.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {

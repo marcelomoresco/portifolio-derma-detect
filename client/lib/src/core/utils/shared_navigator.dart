@@ -1,5 +1,5 @@
-import 'package:derma_detect/src/modules/login/login_module.dart';
-import 'package:derma_detect/src/modules/login/presentation/pages/register_page.dart';
+import 'package:derma_detect/src/modules/auth/login_module.dart';
+import 'package:derma_detect/src/modules/auth/presentation/pages/register_page.dart';
 import 'package:derma_detect/src/modules/main/main_module.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 

@@ -5,7 +5,7 @@ publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.3.4
+  sdk: ">=3.2.0 <4.0.0"
 
 dependencies:
   flutter:
@@ -40,6 +40,9 @@ dependencies:
     path: ./packages/design_system
   flutter_localizations:
     sdk: flutter
+
+dependency_overrides:
+  modular_core: 3.3.2
 
 dev_dependencies:
   flutter_test:
