@@ -3,7 +3,7 @@ import 'package:derma_detect/src/core/consts/core_dimens.dart';
 import 'package:derma_detect/src/core/helpers/derma_cubit_state.dart';
 import 'package:derma_detect/src/modules/auth/login_module.dart';
 import 'package:derma_detect/src/modules/auth/presentation/cubit/register_cubit.dart';
-import 'package:derma_detect/src/core/templates/templates/single_field_template.dart';
+import 'package:derma_detect/src/core/components/templates/single_field_template.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';

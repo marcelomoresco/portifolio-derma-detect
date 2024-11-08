@@ -14,9 +14,9 @@ class AppModule extends Module {
   void binds(i) {
     // Navigator
     i.addLazySingleton(() => const SharedNavigator());
-    i.add<BaseDio>((i) => BaseDio());
+    i.add<BaseDio>(() => BaseDio());
     i.addLazySingleton<NetworkService>(
-      (i) => DioClientService(dio: i<BaseDio>()),
+      () => DioClientService(dio: i<BaseDio>()),
     );
   }
 

@@ -1,6 +1,7 @@
 import 'package:derma_detect/src/modules/auth/login_module.dart';
 import 'package:derma_detect/src/modules/auth/presentation/pages/register_page.dart';
 import 'package:derma_detect/src/modules/main/main_module.dart';
+import 'package:derma_detect/src/modules/splash/splash_module.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class SharedNavigator {
@@ -18,5 +19,9 @@ class SharedNavigator {
     Modular.to.navigate(
       MainModule.moduleName,
     );
+  }
+
+  void openFirstAccessModule() {
+    Modular.to.navigate(SplashModule.moduleName);
   }
 }

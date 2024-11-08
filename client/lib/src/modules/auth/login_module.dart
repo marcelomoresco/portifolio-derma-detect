@@ -1,7 +1,4 @@
 import 'package:derma_detect/src/app_module.dart';
-import 'package:derma_detect/src/core/services/network/dio/base_dio.dart';
-import 'package:derma_detect/src/core/services/network/dio/dio_client_impl.dart';
-import 'package:derma_detect/src/core/services/network/network_service.dart';
 import 'package:derma_detect/src/modules/auth/data/datasource/auth_remote_datasource.dart';
 import 'package:derma_detect/src/modules/auth/data/repository/auth_repository_impl.dart';
 import 'package:derma_detect/src/modules/auth/domain/repository/auth_repository.dart';
@@ -24,11 +21,6 @@ class LoginModule extends Module {
 
   @override
   void binds(Injector i) {
-    i.addLazySingleton<NetworkService>(
-      (i) => DioClientService(
-        dio: i.get<BaseDio>(),
-      ),
-    );
     //Datasource
     i.addLazySingleton<AuthRemoteDatasource>(
       () => AuthRemoteDatasourceImpl(
