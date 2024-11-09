@@ -30,7 +30,7 @@ class DioClientService implements NetworkService {
       );
     } on DioException catch (e, _) {
       throw ClientException(
-        message: e.message ?? '',
+        message: e.response?.data['message'] ?? '',
         statusCode: e.response?.statusCode ?? 0,
       );
     }
@@ -54,7 +54,7 @@ class DioClientService implements NetworkService {
       );
     } on DioException catch (e, _) {
       throw ClientException(
-        message: e.message ?? '',
+        message: e.response?.data['message'] ?? '',
         statusCode: e.response?.statusCode ?? 0,
       );
     }
@@ -67,9 +67,7 @@ class DioClientService implements NetworkService {
         clientRequest.path,
         data: clientRequest.data,
         queryParameters: clientRequest.headers,
-        options: Options(
-          headers: clientRequest.headers,
-        ),
+        options: Options(headers: clientRequest.headers, contentType: "application/json"),
       );
 
       return ClientResponse(
@@ -78,7 +76,7 @@ class DioClientService implements NetworkService {
       );
     } on DioException catch (e, _) {
       throw ClientException(
-        message: e.message ?? '',
+        message: e.response?.data['message'] ?? '',
         statusCode: e.response?.statusCode ?? 0,
       );
     }
@@ -102,7 +100,7 @@ class DioClientService implements NetworkService {
       );
     } on DioException catch (e, _) {
       throw ClientException(
-        message: e.message ?? '',
+        message: e.response?.data['message'] ?? '',
         statusCode: e.response?.statusCode ?? 0,
       );
     }

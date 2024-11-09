@@ -17,19 +17,51 @@ class LoginCubit extends DermaCubit<LoginState> {
   bool? isRegistered;
   String inputDocument = '';
 
-  void onFieldChanged(String text) {
-    inputDocument = text;
-    const isValid = true;
+  void onFieldChanged({String? email, String? password}) {
+    final data = state.authData?.copyWith(
+      email: email,
+      password: password,
+    );
 
-    emit(state.copyWith(isContinueButtonEnabled: isValid));
+    bool isAllValid = data?.isValidLogin ?? false;
+
+    emit(
+      state.copyWith(
+        authData: data,
+        isContinueButtonEnabled: isAllValid,
+      ),
+    );
   }
+
+  void toggleShowPassword() => emit(state.copyWith(showPassword: !state.showPassword));
 
   void onRegisterTap() {
     _sharedNavigator.openRegister();
   }
 
-  void onLoginTap() {
+  void onLoginTap() async {
+    emit(state.copyWith(isContinueButtonLoading: true));
+    if (state.authData == null) return;
+
+    final result = await _signInUsecase(
+      SignInUsecaseParams(auth: state.authData!),
+    );
+
+    return result.fold(
+      (failure) => emit(
+        state.copyWith(
+          isContinueButtonLoading: false,
+          failure: failure,
+        ),
+      ),
+      (dermaUser) {
+        emit(state.copyWith(isContinueButtonLoading: false));
+        openHome();
+      },
+    );
+  }
+
+  void openHome() {
     _sharedNavigator.openMain();
-    // _sharedNavigator.openRegister();
   }
 }

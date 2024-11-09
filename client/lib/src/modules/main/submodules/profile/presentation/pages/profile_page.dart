@@ -1,5 +1,5 @@
 import 'package:derma_detect/src/core/helpers/derma_cubit_state.dart';
-import 'package:derma_detect/src/core/components/organisms/modal_organism.dart';
+import 'package:derma_detect/src/core/widgets/organisms/modal_organism.dart';
 import 'package:derma_detect/src/core/utils/status.dart';
 import 'package:derma_detect/src/modules/main/main_module.dart';
 import 'package:derma_detect/src/modules/main/submodules/profile/domain/entities/menu_tile_entity.dart';
@@ -51,7 +51,7 @@ class _ProfilePageState extends DermaCubitState<ProfilePage, ProfileCubit> {
         name: ProfileStrings.menuTile.closeAccountFieldName,
         description: ProfileStrings.menuTile.closeAccountDescription,
         icon: Icons.delete,
-        onPressed: () {},
+        onPressed: _showModalDeleteAccount,
       ),
       ProfileTileInfoEntity(
         name: ProfileStrings.menuTile.aboutFieldName,
@@ -94,6 +94,33 @@ class _ProfilePageState extends DermaCubitState<ProfilePage, ProfileCubit> {
               firstButtonIsLoading: state.signOutStatus == Status.loading,
               title: ProfileStrings.modalSignOut.title,
               isEnabledSecondButton: !state.signOutStatus.isLoading,
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  Future<void> _showModalDeleteAccount() async {
+    await showDialog(
+      context: context,
+      useSafeArea: false,
+      barrierColor: Colors.black.withOpacity(0.4),
+      builder: (context) => WillPopScope(
+        onWillPop: () async => false,
+        child: BlocBuilder<ProfileCubit, ProfileState>(
+          bloc: cubit,
+          builder: (context, state) {
+            return ModalOrganism(
+              firstButtonOnClick: cubit.signOut,
+              firstButtonTitle: ProfileStrings.modalDelete.firstButtonTitle,
+              secondButtonOnClick: Navigator.of(context).pop,
+              secondButtonTitle: ProfileStrings.modalDelete.secondButtonTitle,
+              description: ProfileStrings.modalDelete.description,
+              icon: Icons.delete,
+              firstButtonIsLoading: state.deleteStatus == Status.loading,
+              title: ProfileStrings.modalDelete.title,
+              isEnabledSecondButton: !state.deleteStatus.isLoading,
             );
           },
         ),

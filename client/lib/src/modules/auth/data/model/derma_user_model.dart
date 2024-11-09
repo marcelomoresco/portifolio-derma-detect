@@ -5,11 +5,13 @@ class DermaUserModel extends DermaUser {
     required super.email,
     required super.name,
     required super.token,
+    required super.id,
   });
   factory DermaUserModel.fromJson(Map<String, dynamic> json) {
     return DermaUserModel(
-      name: json['name'],
-      email: json['email'],
+      id: json['user']['id'],
+      name: json['user']['name'],
+      email: json['user']['email'],
       token: json['token'],
     );
   }

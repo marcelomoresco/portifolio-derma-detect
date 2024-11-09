@@ -4,6 +4,7 @@ class ProfileStrings {
   static const directActionTile = _DirectActionTile();
   static const menuTile = _MenuTile();
   static const modalSignOut = _ModalSignOut();
+  static const modalDelete = _ModalDeleteAccount();
 }
 
 class _MenuTile {
@@ -48,6 +49,18 @@ class _ModalSignOut {
   String get description => 'Deseja realmente sair do App Derma Check?';
 
   String get firstButtonTitle => 'Sair';
+
+  String get secondButtonTitle => 'Cancelar';
+}
+
+class _ModalDeleteAccount {
+  const _ModalDeleteAccount();
+
+  String get title => 'Deletar usuário';
+
+  String get description => 'Deseja realmente deletar seu usuário? Todas as análises serão perdidas';
+
+  String get firstButtonTitle => 'Deletar';
 
   String get secondButtonTitle => 'Cancelar';
 }

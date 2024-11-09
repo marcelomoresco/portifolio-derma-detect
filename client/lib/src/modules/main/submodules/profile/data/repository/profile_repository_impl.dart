@@ -10,9 +10,9 @@ class ProfileRepositoryImpl implements ProfileRepository {
   final ProfileRemoteDatasource _datasource;
 
   @override
-  Future<Either<Failure, void>> deleteAccount(String id) async {
+  Future<Either<Failure, void>> deleteAccount([NoParams? params]) async {
     try {
-      final result = await _datasource.deleteAccount(id);
+      final result = await _datasource.deleteAccount();
       return Right(result);
     } catch (error) {
       return Left(Failure(exception: error));

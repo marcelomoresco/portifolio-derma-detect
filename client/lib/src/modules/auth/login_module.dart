@@ -32,8 +32,18 @@ class LoginModule extends Module {
     i.addLazySingleton<AuthRepository>(() => AuthRepositoryImpl(datasource: i()));
 
     //Usecases
-    i.addLazySingleton(() => SignInUsecase(repository: i()));
-    i.addLazySingleton(() => SignUpUsecase(repository: i()));
+    i.addLazySingleton(
+      () => SignInUsecase(
+        repository: i(),
+        setTokenUsecase: i(),
+      ),
+    );
+    i.addLazySingleton(
+      () => SignUpUsecase(
+        repository: i(),
+        setTokenUsecase: i(),
+      ),
+    );
 
     i.addLazySingleton(
       () => LoginCubit(

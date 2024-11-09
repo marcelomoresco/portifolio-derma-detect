@@ -36,7 +36,7 @@ class AboutItemMolecule extends StatelessWidget {
                   aboutItem.subText1,
                   style: AppTextStyles.interRegular12.copyWith(
                     height: lineHeight,
-                    color: Colors.grey.shade300,
+                    color: Colors.grey.shade600,
                   ),
                   softWrap: false,
                 ),
@@ -44,7 +44,7 @@ class AboutItemMolecule extends StatelessWidget {
                   aboutItem.subText2,
                   style: AppTextStyles.interRegular12.copyWith(
                     height: lineHeight,
-                    color: Colors.grey.shade300,
+                    color: Colors.grey.shade600,
                   ),
                   softWrap: false,
                 ),

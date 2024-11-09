@@ -21,9 +21,13 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
 
   @override
   Future<DermaUser> signIn(SignInUsecaseParams params) async {
-    final response = await _networkService.get(
-      const ClientRequest(
-        path: "path",
+    final response = await _networkService.post(
+      ClientRequest(
+        path: "/users/login",
+        data: {
+          "email": params.auth.email,
+          "password": params.auth.password,
+        },
       ),
     );
     try {
@@ -36,16 +40,22 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
 
   @override
   Future<DermaUser> signUp(SignUpUsecaseParams params) async {
-    final response = await _networkService.get(
-      const ClientRequest(
-        path: "path",
-      ),
-    );
     try {
+      final response = await _networkService.post(
+        ClientRequest(
+          path: "/users/register",
+          data: {
+            "name": params.auth.name,
+            "email": params.auth.email,
+            "password": params.auth.password,
+          },
+        ),
+      );
       DermaUser result = DermaUserModel.fromJson(response.body);
       return result;
-    } catch (error) {
-      throw ParseDataException(message: 'DermaMapper parse error: $error');
+    } catch (e) {
+      final expcetion = e as ClientException;
+      throw expcetion;
     }
   }
 }

@@ -9,7 +9,6 @@ const generateToken = (userId) => {
   });
 };
 
-// Registrar novo usuário
 const registerUser = async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -17,7 +16,7 @@ const registerUser = async (req, res) => {
     // Verifica se o usuário já existe
     const userExists = await User.findOne({ email });
     if (userExists) {
-      return res.status(400).json({ message: "User already exists" });
+      return res.status(400).json({ message: "Usuário já cadastrado" });
     }
 
     // Criptografa a senha
@@ -35,7 +34,7 @@ const registerUser = async (req, res) => {
 
     // Retorna o token e os dados do usuário
     res.status(201).json({
-      message: "User registered successfully",
+      message: "Usuário registrado com sucesso!",
       token,
       user: {
         id: user._id,
@@ -43,6 +42,21 @@ const registerUser = async (req, res) => {
         email: user.email,
       },
     });
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+const deleteUser = async (req, res) => {
+  try {
+    const user = await User.findByIdAndDelete(req.user.id);
+
+    if (!user) {
+      return res.status(404).json({ message: "Usuário não encontrado" });
+    }
+
+    // Retorna mensagem de confirmação
+    res.status(200).json({ message: "Usuário deletado com sucesso!" });
   } catch (error) {
     res.status(500).json({ message: "Server error" });
   }
@@ -56,19 +70,21 @@ const loginUser = async (req, res) => {
     // Verifica se o usuário existe
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({ message: "Invalid email or password" });
+      return res
+        .status(400)
+        .json({ message: "E-mail inválido ou senha incorreta!" });
     }
 
     // Verifica se a senha está correta
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
-      return res.status(400).json({ message: "Invalid email or password" });
+      return res
+        .status(400)
+        .json({ message: "E-mail inválido ou senha incorreta!" });
     }
 
-    // Gera o JWT para o usuário autenticado
     const token = generateToken(user._id);
 
-    // Retorna o token e os dados do usuário
     res.status(200).json({
       message: "Login successful",
       token,
@@ -86,11 +102,10 @@ const loginUser = async (req, res) => {
 // Obter perfil do usuário autenticado
 const getUserProfile = async (req, res) => {
   try {
-    // Busca o usuário pelo ID (adicionado pelo middleware de autenticação)
     const user = await User.findById(req.user.id).select("-password");
 
     if (!user) {
-      return res.status(404).json({ message: "User not found" });
+      return res.status(404).json({ message: "Usuário não encontrado" });
     }
 
     // Retorna os dados do perfil
@@ -106,4 +121,4 @@ const getUserProfile = async (req, res) => {
   }
 };
 
-module.exports = { registerUser, loginUser, getUserProfile };
+module.exports = { registerUser, loginUser, getUserProfile, deleteUser };

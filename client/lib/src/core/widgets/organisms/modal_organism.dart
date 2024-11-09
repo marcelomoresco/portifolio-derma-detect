@@ -144,6 +144,7 @@ class ModalOrganism extends StatelessWidget with ShowModal {
                         backgroundColor: secondButtonBackgroundColor ?? Colors.white,
                         text: secondButtonTitle!,
                         onPressed: secondButtonOnClick!,
+                        textColor: Colors.black,
                       ),
                     ],
                     if (bottomWidget != null) bottomWidget!,

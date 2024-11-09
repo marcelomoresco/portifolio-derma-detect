@@ -1,3 +1,4 @@
+import 'package:derma_detect/src/core/consts/app_textstyles.dart';
 import 'package:derma_detect/src/core/consts/core_dimens.dart';
 import 'package:derma_detect/src/core/utils/status.dart';
 import 'package:derma_detect/src/core/widgets/templates/loading_template.dart';
@@ -21,12 +22,13 @@ class AboutTemplate extends StatelessWidget {
 
     return Scaffold(
       appBar: SimpleAppBarMolecule(
-        title: Text(AboutStrings.appBarTitle),
-        shapeBorder: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(kCornerBig),
-          ),
+        title: Text(
+          AboutStrings.appBarTitle,
+          style: AppTextStyles.interSemiBold20,
         ),
+        elevation: 0,
+        shouldShowBackButtonLabel: false,
+        height: kToolbarHeight,
       ),
       body: (status != Status.success)
           ? const LoadingTemplate(isAppBarVisible: false)

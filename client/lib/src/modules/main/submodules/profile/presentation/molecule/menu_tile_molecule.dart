@@ -1,4 +1,4 @@
-import 'package:derma_detect/src/core/components/molecules/disable_widget_molecule.dart';
+import 'package:derma_detect/src/core/widgets/molecules/disable_widget_molecule.dart';
 import 'package:derma_detect/src/core/consts/app_textstyles.dart';
 import 'package:derma_detect/src/core/consts/core_dimens.dart';
 import 'package:derma_detect/src/modules/main/submodules/profile/domain/entities/menu_tile_entity.dart';

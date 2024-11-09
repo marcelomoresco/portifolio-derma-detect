@@ -63,8 +63,9 @@ class DermaTextField extends StatelessWidget {
           validator: validator,
           onSaved: onSaved,
           obscureText: obscureText,
+          autofocus: false,
           decoration: InputDecoration(
-            contentPadding: const EdgeInsets.symmetric(horizontal: 8),
+            // contentPadding: const EdgeInsets.symmetric(horizontal: 8),
             border: InputBorder.none,
             errorBorder: OutlineInputBorder(
               borderSide: BorderSide(

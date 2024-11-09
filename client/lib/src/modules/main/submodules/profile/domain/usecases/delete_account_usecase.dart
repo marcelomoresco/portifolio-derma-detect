@@ -3,7 +3,7 @@ import 'package:derma_detect/src/core/errors/errors.dart';
 import 'package:derma_detect/src/core/utils/base_usecase.dart';
 import 'package:derma_detect/src/modules/main/submodules/profile/domain/repository/profile_repository.dart';
 
-class DeleteAccountUsecase implements UseCase<void, String> {
+class DeleteAccountUsecase implements UseCase<void, NoParams> {
   const DeleteAccountUsecase({
     required ProfileRepository repository,
   }) : _repository = repository;
@@ -11,7 +11,7 @@ class DeleteAccountUsecase implements UseCase<void, String> {
   final ProfileRepository _repository;
 
   @override
-  Future<Either<Failure, void>> call(String id) async {
-    return _repository.deleteAccount(id);
+  Future<Either<Failure, void>> call([NoParams? params]) async {
+    return _repository.deleteAccount(params);
   }
 }
