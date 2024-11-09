@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:derma_detect/src/core/components/molecules/conditional_parent_molecules.dart';
+import 'package:derma_detect/src/core/widgets/molecules/conditional_parent_molecules.dart';
 import 'package:derma_detect/src/core/consts/app_textstyles.dart';
 import 'package:derma_detect/src/core/consts/core_dimens.dart';
 import 'package:derma_detect/src/core/helpers/mixin/modal_mixin.dart';

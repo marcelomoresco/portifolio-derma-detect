@@ -6,6 +6,7 @@ import 'package:derma_detect/src/modules/main/submodules/profile/domain/usecases
 import 'package:derma_detect/src/modules/main/submodules/profile/domain/usecases/sign_out_usecase.dart';
 import 'package:derma_detect/src/modules/main/submodules/profile/presentation/cubits/profile_cubit.dart';
 import 'package:derma_detect/src/modules/main/submodules/profile/presentation/pages/profile_page.dart';
+import 'package:derma_detect/src/modules/main/submodules/profile/presentation/submodules/about/presentation/pages/about_page.dart';
 import 'package:derma_detect/src/modules/main/submodules/profile/profile_navigator.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -48,6 +49,10 @@ class ProfileSubmodule extends Module {
     r.child(
       ProfilePage.routeName,
       child: (_) => const ProfilePage(),
+    );
+    r.child(
+      AboutPage.routeName,
+      child: (_) => const AboutPage(),
     );
   }
 }
