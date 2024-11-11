@@ -29,8 +29,12 @@ class DioClientService implements NetworkService {
         body: response.data,
       );
     } on DioException catch (e, _) {
+      final errorMessage = e.response?.data is Map && e.response?.data.containsKey('message')
+          ? e.response?.data['message']
+          : 'Algo deu errado!';
+
       throw ClientException(
-        message: e.response?.data['message'] ?? '',
+        message: errorMessage,
         statusCode: e.response?.statusCode ?? 0,
       );
     }
@@ -53,8 +57,12 @@ class DioClientService implements NetworkService {
         body: response.data,
       );
     } on DioException catch (e, _) {
+      final errorMessage = e.response?.data is Map && e.response?.data.containsKey('message')
+          ? e.response?.data['message']
+          : 'Algo deu errado';
+
       throw ClientException(
-        message: e.response?.data['message'] ?? '',
+        message: errorMessage,
         statusCode: e.response?.statusCode ?? 0,
       );
     }
@@ -75,8 +83,12 @@ class DioClientService implements NetworkService {
         body: response.data,
       );
     } on DioException catch (e, _) {
+      final errorMessage = e.response?.data is Map && e.response?.data.containsKey('message')
+          ? e.response?.data['message']
+          : 'Algo deu errado';
+
       throw ClientException(
-        message: e.response?.data['message'] ?? '',
+        message: errorMessage,
         statusCode: e.response?.statusCode ?? 0,
       );
     }
@@ -99,8 +111,12 @@ class DioClientService implements NetworkService {
         body: response.data,
       );
     } on DioException catch (e, _) {
+      final errorMessage = e.response?.data is Map && e.response?.data.containsKey('message')
+          ? e.response?.data['message']
+          : 'Algo deu errado';
+
       throw ClientException(
-        message: e.response?.data['message'] ?? '',
+        message: errorMessage,
         statusCode: e.response?.statusCode ?? 0,
       );
     }

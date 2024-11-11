@@ -1,4 +1,6 @@
+import 'package:derma_detect/src/core/errors/errors.dart';
 import 'package:derma_detect/src/core/helpers/derma_cubit_state.dart';
+import 'package:derma_detect/src/core/utils/show_modal.dart';
 import 'package:derma_detect/src/core/widgets/organisms/modal_organism.dart';
 import 'package:derma_detect/src/core/utils/status.dart';
 import 'package:derma_detect/src/modules/main/main_module.dart';
@@ -108,11 +110,22 @@ class _ProfilePageState extends DermaCubitState<ProfilePage, ProfileCubit> {
       barrierColor: Colors.black.withOpacity(0.4),
       builder: (context) => WillPopScope(
         onWillPop: () async => false,
-        child: BlocBuilder<ProfileCubit, ProfileState>(
+        child: BlocConsumer<ProfileCubit, ProfileState>(
           bloc: cubit,
+          listener: (context, state) {
+            if (state.failure != null) {
+              if (state.failure?.exception is ClientException) {
+                final exception = state.failure?.exception as ClientException;
+                showModalError(exception.message, context: context);
+              } else {
+                showModalError("Algo deu errado", context: context);
+              }
+            }
+          },
+          listenWhen: (previous, current) => previous.failure != current.failure,
           builder: (context, state) {
             return ModalOrganism(
-              firstButtonOnClick: cubit.signOut,
+              firstButtonOnClick: cubit.deleteAccount,
               firstButtonTitle: ProfileStrings.modalDelete.firstButtonTitle,
               secondButtonOnClick: Navigator.of(context).pop,
               secondButtonTitle: ProfileStrings.modalDelete.secondButtonTitle,

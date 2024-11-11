@@ -13,7 +13,7 @@ class BaseDio extends DioForNative {
     interceptors.add(HeaderInterceptor());
     interceptors.add(
       AwesomeDioInterceptor(
-        logRequestHeaders: false,
+        logRequestHeaders: true,
         logResponseHeaders: false,
       ),
     );
