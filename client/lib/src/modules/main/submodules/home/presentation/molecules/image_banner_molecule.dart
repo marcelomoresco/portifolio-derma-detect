@@ -28,10 +28,15 @@ class ImageBannerMolecule extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(kCornerBig),
           child: Container(
+            height: height,
+            width: width,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(kCornerBig),
             ),
-            child: Image.asset(assetName),
+            child: Image.asset(
+              assetName,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
       ),

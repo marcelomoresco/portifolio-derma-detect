@@ -1,6 +1,7 @@
 import 'package:derma_detect/src/modules/auth/login_module.dart';
 import 'package:derma_detect/src/modules/auth/presentation/pages/register_page.dart';
 import 'package:derma_detect/src/modules/main/main_module.dart';
+import 'package:derma_detect/src/modules/main/submodules/analysis/presentation/pages/onboarding_new_analysis_page.dart';
 import 'package:derma_detect/src/modules/main/submodules/home/domain/entities/faq_category.dart';
 import 'package:derma_detect/src/modules/main/submodules/profile/presentation/submodules/faq/presentation/pages/faq_category_page.dart';
 import 'package:derma_detect/src/modules/splash/splash_module.dart';
@@ -31,6 +32,12 @@ class SharedNavigator {
     Modular.to.pushNamed(
       FaqCategoryPage.routePath,
       arguments: faqCategory,
+    );
+  }
+
+  void openOnboardingAnalyze() {
+    Modular.to.pushNamed(
+      OnboardingNewAnalysisPage.routePath,
     );
   }
 }

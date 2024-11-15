@@ -67,12 +67,20 @@ class HomeTemplate extends StatelessWidget {
                     const Gap(kMarginDefault),
                     ImageBannerMolecule(
                       onTap: () {},
-                      assetName: AppAssets.homeBanner,
+                      assetName: AppAssets.banner2,
                       height: 100,
+                      width: double.infinity,
                       padding: const EdgeInsets.symmetric(horizontal: kMarginDefault),
                     ),
                     const Gap(kMarginDefault),
                     const SkinCareTipsSection(),
+                    ImageBannerMolecule(
+                      onTap: () {},
+                      assetName: AppAssets.homeBanner,
+                      height: 100,
+                      width: double.infinity,
+                      padding: const EdgeInsets.symmetric(horizontal: kMarginDefault),
+                    ),
                     const Gap(kMarginDefault),
                     HomeFaqOrganism(
                       title: HomeStrings.faqTitle,

@@ -65,6 +65,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/animations/
     - assets/google_fonts/
 
 flutter_native_splash:

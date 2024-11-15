@@ -1,7 +1,7 @@
 import 'package:derma_detect/src/app_module.dart';
 import 'package:derma_detect/src/modules/main/presentation/cubits/main_cubit.dart';
 import 'package:derma_detect/src/modules/main/presentation/main_page.dart';
-import 'package:derma_detect/src/modules/main/submodules/analysis/presentation/analysis_module.dart';
+import 'package:derma_detect/src/modules/main/submodules/analysis/analysis_module.dart';
 import 'package:derma_detect/src/modules/main/submodules/home/home_module.dart';
 import 'package:derma_detect/src/modules/main/submodules/profile/profile_module.dart';
 import 'package:flutter_modular/flutter_modular.dart';
