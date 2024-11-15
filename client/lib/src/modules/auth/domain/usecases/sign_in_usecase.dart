@@ -21,7 +21,7 @@ class SignInUsecase implements UseCase<DermaUser, SignInUsecaseParams> {
     final result = await _repository.signIn(params);
     if (result.isRight()) {
       final user = (result as Right).value as DermaUser;
-      _setTokenUsecase(user.token);
+      _setTokenUsecase(user.token!);
     }
     return result;
   }

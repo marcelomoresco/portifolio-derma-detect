@@ -21,6 +21,7 @@ class AppWidget extends StatelessWidget {
       localizationsDelegates: GlobalMaterialLocalizations.delegates,
       supportedLocales: const [Locale('pt', '')],
       locale: const Locale('pt', 'BR'),
+      themeMode: ThemeMode.light,
       builder: (context, widget) {
         SystemChrome.setPreferredOrientations(
           [DeviceOrientation.portraitUp],

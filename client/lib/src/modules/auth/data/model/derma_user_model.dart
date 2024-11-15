@@ -4,7 +4,7 @@ class DermaUserModel extends DermaUser {
   const DermaUserModel({
     required super.email,
     required super.name,
-    required super.token,
+    super.token,
     required super.id,
   });
   factory DermaUserModel.fromJson(Map<String, dynamic> json) {
@@ -13,6 +13,14 @@ class DermaUserModel extends DermaUser {
       name: json['user']['name'],
       email: json['user']['email'],
       token: json['token'],
+    );
+  }
+
+  factory DermaUserModel.fromProfile(Map<String, dynamic> json) {
+    return DermaUserModel(
+      id: json['user']['id'],
+      name: json['user']['name'],
+      email: json['user']['email'],
     );
   }
 }

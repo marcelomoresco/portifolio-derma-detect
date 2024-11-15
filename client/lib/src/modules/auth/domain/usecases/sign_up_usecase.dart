@@ -21,7 +21,7 @@ class SignUpUsecase implements UseCase<DermaUser, SignUpUsecaseParams> {
     final result = await _repository.signUp(params);
     if (result.isRight()) {
       final user = (result as Right).value as DermaUser;
-      _setTokenUsecase(user.token);
+      _setTokenUsecase(user.token!);
     }
     return result;
   }

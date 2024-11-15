@@ -10,7 +10,7 @@ class DermaUser extends Equatable {
   final String id;
   final String email;
   final String name;
-  final String token;
+  final String? token;
 
   @override
   List<Object?> get props => [email, name, token];

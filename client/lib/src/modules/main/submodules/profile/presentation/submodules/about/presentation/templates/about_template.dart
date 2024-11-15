@@ -5,6 +5,7 @@ import 'package:derma_detect/src/core/widgets/templates/loading_template.dart';
 import 'package:derma_detect/src/modules/main/submodules/profile/presentation/submodules/about/presentation/molecules/about_tile_molecule.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import '../../about_strings.dart';
 
 class AboutTemplate extends StatelessWidget {
@@ -21,14 +22,24 @@ class AboutTemplate extends StatelessWidget {
     const footerMargin = 76.0;
 
     return Scaffold(
-      appBar: SimpleAppBarMolecule(
+      appBar: AppBar(
+        elevation: 0,
+        toolbarHeight: 80,
+        backgroundColor: context.colors.primary,
+        centerTitle: true,
         title: Text(
           AboutStrings.appBarTitle,
-          style: AppTextStyles.interSemiBold20,
+          style: AppTextStyles.interMedium20,
         ),
-        elevation: 0,
-        shouldShowBackButtonLabel: false,
-        height: kToolbarHeight,
+        leading: InkWell(
+          onTap: () {
+            Modular.to.pop();
+          },
+          child: const Icon(
+            Icons.chevron_left,
+            color: Colors.black,
+          ),
+        ),
       ),
       body: (status != Status.success)
           ? const LoadingTemplate(isAppBarVisible: false)
