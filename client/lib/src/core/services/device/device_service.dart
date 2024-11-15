@@ -124,6 +124,7 @@ class DeviceInfoServiceImpl implements DeviceInfoService {
   }
 }
 
+// ignore: unused_element
 class _GetDeviceId extends CachedMemory<String> {
   _GetDeviceId({
     required DeviceInfoPlugin deviceInfoPlugin,
