@@ -22,11 +22,13 @@ class HomeTemplate extends StatelessWidget {
     required this.onRefresh,
     required this.userStatus,
     required this.onTapFaqCategory,
+    required this.onTapQuestion,
   });
   final DermaUser? dermaUser;
   final Future<void> Function() onRefresh;
   final Status userStatus;
   final void Function(FaqCategory) onTapFaqCategory;
+  final VoidCallback onTapQuestion;
 
   @override
   Widget build(BuildContext context) {
@@ -59,10 +61,11 @@ class HomeTemplate extends StatelessWidget {
                       onTap: () {},
                     ),
                     const Gap(kMarginDefault),
-                    const HomeProfileOrganism(
+                    HomeProfileOrganism(
                       isAnalysisAvailable: true,
                       isLoading: false,
                       analysisQuantity: 5,
+                      onTapQuestion: onTapQuestion,
                     ),
                     const Gap(kMarginDefault),
                     ImageBannerMolecule(

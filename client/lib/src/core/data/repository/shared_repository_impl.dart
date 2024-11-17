@@ -16,7 +16,7 @@ class SharedRepositoryImpl implements SharedRepository {
   final SharedRemoteDatasource _remoteDatasource;
 
   @override
-  Future<Either<Failure, String>> getToken() async {
+  Future<Either<Failure, String?>> getToken() async {
     try {
       final result = await _localDatasource.getToken();
       return Right(result);

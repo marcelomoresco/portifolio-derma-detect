@@ -11,12 +11,18 @@ class SplashModule extends Module {
   static const routePath = AppModule.routePath + moduleName;
 
   @override
+  List<Module> get imports => [
+        AppModule(),
+      ];
+
+  @override
   void binds(Injector i) {
     i.addLazySingleton(() => SplashNavigator());
     i.addLazySingleton(() => const SharedNavigator());
     i.addLazySingleton(
       () => WelcomeCubit(
         sharedNavigator: i(),
+        getTokenUsecase: i(),
       ),
     );
     super.binds(i);

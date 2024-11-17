@@ -3,7 +3,6 @@ import 'package:derma_detect/src/core/consts/app_assets.dart';
 import 'package:derma_detect/src/core/consts/core_dimens.dart';
 import 'package:derma_detect/src/core/utils/shared_navigator.dart';
 import 'package:derma_detect/src/core/widgets/molecules/derma_card.dart';
-import 'package:derma_detect/src/modules/main/submodules/home/presentation/molecules/image_banner_molecule.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:gap/gap.dart';

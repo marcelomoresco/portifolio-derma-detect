@@ -59,6 +59,7 @@ dev_dependencies:
   flutter_lints: ^4.0.0
   flutter_native_splash: ^2.3.10
   flutter_launcher_icons: ^0.14.1
+  mocktail: ^1.0.1
 
 # The following section is specific to Flutter packages.
 flutter:

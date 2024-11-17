@@ -52,4 +52,8 @@ class HomeCubit extends DermaCubit<HomeState> {
   void onTapFaqCategory(FaqCategory faqCategory) {
     _sharedNavigator.openFaqByCategoryPage(faqCategory);
   }
+
+  void onTapQuestion() {
+    _sharedNavigator.openQuestions();
+  }
 }

@@ -10,10 +10,12 @@ class HomeProfileOrganism extends StatelessWidget {
     required this.isAnalysisAvailable,
     required this.isLoading,
     required this.analysisQuantity,
+    required this.onTapQuestion,
   });
   final bool isAnalysisAvailable;
   final bool isLoading;
   final int analysisQuantity;
+  final VoidCallback onTapQuestion;
 
   @override
   Widget build(BuildContext context) {

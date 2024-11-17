@@ -18,7 +18,6 @@ const errorHandler = (err, req, res, next) => {
     message = "Duplicated field value entered";
   }
 
-  // Tratamento de ObjectId inválido (geralmente para _id malformados nas URLs)
   if (err instanceof mongoose.Error.CastError) {
     statusCode = 404;
     message = `Resource not found with id of ${err.value}`;
