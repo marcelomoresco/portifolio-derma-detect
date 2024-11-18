@@ -5,7 +5,7 @@ const User = require("../models/userModel");
 // Gera o token JWT
 const generateToken = (userId) => {
   return jwt.sign({ id: userId }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_IN || "1h", // Define um tempo de expiração
+    expiresIn: process.env.JWT_EXPIRES_IN || "1h",
   });
 };
 
@@ -22,7 +22,6 @@ const registerUser = async (req, res) => {
     // Criptografa a senha
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Cria novo usuário
     const user = await User.create({
       name,
       email,
@@ -32,7 +31,6 @@ const registerUser = async (req, res) => {
     // Gera o token JWT para o novo usuário
     const token = generateToken(user._id);
 
-    // Retorna o token e os dados do usuário
     res.status(201).json({
       message: "Usuário registrado com sucesso!",
       token,
@@ -55,14 +53,12 @@ const deleteUser = async (req, res) => {
       return res.status(404).json({ message: "Usuário não encontrado" });
     }
 
-    // Retorna mensagem de confirmação
     res.status(200).json({ message: "Usuário deletado com sucesso!" });
   } catch (error) {
     res.status(500).json({ message: "Server error" });
   }
 };
 
-// Login do usuário
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
 

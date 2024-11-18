@@ -1,6 +1,4 @@
 const { OpenAI } = require("openai");
-const fs = require("fs");
-const { Readable } = require("stream");
 
 class OpenAIService {
   constructor() {

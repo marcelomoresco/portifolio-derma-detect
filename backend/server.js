@@ -10,6 +10,7 @@ const connectDB = require("./config/db");
 
 const userRoutes = require("./routes/authRouter");
 const analysisRoutes = require("./routes/analysisRouter");
+const externalRoutes = require("./routes/externalsRouter");
 
 dotenv.config();
 connectDB();
@@ -40,6 +41,7 @@ app.get("/metrics", async (req, res) => {
 app.use(limiter);
 app.use("/api/users", userRoutes);
 app.use("/api/analyses", analysisRoutes);
+app.use("/api/externals", externalRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

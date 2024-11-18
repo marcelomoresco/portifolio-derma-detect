@@ -1,4 +1,4 @@
-name: CI - KOIN
+name: CI - DERMA CHECK
 
 on:
   pull_request:
