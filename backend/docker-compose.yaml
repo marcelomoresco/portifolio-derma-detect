@@ -11,7 +11,9 @@ services:
       - mongo-data:/data/db
 
   backend:
-    build: . # Ajuste para usar o diretório atual como contexto de build
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: node-backend
     ports:
       - "5001:5001"
@@ -22,6 +24,7 @@ services:
       - mongodb
     volumes:
       - .:/app # Montar o diretório atual para desenvolvimento local
+      - /app/node_modules # Isolar o node_modules dentro do contêiner
     command: npm start
     expose:
       - "5001" # Expor a porta internamente para o Prometheus

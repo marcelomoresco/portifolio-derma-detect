@@ -15,17 +15,16 @@
 
 ## Objetivo
 
-Este projeto tem como objetivo principal ser uma lista de tarefas, o Task Scribe, com foco em ajudar a organizar os objetivos de curto e longo prazo. Sendo fácil e prático de utilizar para que todos consigam compreender como funciona.
+Este projeto tem como objetivo principal ser um app para auxílio de médicos e pacientes para a identificação precoce de problemas de pele, não tendo o objetivo ALGUM de substituir a profissão. Sendo fácil e prático de utilizar para que todos consigam compreender como funciona.
 
 ## Escopo
 
 **Coleta de dados**
 
-- Dados do Usuário: Coletamos informações de registro, como nome de usuário, e-mail (se necessário) e senha para autenticação;
+- Dados do Usuário: Coletamos informações de registro, como nome de usuário, e-mail e senha para autenticação, utilizando de uma autenticação JWT;
 - Tarefas do Usuário: Coletamos detalhes das tarefas, como título, descrição, data de vencimento e status de conclusão, que são armazenados no sistema;
 - Atividades do Usuário: Registramos ações do usuário, como adição, edição, marcação como concluída ou exclusão de tarefas, para fornecer histórico e insights;
 - Logs e Erros: Mantemos registros de eventos e possíveis erros no sistema para depuração e melhorias;
-- Análise de Uso: Coletamos dados de uso, como tempo gasto, frequência de login e padrões de uso, para melhorar a experiência do usuário.
 
 **Pré-processamento**
 

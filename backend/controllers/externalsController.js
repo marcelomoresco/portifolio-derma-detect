@@ -1,4 +1,4 @@
-const OpenAIService = require("../services/open_ai_service");
+const { sendPrompt } = require("../services/open_ai_service");
 
 const sendChatPrompt = async (req, res) => {
   const { prompt } = req.body;
@@ -8,7 +8,7 @@ const sendChatPrompt = async (req, res) => {
   }
 
   try {
-    const response = await OpenAIService.sendPrompt(prompt);
+    const response = await sendPrompt(prompt);
     return res.status(200).json({ response });
   } catch (error) {
     console.error("Erro ao processar o prompt:", error);
