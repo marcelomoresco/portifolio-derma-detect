@@ -4,21 +4,40 @@ const morgan = require("morgan");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 const prometheusClient = require("prom-client");
-
+const fs = require("fs");
+const path = require("path");
+const cron = require("node-cron");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 
 const userRoutes = require("./routes/authRouter");
 const analysisRoutes = require("./routes/analysisRouter");
 const externalRoutes = require("./routes/externalsRouter");
+const resetUserLimits = require("./services/resetAnalysisMonthly");
 
 dotenv.config();
+console.log(process.env.OPENAI_API_KEY);
+console.log(process.env.MONGO_URI);
 connectDB();
+
+const ensureUploadsDirExists = () => {
+  const uploadsDir = path.join(__dirname, "uploads");
+  if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir);
+    console.log("Diretório 'uploads/' criado com sucesso.");
+  }
+};
+
+cron.schedule("0 0 1 * *", () => {
+  console.log("Executando tarefa de redefinição mensal...");
+  resetUserLimits();
+});
 
 const app = express();
 
 const collectDefaultMetrics = prometheusClient.collectDefaultMetrics;
 collectDefaultMetrics();
+ensureUploadsDirExists();
 
 app.use(express.json());
 app.use(mongoSanitize());
