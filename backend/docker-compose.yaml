@@ -1,12 +1,10 @@
+version: "3.8"
 services:
   mongodb:
     image: mongo
     container_name: mongodb
     ports:
       - "27017:27017"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: password
     volumes:
       - mongo-data:/data/db
 
@@ -17,9 +15,9 @@ services:
     container_name: node-backend
     ports:
       - "5001:5001"
-    env_file: .env # Carregar variáveis de ambiente do arquivo .env
+    env_file: .env
     environment:
-      MONGO_URI: mongodb://admin:password@mongodb:27017/derma-detect?authSource=admin
+      MONGO_URI: ${MONGO_URI}
     depends_on:
       - mongodb
     volumes:
