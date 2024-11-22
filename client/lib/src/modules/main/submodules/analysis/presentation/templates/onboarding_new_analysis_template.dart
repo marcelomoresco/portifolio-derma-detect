@@ -31,7 +31,7 @@ class OnboardingNewAnalysisTemplate extends StatelessWidget {
                     children: [
                       Lottie.asset(
                         AppAssets.dermaAnimation,
-                        height: 350,
+                        height: 300,
                       ),
                     ],
                   ),
@@ -43,14 +43,14 @@ class OnboardingNewAnalysisTemplate extends StatelessWidget {
                 children: [
                   Text(
                     "Sua jornada para uma pele saudável começa aqui",
-                    style: AppTextStyles.interSemiBold24,
+                    style: AppTextStyles.interSemiBold20,
                   ),
                   const Gap(kMarginDefault),
                   Text(
                     "Detecte sinais de problemas e descubra como cuidar melhor da sua pele.",
-                    style: AppTextStyles.interRegular18,
+                    style: AppTextStyles.interRegular16,
                   ),
-                  const Gap(kMarginDefault),
+                  const Gap(kMarginBig * 2),
                   DermaButton(
                     onPressed: onTapStarted,
                     text: "Vamos começar!",

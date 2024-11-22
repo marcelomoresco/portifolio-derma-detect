@@ -16,5 +16,6 @@ sealed class AppAssets {
   static const String analyzeAnimation = '$_animations/analyze_animation.json';
   static const String checkingArtificialInteligence = '$_animations/checking_artificial_inteligence.json';
   static const String dermaAnimation = '$_animations/derma_animation.json';
+  static const String emptyAnimation = '$_animations/empty_animation.json';
   static const String onboardingAnimation = '$_animations/onboarding_animation.json';
 }

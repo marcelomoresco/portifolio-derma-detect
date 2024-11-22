@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:derma_detect/src/modules/auth/login_module.dart';
 import 'package:derma_detect/src/modules/auth/presentation/pages/register_page.dart';
 import 'package:derma_detect/src/modules/main/main_module.dart';
+import 'package:derma_detect/src/modules/main/submodules/analysis/presentation/cubits/analyze_processing_cubit.dart';
+import 'package:derma_detect/src/modules/main/submodules/analysis/presentation/pages/analyze_processing_page.dart';
 import 'package:derma_detect/src/modules/main/submodules/analysis/presentation/pages/onboarding_new_analysis_page.dart';
 import 'package:derma_detect/src/modules/main/submodules/home/domain/entities/faq_category.dart';
 import 'package:derma_detect/src/modules/main/submodules/profile/presentation/submodules/faq/presentation/pages/faq_category_page.dart';
@@ -45,6 +49,15 @@ class SharedNavigator {
   void openQuestions() {
     Modular.to.pushNamed(
       FaqListCategoriesPage.routePath,
+    );
+  }
+
+  void openAnalyzeProcessing(File file) {
+    Modular.to.pushNamed(
+      AnalysisProcessingPage.routePath,
+      arguments: AnalyzeProcessingCubitParams(
+        file: file,
+      ),
     );
   }
 }

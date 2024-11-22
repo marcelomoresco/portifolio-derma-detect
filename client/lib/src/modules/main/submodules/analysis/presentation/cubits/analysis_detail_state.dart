@@ -1,13 +1,13 @@
-part of 'analysis_cubit.dart';
+part of 'analysis_detail_cubit.dart';
 
-class AnalysisState extends Equatable {
-  const AnalysisState({
+class AnalysisDetailState extends Equatable {
+  const AnalysisDetailState({
     this.analysisStatus = Status.initial,
-    this.analysis = const [],
+    this.analysis,
     this.failure,
   });
   final Status analysisStatus;
-  final List<Analysis> analysis;
+  final Analysis? analysis;
   final Failure? failure;
 
   @override
@@ -17,12 +17,12 @@ class AnalysisState extends Equatable {
         failure,
       ];
 
-  AnalysisState copyWith({
+  AnalysisDetailState copyWith({
     Failure? failure,
     Status? analysisStatus,
-    List<Analysis>? analysis,
+    Analysis? analysis,
   }) {
-    return AnalysisState(
+    return AnalysisDetailState(
       failure: failure ?? this.failure,
       analysis: analysis ?? this.analysis,
       analysisStatus: analysisStatus ?? this.analysisStatus,

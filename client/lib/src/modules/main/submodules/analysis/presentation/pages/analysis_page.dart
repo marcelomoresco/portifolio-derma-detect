@@ -20,6 +20,12 @@ class AnalysisPage extends StatefulWidget {
 
 class _AnalysisPageState extends DermaCubitState<AnalysisPage, AnalysisCubit> {
   @override
+  void initState() {
+    cubit.onInit();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocBuilder<AnalysisCubit, AnalysisState>(
       bloc: cubit,
@@ -29,7 +35,7 @@ class _AnalysisPageState extends DermaCubitState<AnalysisPage, AnalysisCubit> {
             shouldShowBackButtonLabel: false,
             showBackButton: false,
             height: kToolbarHeight,
-            elevation: 0.5,
+            elevation: 1,
             title: Text(
               "Suas análises",
               style: AppTextStyles.interSemiBold20,
@@ -42,6 +48,9 @@ class _AnalysisPageState extends DermaCubitState<AnalysisPage, AnalysisCubit> {
           ),
           body: AnalysisListTemplate(
             onTapNewAnalyze: cubit.openOnboardingAnalyze,
+            onRefresh: cubit.onRefresh,
+            analysis: state.analysis,
+            analysisStatus: state.analysisStatus,
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: cubit.openOnboardingAnalyze,

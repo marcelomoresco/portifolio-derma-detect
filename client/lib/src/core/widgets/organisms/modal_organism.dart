@@ -12,6 +12,7 @@ class ModalOrganism extends StatelessWidget with ShowModal {
   const ModalOrganism({
     super.key,
     this.icon,
+    this.iconSize,
     required this.title,
     this.titleStyle,
     this.description,
@@ -42,6 +43,7 @@ class ModalOrganism extends StatelessWidget with ShowModal {
   });
 
   final IconData? icon;
+  final double? iconSize;
   final String title;
   final TextStyle? titleStyle;
   final Color? titleColor;
@@ -98,7 +100,10 @@ class ModalOrganism extends StatelessWidget with ShowModal {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     if (icon != null) ...[
-                      Icon(icon!),
+                      Icon(
+                        icon!,
+                        size: iconSize,
+                      ),
                       const SizedBox(height: kMarginDefault),
                     ],
                     Text(
