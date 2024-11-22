@@ -28,6 +28,7 @@ class AnalyzeProcessingCubit extends DermaCubit<AnalyzeProcessingState> {
 
   void _createAnalyze() async {
     emit(state.copyWith(status: Status.loading));
+    await Future.delayed(const Duration(seconds: 3));
     final result = await _createAnalysisUsecase(CreateAnalysisUsecaseParams(file: _params.file));
     result.fold(
       (failure) => emit(
