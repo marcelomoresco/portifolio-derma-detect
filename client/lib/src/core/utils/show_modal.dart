@@ -45,7 +45,12 @@ Future<void> showModalError(
             Container(height: kMarginBig),
             DermaButton(
               text: buttomText ?? "Fechar",
-              onPressed: () => Navigator.pop(context),
+              onPressed: () {
+                Navigator.pop(context);
+                if (onTap != null) {
+                  onTap();
+                }
+              },
               backgroundColor: Colors.black,
             ),
             Container(height: kMarginBig),

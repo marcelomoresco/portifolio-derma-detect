@@ -35,7 +35,7 @@ class AnalysisRemoteDatasourceImpl implements AnalysisRemoteDatasource {
       },
     );
 
-    final response = await _networkService.post(
+    final response = await _networkService.formData(
       ClientRequest(
         path: "/analyses/",
         formData: formData,

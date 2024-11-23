@@ -72,7 +72,7 @@ class HomeTemplate extends StatelessWidget {
                     HomeProfileOrganism(
                       isAnalysisAvailable: true,
                       isLoading: false,
-                      analysisQuantity: 5,
+                      analysisQuantity: dermaUser?.monthlyAnalyses ?? 20,
                       onTapQuestion: onTapQuestion,
                       onTapButton: onTapNewAnalysis,
                     ),
