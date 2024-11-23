@@ -218,3 +218,6 @@ O modelo foi configurado para otimizar o aprendizado e obter alto desempenho:
 - **Métricas:** Precisão (**accuracy**) para avaliar a performance durante e após o treinamento.
 
 Essa estrutura permite que o modelo seja eficiente, leve e eficaz para identificar diferentes condições dermatológicas com alta precisão.
+
+<img width="555" alt="Captura de Tela 2024-11-23 às 15 15 31" src="https://github.com/user-attachments/assets/8481a780-a6c9-4297-a0eb-b28941b95d33">
+
