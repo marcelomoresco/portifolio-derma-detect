@@ -1,3 +1,6 @@
+<img src="https://github.com/user-attachments/assets/eab1aa90-0812-42f0-bdfa-aca849293461" alt="logo-with-background" width="110"/>
+
+
 ## Índice
 
 - [Objetivo](#objetivo)
