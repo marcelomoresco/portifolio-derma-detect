@@ -28,11 +28,6 @@ final List<SkinCareTip> skinCareTips = [
     icon: Icons.cleaning_services,
   ),
   SkinCareTip(
-    title: "Evite Produtos Irritantes",
-    description: "Use produtos suaves e evite substâncias que possam irritar sua pele.",
-    icon: Icons.no_drinks,
-  ),
-  SkinCareTip(
     title: "Durma Bem",
     description: "Ter uma boa noite de sono ajuda a regeneração celular.",
     icon: Icons.bedtime,

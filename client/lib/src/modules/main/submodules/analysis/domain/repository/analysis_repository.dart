@@ -7,5 +7,6 @@ import 'package:derma_detect/src/modules/main/submodules/analysis/domain/usecase
 abstract interface class AnalysisRepository {
   Future<Either<Failure, List<Analysis>>> getAll();
   Future<Either<Failure, Analysis>> getById(GetByIdAnalysisUsecaseParams params);
+  Future<Either<Failure, List<Analysis>>> getRecents();
   Future<Either<Failure, Analysis>> create(CreateAnalysisUsecaseParams params);
 }

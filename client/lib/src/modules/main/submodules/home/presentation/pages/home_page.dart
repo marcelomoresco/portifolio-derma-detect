@@ -30,6 +30,9 @@ class _HomePageState extends DermaCubitState<HomePage, HomeCubit> {
             userStatus: state.userStatus,
             onTapFaqCategory: cubit.onTapFaqCategory,
             onTapQuestion: cubit.onTapQuestion,
+            onTapNewAnalysis: cubit.onTapNewAnalysis,
+            onTapAnalysis: cubit.onTapAnalysis,
+            lastAnalysis: state.lastAnalysis,
           ),
         );
       },

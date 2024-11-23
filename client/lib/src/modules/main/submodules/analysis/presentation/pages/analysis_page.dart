@@ -51,6 +51,7 @@ class _AnalysisPageState extends DermaCubitState<AnalysisPage, AnalysisCubit> {
             onRefresh: cubit.onRefresh,
             analysis: state.analysis,
             analysisStatus: state.analysisStatus,
+            onTapAnalysis: cubit.onTapAnalysis,
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: cubit.openOnboardingAnalyze,

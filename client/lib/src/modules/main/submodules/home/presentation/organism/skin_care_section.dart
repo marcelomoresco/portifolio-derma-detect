@@ -1,3 +1,4 @@
+import 'package:derma_detect/src/core/consts/app_textstyles.dart';
 import 'package:derma_detect/src/core/consts/core_dimens.dart';
 import 'package:derma_detect/src/modules/main/submodules/home/presentation/const/skin_care.dart';
 import 'package:flutter/material.dart';
@@ -24,9 +25,19 @@ class SkinCareTipsSection extends StatelessWidget {
             children: skinCareTips.map((tip) {
               return Card(
                 child: ListTile(
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: kMarginDefault,
+                    vertical: kMarginNormal,
+                  ),
                   leading: Icon(tip.icon, color: Colors.green.shade200),
-                  title: Text(tip.title),
-                  // subtitle: Text(tip.description),
+                  title: Text(
+                    tip.title,
+                    style: AppTextStyles.interSemiBold14,
+                  ),
+                  subtitle: Text(
+                    tip.description,
+                    style: AppTextStyles.interRegular12,
+                  ),
                 ),
               );
             }).toList(),

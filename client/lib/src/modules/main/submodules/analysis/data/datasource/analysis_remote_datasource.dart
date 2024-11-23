@@ -14,6 +14,7 @@ abstract class AnalysisRemoteDatasource {
   Future<Analysis> getById(GetByIdAnalysisUsecaseParams params);
 
   Future<List<Analysis>> getAll();
+  Future<List<Analysis>> getRecents();
 }
 
 class AnalysisRemoteDatasourceImpl implements AnalysisRemoteDatasource {
@@ -72,6 +73,21 @@ class AnalysisRemoteDatasourceImpl implements AnalysisRemoteDatasource {
     );
     try {
       Analysis result = AnalysisModel.fromJson(response.body);
+      return result;
+    } catch (error) {
+      throw ParseDataException(message: 'DermaMapper parse error: $error');
+    }
+  }
+
+  @override
+  Future<List<Analysis>> getRecents() async {
+    final response = await _networkService.get(
+      const ClientRequest(
+        path: "/analyses/recents",
+      ),
+    );
+    try {
+      List<Analysis> result = (response.body as List).map((e) => AnalysisModel.fromJson(e)).toList();
       return result;
     } catch (error) {
       throw ParseDataException(message: 'DermaMapper parse error: $error');

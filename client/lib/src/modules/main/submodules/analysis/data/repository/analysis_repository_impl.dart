@@ -40,4 +40,14 @@ class AnalysisRepositoryImpl implements AnalysisRepository {
       return Left(Failure(exception: error));
     }
   }
+
+  @override
+  Future<Either<Failure, List<Analysis>>> getRecents() async {
+    try {
+      final result = await _datasource.getRecents();
+      return Right(result);
+    } catch (error) {
+      return Left(Failure(exception: error));
+    }
+  }
 }

@@ -12,11 +12,13 @@ class HomeAnalysisAvaliableMolecule extends StatefulWidget {
     required this.isLoading,
     required this.isAnalysisAvailable,
     required this.analysisQuantity,
+    required this.onTapButton,
   });
 
   final bool isLoading;
   final bool isAnalysisAvailable;
   final int analysisQuantity;
+  final VoidCallback onTapButton;
 
   @override
   State<HomeAnalysisAvaliableMolecule> createState() => _HomeAnalysisAvaliableMoleculeState();
@@ -67,7 +69,7 @@ class _HomeAnalysisAvaliableMoleculeState extends State<HomeAnalysisAvaliableMol
           ),
         ),
         const Gap(kMarginDefault),
-        DermaButton(onPressed: () {}, text: "Realizar análise")
+        DermaButton(onPressed: widget.onTapButton, text: "Realizar análise")
       ],
     );
   }

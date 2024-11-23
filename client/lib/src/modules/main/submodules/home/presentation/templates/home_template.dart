@@ -4,12 +4,14 @@ import 'package:derma_detect/src/core/consts/core_dimens.dart';
 import 'package:derma_detect/src/core/utils/status.dart';
 import 'package:derma_detect/src/core/widgets/molecules/derma_card.dart';
 import 'package:derma_detect/src/modules/auth/domain/entities/derma_user.dart';
+import 'package:derma_detect/src/modules/main/submodules/analysis/domain/entities/analysis.dart';
 import 'package:derma_detect/src/modules/main/submodules/home/domain/entities/faq_category.dart';
 import 'package:derma_detect/src/modules/main/submodules/home/home_strings.dart';
 import 'package:derma_detect/src/modules/main/submodules/home/presentation/const/faq_home_app.dart';
 import 'package:derma_detect/src/modules/main/submodules/home/presentation/molecules/image_banner_molecule.dart';
 import 'package:derma_detect/src/modules/main/submodules/home/presentation/organism/home_app_bar_organism.dart';
 import 'package:derma_detect/src/modules/main/submodules/home/presentation/organism/home_faq_organism.dart';
+import 'package:derma_detect/src/modules/main/submodules/home/presentation/organism/home_last_analysis_organism.dart';
 import 'package:derma_detect/src/modules/main/submodules/home/presentation/organism/home_profile_organism.dart';
 import 'package:derma_detect/src/modules/main/submodules/home/presentation/organism/skin_care_section.dart';
 import 'package:flutter/material.dart';
@@ -23,12 +25,18 @@ class HomeTemplate extends StatelessWidget {
     required this.userStatus,
     required this.onTapFaqCategory,
     required this.onTapQuestion,
+    required this.onTapNewAnalysis,
+    required this.onTapAnalysis,
+    required this.lastAnalysis,
   });
   final DermaUser? dermaUser;
   final Future<void> Function() onRefresh;
   final Status userStatus;
   final void Function(FaqCategory) onTapFaqCategory;
   final VoidCallback onTapQuestion;
+  final VoidCallback onTapNewAnalysis;
+  final Function(Analysis) onTapAnalysis;
+  final List<Analysis> lastAnalysis;
 
   @override
   Widget build(BuildContext context) {
@@ -66,6 +74,7 @@ class HomeTemplate extends StatelessWidget {
                       isLoading: false,
                       analysisQuantity: 5,
                       onTapQuestion: onTapQuestion,
+                      onTapButton: onTapNewAnalysis,
                     ),
                     const Gap(kMarginDefault),
                     ImageBannerMolecule(
@@ -76,14 +85,12 @@ class HomeTemplate extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: kMarginDefault),
                     ),
                     const Gap(kMarginDefault),
-                    const SkinCareTipsSection(),
-                    ImageBannerMolecule(
-                      onTap: () {},
-                      assetName: AppAssets.homeBanner,
-                      height: 100,
-                      width: double.infinity,
-                      padding: const EdgeInsets.symmetric(horizontal: kMarginDefault),
+                    HomeLastAnalysisOrganism(
+                      lastAnalysis: lastAnalysis,
+                      openAnalysis: ({Analysis? analysis}) => onTapAnalysis(analysis!),
                     ),
+                    const Gap(kMarginDefault),
+                    const SkinCareTipsSection(),
                     const Gap(kMarginDefault),
                     HomeFaqOrganism(
                       title: HomeStrings.faqTitle,

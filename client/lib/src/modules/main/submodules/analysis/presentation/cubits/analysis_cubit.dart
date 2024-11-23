@@ -23,7 +23,7 @@ class AnalysisCubit extends DermaCubit<AnalysisState> {
   }
 
   void _getAllAnalysis() async {
-    emit(state.copyWith());
+    emit(state.copyWith(analysisStatus: Status.loading));
     final result = await _getAllAnalysisUsecase();
     result.fold(
       (failure) => emit(state.copyWith(
@@ -41,6 +41,10 @@ class AnalysisCubit extends DermaCubit<AnalysisState> {
 
   Future<void> onRefresh() async {
     _getAllAnalysis();
+  }
+
+  void onTapAnalysis(Analysis analysis) {
+    _sharedNavigator.openDetailAnalysis(analysis);
   }
 
   void openOnboardingAnalyze() {

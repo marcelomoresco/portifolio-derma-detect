@@ -27,7 +27,7 @@ class AnalysisDetailCubit extends DermaCubit<AnalysisDetailState> {
 
   void _getByIdAnalysis() async {
     emit(state.copyWith());
-    final result = await _getByIdAnalysisUsecase(GetByIdAnalysisUsecaseParams(id: _params.id));
+    final result = await _getByIdAnalysisUsecase(GetByIdAnalysisUsecaseParams(id: _params.analysis.id!));
     result.fold(
       (failure) => emit(state.copyWith(
         failure: failure,
@@ -49,7 +49,7 @@ class AnalysisDetailCubit extends DermaCubit<AnalysisDetailState> {
 
 class AnalysisDetailCubitParams {
   const AnalysisDetailCubitParams({
-    required this.id,
+    required this.analysis,
   });
-  final String id;
+  final Analysis analysis;
 }

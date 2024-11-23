@@ -54,9 +54,12 @@ class HomeGenericSectionOrganism extends StatelessWidget {
                           children: [
                             Text(title, style: AppTextStyles.interSemiBold18),
                             if (onTapQuestion != null)
-                              const Icon(
-                                FontAwesomeIcons.circleQuestion,
-                                size: 18,
+                              GestureDetector(
+                                onTap: onTapQuestion,
+                                child: const Icon(
+                                  FontAwesomeIcons.circleQuestion,
+                                  size: 18,
+                                ),
                               )
                           ],
                         ),
@@ -64,7 +67,7 @@ class HomeGenericSectionOrganism extends StatelessWidget {
                           height: kMarginDetail,
                         ),
                         Text(
-                          description!,
+                          description ?? '',
                           style: AppTextStyles.interRegular12,
                         ),
                       ],

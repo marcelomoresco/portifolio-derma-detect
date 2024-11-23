@@ -4,6 +4,7 @@ import 'package:equatable/equatable.dart';
 
 class Analysis extends Equatable {
   const Analysis({
+    this.id,
     this.image,
     this.diseaseCategory,
     this.confidence,
@@ -11,6 +12,7 @@ class Analysis extends Equatable {
     this.riskLevel,
   });
 
+  final String? id;
   final String? image;
   final DiseaseCategory? diseaseCategory;
   final double? confidence;
@@ -19,6 +21,7 @@ class Analysis extends Equatable {
 
   @override
   List<Object?> get props => [
+        id,
         image,
         diseaseCategory,
         confidence,

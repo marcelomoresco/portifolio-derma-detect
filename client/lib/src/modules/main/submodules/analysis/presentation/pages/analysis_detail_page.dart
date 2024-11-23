@@ -26,7 +26,7 @@ class _AnalysisDetailPageState extends DermaCubitState<AnalysisDetailPage, Analy
         return Scaffold(
           appBar: SimpleAppBarMolecule(
             shouldShowBackButtonLabel: false,
-            showBackButton: false,
+            showBackButton: true,
             height: kToolbarHeight,
             elevation: 0.5,
             title: Text(

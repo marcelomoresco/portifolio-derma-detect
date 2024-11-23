@@ -19,11 +19,13 @@ class AnalysisListTemplate extends StatelessWidget {
     required this.onRefresh,
     required this.analysis,
     required this.analysisStatus,
+    required this.onTapAnalysis,
   });
   final VoidCallback onTapNewAnalyze;
   final Future<void> Function() onRefresh;
   final List<Analysis> analysis;
   final Status analysisStatus;
+  final Function(Analysis) onTapAnalysis;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +50,10 @@ class AnalysisListTemplate extends StatelessWidget {
               if (analysis.isEmpty) ...[
                 const EmptyAnalysisOrganism(),
               ] else ...[
-                AnalysisListOrganism(analyses: analysis)
+                AnalysisListOrganism(
+                  analyses: analysis,
+                  onTapAnalysis: onTapAnalysis,
+                )
               ]
             ],
           ),

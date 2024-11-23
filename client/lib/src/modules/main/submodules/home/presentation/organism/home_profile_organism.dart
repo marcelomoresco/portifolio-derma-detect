@@ -11,23 +11,26 @@ class HomeProfileOrganism extends StatelessWidget {
     required this.isLoading,
     required this.analysisQuantity,
     required this.onTapQuestion,
+    required this.onTapButton,
   });
   final bool isAnalysisAvailable;
   final bool isLoading;
   final int analysisQuantity;
   final VoidCallback onTapQuestion;
+  final VoidCallback onTapButton;
 
   @override
   Widget build(BuildContext context) {
     return HomeGenericSectionOrganism(
       title: "Análises Diárias",
       description: 'Descubra informações valiosas sobre sua pele em segundos!',
-      onTapQuestion: () {},
+      onTapQuestion: onTapQuestion,
       spacing: kMarginSmall,
       child: HomeAnalysisAvaliableMolecule(
         isAnalysisAvailable: isAnalysisAvailable,
         isLoading: isLoading,
         analysisQuantity: analysisQuantity,
+        onTapButton: onTapButton,
       ),
     );
   }

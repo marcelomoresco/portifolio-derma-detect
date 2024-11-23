@@ -4,6 +4,7 @@ import 'package:derma_detect/src/modules/main/submodules/analysis/domain/entitie
 
 class AnalysisModel extends Analysis {
   const AnalysisModel({
+    super.id,
     super.image,
     super.diseaseCategory,
     super.confidence,
@@ -11,12 +12,13 @@ class AnalysisModel extends Analysis {
     super.riskLevel,
   });
   factory AnalysisModel.fromJson(Map<String, dynamic> json) {
-    final disease = DiseaseCategoryMapper.fromJson(json['predictedClass']);
+    final disease = DiseaseCategoryMapper.fromJson(json['predict']);
     return AnalysisModel(
+      id: json['id'],
       image: json['image'],
       confidence: json['confidence'],
       diseaseCategory: disease,
-      createdAt: json['createdAt'],
+      createdAt: json['date'] != null ? DateTime.parse(json['date']) : null,
       riskLevel: RiskLevelMapper.getRiskLevel(disease),
     );
   }

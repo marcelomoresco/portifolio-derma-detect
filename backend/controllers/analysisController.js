@@ -81,8 +81,31 @@ const getAnalysisById = async (req, res) => {
   }
 };
 
+const getRecentAnalyses = async (req, res) => {
+  try {
+    const recentAnalyses = await Analysis.find({ user: req.user.id })
+      .sort({ createdAt: -1 })
+      .limit(5);
+
+    const response = recentAnalyses.map((analysis) => ({
+      predict: analysis.predictedClass,
+      confidence: analysis.confidence,
+      id: analysis._id,
+      date: analysis.createdAt,
+    }));
+
+    res.status(200).json(response);
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ message: "Erro ao buscar as análises recentes", error });
+  }
+};
+
 module.exports = {
   createAnalysis,
   getAnalyses,
   getAnalysisById,
+  getRecentAnalyses,
 };
