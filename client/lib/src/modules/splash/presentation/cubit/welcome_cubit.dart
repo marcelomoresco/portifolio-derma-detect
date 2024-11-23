@@ -21,7 +21,6 @@ class WelcomeCubit extends DermaCubit<WelcomeState> {
   Future<void> onInitState() async {
     await Future.wait([
       _permissions(),
-      _getToken(),
     ]);
   }
 

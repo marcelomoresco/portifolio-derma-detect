@@ -4,13 +4,8 @@ import 'package:flutter/material.dart';
 final List<SkinCareTip> skinCareTips = [
   SkinCareTip(
     title: "Use Protetor Solar",
-    description: "",
+    description: "Protetor solar é fundamental em todas ocasiões, mesmo estando em casa!",
     icon: Icons.wb_sunny,
-  ),
-  SkinCareTip(
-    title: "Mantenha-se Hidratado",
-    description: "Beber água ajuda a manter sua pele hidratada e saudável.",
-    icon: Icons.local_drink,
   ),
   SkinCareTip(
     title: "Evite Exposição ao Sol nas Horas de Pico",

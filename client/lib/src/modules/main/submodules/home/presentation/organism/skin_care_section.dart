@@ -29,7 +29,11 @@ class SkinCareTipsSection extends StatelessWidget {
                     horizontal: kMarginDefault,
                     vertical: kMarginNormal,
                   ),
-                  leading: Icon(tip.icon, color: Colors.green.shade200),
+                  leading: Icon(
+                    tip.icon,
+                    color: Colors.green.shade200,
+                    size: 24,
+                  ),
                   title: Text(
                     tip.title,
                     style: AppTextStyles.interSemiBold14,

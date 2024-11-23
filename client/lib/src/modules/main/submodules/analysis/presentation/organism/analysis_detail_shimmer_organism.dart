@@ -17,31 +17,6 @@ class AnalysisDetailShimmerOrganism extends StatelessWidget {
           width: 130,
         ),
         const Gap(kMarginDefault),
-        const Row(
-          children: [
-            Expanded(
-              child: ContainerShimmerMolecule(
-                height: 60,
-              ),
-            ),
-            Gap(kMarginDefault),
-            Expanded(
-              child: ContainerShimmerMolecule(
-                height: 60,
-              ),
-            ),
-          ],
-        ),
-        const Gap(kMarginDefault),
-        const ContainerShimmerMolecule(
-          height: 60,
-        ),
-        const Gap(kMarginBig),
-        const ContainerShimmerMolecule(
-          height: 30,
-          width: 130,
-        ),
-        const Gap(kMarginDefault),
         SizedBox(
           height: 350,
           child: ListView.separated(

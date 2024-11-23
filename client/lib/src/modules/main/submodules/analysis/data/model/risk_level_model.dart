@@ -6,12 +6,10 @@ class RiskLevelMapper {
     if (category == null) return RiskLevel.low;
 
     switch (category) {
-      // Risco Muito Alto
       case DiseaseCategory.actinicKeratosisBasalCellCarcinoma:
       case DiseaseCategory.melanomaSkinCancerNeviAndMoles:
         return RiskLevel.veryHigh;
 
-      // Risco Alto
       case DiseaseCategory.cellulitisImpetigoAndBacterialInfections:
       case DiseaseCategory.lupusAndConnectiveTissueDiseases:
       case DiseaseCategory.herpesHPVAndSTDsPhotos:
@@ -19,7 +17,6 @@ class RiskLevelMapper {
       case DiseaseCategory.systemicDisease:
         return RiskLevel.high;
 
-      // Risco Médio
       case DiseaseCategory.acneAndRosaceaPhotos:
       case DiseaseCategory.atopicDermatitisPhotos:
       case DiseaseCategory.eczemaPhotos:
@@ -30,7 +27,6 @@ class RiskLevelMapper {
       case DiseaseCategory.tineaRingwormAndFungalInfections:
         return RiskLevel.medium;
 
-      // Risco Baixo
       case DiseaseCategory.lightDiseasesAndPigmentationDisorders:
       case DiseaseCategory.exanthemsAndDrugEruptions:
       case DiseaseCategory.wartsMolluscumAndViralInfections:
