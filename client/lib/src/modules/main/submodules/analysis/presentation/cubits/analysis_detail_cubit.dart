@@ -42,6 +42,10 @@ class AnalysisDetailCubit extends DermaCubit<AnalysisDetailState> {
     );
   }
 
+  void onBackButtonTap() {
+    _sharedNavigator.openMain();
+  }
+
   void openOnboardingAnalyze() {
     _sharedNavigator.openOnboardingAnalyze();
   }

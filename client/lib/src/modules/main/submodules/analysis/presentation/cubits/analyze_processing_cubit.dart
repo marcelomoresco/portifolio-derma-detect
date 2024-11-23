@@ -4,6 +4,7 @@ import 'package:derma_detect/src/core/errors/errors.dart';
 import 'package:derma_detect/src/core/helpers/derma_cubit.dart';
 import 'package:derma_detect/src/core/utils/shared_navigator.dart';
 import 'package:derma_detect/src/core/utils/status.dart';
+import 'package:derma_detect/src/modules/main/submodules/analysis/domain/entities/analysis.dart';
 import 'package:derma_detect/src/modules/main/submodules/analysis/domain/usecases/create_analyse_usecase.dart';
 import 'package:equatable/equatable.dart';
 part 'analyze_processing_state.dart';
@@ -39,12 +40,14 @@ class AnalyzeProcessingCubit extends DermaCubit<AnalyzeProcessingState> {
       ),
       (analysis) {
         emit(state.copyWith(status: Status.success));
-        _openNextPage();
+        _openNextPage(analysis);
       },
     );
   }
 
-  void _openNextPage() {}
+  void _openNextPage(Analysis analysis) {
+    _sharedNavigator.openDetailAnalysis(analysis);
+  }
 
   void openOnboardingAnalyze() {
     _sharedNavigator.openOnboardingAnalyze();

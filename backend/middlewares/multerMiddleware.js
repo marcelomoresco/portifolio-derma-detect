@@ -11,13 +11,18 @@ const storage = multer.diskStorage({
   },
 });
 
-// Filtrar arquivos permitidos
 const fileFilter = (req, file, cb) => {
-  const allowedTypes = ["image/jpeg", "image/png", "image/jpg"];
-  if (allowedTypes.includes(file.mimetype)) {
-    cb(null, true);
+  console.log(file.mimetype);
+  const allowedTypes = /jpeg|jpg|png|gif/; // Tipos permitidos
+  const extname = allowedTypes.test(
+    path.extname(file.originalname).toLowerCase()
+  );
+  const mimetype = allowedTypes.test(file.mimetype);
+
+  if (extname && mimetype) {
+    cb(null, true); // Arquivo permitido
   } else {
-    cb(new Error("Tipo de arquivo não suportado"), false);
+    cb(new Error("Tipo de arquivo não suportado")); // Rejeita o arquivo
   }
 };
 

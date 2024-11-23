@@ -17,7 +17,7 @@ class HomeProfileOrganism extends StatelessWidget {
   final bool isLoading;
   final int analysisQuantity;
   final VoidCallback onTapQuestion;
-  final VoidCallback onTapButton;
+  final VoidCallback? onTapButton;
 
   @override
   Widget build(BuildContext context) {

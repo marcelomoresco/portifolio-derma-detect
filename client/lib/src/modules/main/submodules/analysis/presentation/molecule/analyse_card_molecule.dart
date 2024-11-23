@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:derma_detect/src/core/consts/app_textstyles.dart';
 import 'package:derma_detect/src/core/consts/core_dimens.dart';
 import 'package:derma_detect/src/modules/main/submodules/analysis/data/model/disease_category_model.dart';
@@ -53,49 +54,59 @@ class AnalyseCardMolecule extends StatelessWidget {
             const Gap(kMarginSmall),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CircleAvatar(
-                      backgroundColor: context.colors.primary,
-                      child: const Padding(
-                        padding: EdgeInsets.all(kMarginSmall),
-                        child: Icon(
-                          FontAwesomeIcons.microscope,
-                          color: Colors.black,
-                          size: 24,
+                Expanded(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CircleAvatar(
+                        backgroundColor: context.colors.primary,
+                        child: const Padding(
+                          padding: EdgeInsets.all(kMarginSmall),
+                          child: Icon(
+                            FontAwesomeIcons.microscope,
+                            color: Colors.black,
+                            size: 24,
+                          ),
                         ),
                       ),
-                    ),
-                    const Gap(kMarginSmall),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        if (analysis.diseaseCategory != null)
-                          Text(
-                            DiseaseCategoryMapper.translate(analysis.diseaseCategory!) ?? '',
-                            style: AppTextStyles.interSemiBold18,
-                          ),
-                        const Gap(kMarginDetail),
-                        Row(
+                      const Gap(kMarginSmall),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              "Probabilidade: ",
-                              style: AppTextStyles.interRegular14,
-                            ),
-                            Text(
-                              "${(analysis.confidence! * 100).toStringAsFixed(2)}%",
-                              style: AppTextStyles.interSemiBold14,
+                            if (analysis.diseaseCategory != null)
+                              AutoSizeText(
+                                DiseaseCategoryMapper.translate(analysis.diseaseCategory!) ?? '',
+                                style: AppTextStyles.interSemiBold18,
+                                maxLines: 3,
+                                overflow: TextOverflow.ellipsis,
+                                minFontSize: 12,
+                              ),
+                            const Gap(kMarginDetail),
+                            Row(
+                              children: [
+                                Text(
+                                  "Probabilidade: ",
+                                  style: AppTextStyles.interRegular14,
+                                ),
+                                Flexible(
+                                  child: Text(
+                                    "${(analysis.confidence! * 100).toStringAsFixed(2)}%",
+                                    style: AppTextStyles.interSemiBold14,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
-                      ],
-                    ),
-                  ],
+                      ),
+                    ],
+                  ),
                 ),
-                const Icon(Icons.chevron_right)
+                const Icon(Icons.chevron_right),
               ],
             ),
           ],

@@ -15,6 +15,18 @@ class AnalysisModel extends Analysis {
   factory AnalysisModel.fromJson(Map<String, dynamic> json) {
     final disease = DiseaseCategoryMapper.fromJson(json['predict']);
     return AnalysisModel(
+      id: json['id'],
+      image: json['image'],
+      confidence: json['confidence'],
+      diseaseCategory: disease,
+      createdAt: json['date'] != null ? DateTime.parse(json['date']) : null,
+      riskLevel: RiskLevelMapper.getRiskLevel(disease),
+    );
+  }
+
+  factory AnalysisModel.fromCreate(Map<String, dynamic> json) {
+    final disease = DiseaseCategoryMapper.fromJson(json['analysis']['predictedClass']);
+    return AnalysisModel(
       id: json['_id'],
       image: json['image'],
       confidence: json['confidence'],

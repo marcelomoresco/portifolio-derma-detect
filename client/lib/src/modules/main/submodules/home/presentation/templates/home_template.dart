@@ -74,7 +74,7 @@ class HomeTemplate extends StatelessWidget {
                       isLoading: false,
                       analysisQuantity: dermaUser?.monthlyAnalyses ?? 20,
                       onTapQuestion: onTapQuestion,
-                      onTapButton: onTapNewAnalysis,
+                      onTapButton: (dermaUser?.isLimitAnalyses ?? false) ? null : onTapNewAnalysis,
                     ),
                     const Gap(kMarginDefault),
                     ImageBannerMolecule(

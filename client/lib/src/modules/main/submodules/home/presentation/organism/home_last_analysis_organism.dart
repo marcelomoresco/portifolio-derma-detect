@@ -35,7 +35,7 @@ class HomeLastAnalysisOrganism extends StatelessWidget {
               child: ListView.separated(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: 1,
+                itemCount: 3,
                 separatorBuilder: (context, index) => const SizedBox(height: kMarginMedium),
                 itemBuilder: (context, index) {
                   final item = lastAnalysis[index];

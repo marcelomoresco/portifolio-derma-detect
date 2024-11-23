@@ -12,6 +12,7 @@ import 'package:derma_detect/src/modules/main/submodules/analysis/presentation/o
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:gap/gap.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class AnalysisDetailTemplate extends StatelessWidget {
   const AnalysisDetailTemplate({
@@ -42,6 +43,7 @@ class AnalysisDetailTemplate extends StatelessWidget {
                     ),
                     child: Image.memory(
                       base64Decode(analysis.image!),
+                      fit: BoxFit.fill,
                     ),
                   ),
           ),
@@ -50,10 +52,16 @@ class AnalysisDetailTemplate extends StatelessWidget {
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    DiseaseCategoryMapper.translate(analysis.diseaseCategory!) ?? '',
-                    style: AppTextStyles.interSemiBold24,
+                  Expanded(
+                    child: AutoSizeText(
+                      DiseaseCategoryMapper.translate(analysis.diseaseCategory!) ?? '',
+                      style: AppTextStyles.interSemiBold24,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      minFontSize: 12,
+                    ),
                   ),
                   Row(
                     children: [
@@ -90,7 +98,7 @@ class AnalysisDetailTemplate extends StatelessWidget {
                     : Html(
                         data: analysis.promptGenerated,
                       ),
-              )
+              ),
             ],
           ),
         ],

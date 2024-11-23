@@ -128,7 +128,7 @@ class DioClientService implements NetworkService {
       final response = await dio.post(
         clientRequest.path,
         data: clientRequest.formData,
-        queryParameters: clientRequest.headers,
+        queryParameters: clientRequest.queryParameters,
         options: Options(
           headers: clientRequest.headers,
         ),

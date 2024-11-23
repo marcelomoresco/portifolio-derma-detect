@@ -6,6 +6,8 @@ const { sendPrompt } = require("../services/open_ai_service");
 
 // Criar nova análise
 const createAnalysis = async (req, res) => {
+  console.log("File:", req.file);
+
   if (!req.file) {
     return res.status(400).json({ message: "Arquivo de imagem é obrigatório" });
   }
@@ -30,7 +32,6 @@ const createAnalysis = async (req, res) => {
 
     await analysis.save();
 
-    // Atualizar o limite de análises do usuário
     req.user.monthlyAnalyses -= 1;
     await req.user.save();
 

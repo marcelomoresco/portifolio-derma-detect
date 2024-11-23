@@ -14,6 +14,8 @@ class DermaUser extends Equatable {
   final String? token;
   final int? monthlyAnalyses;
 
+  bool get isLimitAnalyses => (monthlyAnalyses ?? 20) <= 0 ? true : false;
+
   @override
   List<Object?> get props => [id, email, name, token, monthlyAnalyses];
 }

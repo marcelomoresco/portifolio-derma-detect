@@ -52,14 +52,17 @@ class _AnalysisPageState extends DermaCubitState<AnalysisPage, AnalysisCubit> {
             analysis: state.analysis,
             analysisStatus: state.analysisStatus,
             onTapAnalysis: cubit.onTapAnalysis,
+            user: state.dermaUser,
           ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: cubit.openOnboardingAnalyze,
-            backgroundColor: context.colors.sucess,
-            child: const Icon(
-              Icons.add,
-            ),
-          ),
+          floatingActionButton: (state.dermaUser?.isLimitAnalyses ?? false)
+              ? null
+              : FloatingActionButton(
+                  onPressed: cubit.openOnboardingAnalyze,
+                  backgroundColor: context.colors.sucess,
+                  child: const Icon(
+                    Icons.add,
+                  ),
+                ),
         );
       },
     );

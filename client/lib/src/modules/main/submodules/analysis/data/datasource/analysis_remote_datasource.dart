@@ -6,6 +6,7 @@ import 'package:derma_detect/src/modules/main/submodules/analysis/domain/entitie
 import 'package:derma_detect/src/modules/main/submodules/analysis/domain/usecases/create_analyse_usecase.dart';
 import 'package:derma_detect/src/modules/main/submodules/analysis/domain/usecases/get_by_id_analyse_usecase.dart';
 import 'package:dio/dio.dart';
+import 'package:mime/mime.dart';
 import 'package:path/path.dart';
 
 abstract class AnalysisRemoteDatasource {
@@ -26,11 +27,13 @@ class AnalysisRemoteDatasourceImpl implements AnalysisRemoteDatasource {
 
   @override
   Future<Analysis> create(CreateAnalysisUsecaseParams params) async {
+    final mimeType = lookupMimeType(params.file.path);
     FormData formData = FormData.fromMap(
       {
         'image': await MultipartFile.fromFile(
           params.file.path,
           filename: basename(params.file.path),
+          contentType: DioMediaType(mimeType!.split('/').first, mimeType.split('/').last),
         ),
       },
     );
@@ -39,10 +42,13 @@ class AnalysisRemoteDatasourceImpl implements AnalysisRemoteDatasource {
       ClientRequest(
         path: "/analyses/",
         formData: formData,
+        headers: {
+          'Content-Type': Headers.formUrlEncodedContentType,
+        },
       ),
     );
     try {
-      Analysis result = AnalysisModel.fromJson(response.body);
+      Analysis result = AnalysisModel.fromDetailJson(response.body);
       return result;
     } catch (error) {
       throw ParseDataException(message: 'DermaMapper parse error: $error');

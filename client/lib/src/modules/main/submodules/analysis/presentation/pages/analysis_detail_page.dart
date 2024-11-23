@@ -39,6 +39,7 @@ class _AnalysisDetailPageState extends DermaCubitState<AnalysisDetailPage, Analy
               "Detalhes da análise",
               style: AppTextStyles.interSemiBold20,
             ),
+            onBackButtonTap: cubit.onBackButtonTap,
             shapeBorder: const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(kCornerBig),

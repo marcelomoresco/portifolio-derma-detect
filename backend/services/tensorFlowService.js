@@ -26,7 +26,8 @@ const classNames = [
   "Warts Molluscum and other Viral Infections",
 ];
 
-// Função para carregar o modelo
+const CONFIDENCE_THRESHOLD = 0.3;
+
 const loadModel = async () => {
   if (!model) {
     const modelDir = path.join(__dirname, "../tfjs_model");
@@ -67,6 +68,15 @@ const processImageAndPredict = async (filePath) => {
 
     // Obter a confiança da previsão
     const confidence = prediction.arraySync()[0][predictedIndex];
+
+    if (confidence < CONFIDENCE_THRESHOLD) {
+      console.log("Predição: Não identificado");
+      console.log(`Confiança: ${confidence.toFixed(2)}`);
+      return {
+        predictedClass: "Não identificado",
+        confidence: confidence.toFixed(2),
+      };
+    }
 
     console.log(`Predição: ${classNames[predictedIndex]}`);
     console.log(`Confiança: ${confidence.toFixed(2)}`);
