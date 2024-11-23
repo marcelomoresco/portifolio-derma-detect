@@ -80,7 +80,7 @@ const getAnalysisById = async (req, res) => {
 Baseado nos seguintes resultados de uma análise de imagem:
 - Classe prevista: ${analysis.predictedClass}, lembrando que está em inglês traduza para o portugues
 
-Gere um texto explicativo retornando um HTML, quero que contenha todas as informações necessárias para o user, como como posso tratar, quais riscos estou correndo e como a acne se desenvolve, o que evitar para aumentar o problema 
+Gere um texto explicativo retornando um HTML, quero que contenha todas as informações necessárias para o user, como como posso tratar, quais riscos estou correndo e como ${analysis.predictedClass} se desenvolve, o que evitar para aumentar o problema 
     `;
 
     const responsePrompt = await sendPrompt(prompt);
