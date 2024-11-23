@@ -4,8 +4,7 @@
 - [Escopo](#escopo)
 - [Contexto](#contexto)
 - [Restrições](#restrições)
-- [Trade-offs](#trade-offs)
-- [C4 Model](#c4-model)
+- [Diagramas](#diagramas)
 - [Requisitos e Casos de Uso](docs/requisitos.md)
 - [Modelagem](#modelagem)
 - [Instalação](#instalação)
@@ -139,6 +138,10 @@ Combinando o Clean Architecture no frontend e o MVC no backend, complementados p
 ## Contexto
 
 O aplicativo é voltado para o apoio a profissionais médicos e pacientes no diagnóstico inicial de condições dermatológicas. Ele não substitui o diagnóstico médico, mas oferece uma análise prévia que pode agilizar a consulta médica ou reduzir a ansiedade de pacientes.
+
+---
+
+## Diagramas
 
 ---
 
