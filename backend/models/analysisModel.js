@@ -5,13 +5,18 @@ const analysisSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: true,
+    index: true,
   },
-  imageUrl: {
+  image: {
     type: String,
     required: true,
   },
-  description: {
+  predictedClass: {
     type: String,
+    required: true,
+  },
+  confidence: {
+    type: Number,
     required: true,
   },
   createdAt: {

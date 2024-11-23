@@ -11,6 +11,7 @@ class IColors extends ThemeExtension<IColors> {
     required this.secodary,
     required this.backgroundSecondary,
     required this.neutralWhite,
+    required this.backgroundTertiary,
   });
 
   final Color? primary;
@@ -22,6 +23,7 @@ class IColors extends ThemeExtension<IColors> {
   final Color? secodary;
   final Color? backgroundSecondary;
   final Color? neutralWhite;
+  final Color? backgroundTertiary;
 
   @override
   IColors copyWith({
@@ -34,6 +36,7 @@ class IColors extends ThemeExtension<IColors> {
     Color? secodary,
     Color? backgroundSecondary,
     Color? neutralWhite,
+    Color? backgroundTertiary,
   }) {
     return IColors(
       primary: primary ?? this.primary,
@@ -45,6 +48,7 @@ class IColors extends ThemeExtension<IColors> {
       secodary: secodary ?? this.secodary,
       backgroundSecondary: backgroundSecondary ?? this.backgroundSecondary,
       neutralWhite: neutralWhite ?? this.neutralWhite,
+      backgroundTertiary: backgroundTertiary ?? this.backgroundTertiary,
     );
   }
 
@@ -64,6 +68,7 @@ class IColors extends ThemeExtension<IColors> {
       primary: null,
       backgroundSecondary: null,
       neutralWhite: null,
+      backgroundTertiary: null,
     );
   }
 }

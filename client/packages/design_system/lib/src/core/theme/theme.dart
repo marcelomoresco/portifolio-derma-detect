@@ -25,6 +25,7 @@ class AppTheme {
         fgDefault: Color(0xFFFFFFFF),
         backgroundSecondary: Color(0xFF1F222A),
         neutralWhite: Colors.white,
+        backgroundTertiary: Color(0xFFEAECEE),
       )
     ],
   );

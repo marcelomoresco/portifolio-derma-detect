@@ -1,0 +1,40 @@
+name: CI - DERMA CHECK
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - master
+      - feature/**
+      - release/**
+    paths-ignore:
+      - "*/.md"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: "Install Flutter"
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.19.6"
+          channel: "stable"
+
+      - name: Enter in frontend
+        run: cd client
+
+      - name: Install dependencies - Main Project
+        run: flutter pub get
+
+      - name: Install dependencies in design system - Main Project
+        run: cd packages/design_system/ && flutter pub get
+
+      - name: Format Dart Code
+        run: dart format --set-exit-if-changed --line-length 120 . || true
+
+      - name: "Run Tests"
+        run: flutter test --test-randomize-ordering-seed=random

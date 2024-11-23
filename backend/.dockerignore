@@ -1,0 +1,16 @@
+# Ignorar dependências locais
+node_modules
+npm-debug.log
+yarn.lock
+
+# Ignorar arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar configurações de IDE
+.vscode
+*.log
+
+# Ignorar build de arquivos (se aplicável)
+dist
+build

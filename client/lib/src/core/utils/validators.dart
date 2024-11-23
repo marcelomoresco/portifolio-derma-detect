@@ -3,9 +3,7 @@ import 'package:derma_detect/src/core/utils/shared_strings.dart';
 import 'package:intl/intl.dart';
 
 class Validators {
-  const Validators();
-
-  bool isPasswordValid(String password) {
+  static bool isPasswordValid(String password) {
     final hasSixNumbers = RegExp(
       '^(?=.*[0-9].*[0-9].*[0-9].*[0-9].*[0-9].*[0-9]).{6}\$',
     ).hasMatch(password);
@@ -13,7 +11,7 @@ class Validators {
     return hasSixNumbers && !isSequential(password);
   }
 
-  bool isSequential(String str) {
+  static bool isSequential(String str) {
     for (var i = 0; i < str.length - 1; i++) {
       final current = str.codeUnitAt(i);
       final next = str.codeUnitAt(i + 1);
@@ -26,7 +24,7 @@ class Validators {
     return true;
   }
 
-  bool isEvp(String value) {
+  static bool isEvp(String value) {
     return RegExp('[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}').hasMatch(value);
   }
 
@@ -36,7 +34,7 @@ class Validators {
         .hasMatch(value);
   }
 
-  bool isPhone(String value) {
+  static bool isPhone(String value) {
     var str = unmask(value);
     str = str.replaceAll(' ', '');
     str = str.replaceAll('+', '');
@@ -53,7 +51,7 @@ class Validators {
         .replaceAll(')', '');
   }
 
-  bool isPastDate(String value) {
+  static bool isPastDate(String value) {
     try {
       final date = DateFormat('dd/MM/yyyy').parse(value);
 
@@ -63,7 +61,7 @@ class Validators {
     }
   }
 
-  bool isDate(String value) {
+  static bool isDate(String value) {
     try {
       DateFormat('dd/MM/yyyy').parseStrict(value);
 
@@ -73,7 +71,7 @@ class Validators {
     }
   }
 
-  bool isDateNowOrAfter(String value) {
+  static bool isDateNowOrAfter(String value) {
     try {
       final result = DateFormat('dd/MM/yyyy').parse(value);
       final now = DateTime.now();
@@ -86,7 +84,7 @@ class Validators {
     }
   }
 
-  bool isCpf(String? value) {
+  static bool isCpf(String? value) {
     if (value == null) return false;
 
     var numbers = value.replaceAll(RegExp(r'[^0-9]'), '');
@@ -118,7 +116,7 @@ class Validators {
     return true;
   }
 
-  bool isCnpj(String? value) {
+  static bool isCnpj(String? value) {
     if (value == null) return false;
 
     var numbers = value.replaceAll(RegExp(r'[^0-9]'), '');
@@ -152,7 +150,7 @@ class Validators {
     return true;
   }
 
-  bool isCreditCardNumberValid(String value) {
+  static bool isCreditCardNumberValid(String value) {
     String getCleanedNumber(String number) {
       var regExp = RegExp(r'[^0-9]');
       return number.replaceAll(regExp, '');
@@ -181,7 +179,7 @@ class Validators {
     return false;
   }
 
-  bool isCreditCardDateValid(String value) {
+  static bool isCreditCardDateValid(String value) {
     int convertYearTo4Digits(int year) {
       if (year < 100 && year >= 0) {
         var now = DateTime.now();
@@ -243,7 +241,7 @@ class Validators {
     return true;
   }
 
-  String? cpfValidator(
+  static String? cpfValidator(
     String? cpf, {
     String errorMessage = SharedStrings.invalidCpf,
   }) {
@@ -254,7 +252,7 @@ class Validators {
     return null;
   }
 
-  String? emailValidator(String? email) {
+  static String? emailValidator(String? email) {
     if (email == null) {
       return SharedStrings.emptyField;
     }
@@ -266,7 +264,7 @@ class Validators {
     return null;
   }
 
-  String? phoneValidator(String? phone) {
+  static String? phoneValidator(String? phone) {
     if (phone == null) {
       return SharedStrings.emptyField;
     }
@@ -278,7 +276,7 @@ class Validators {
     return null;
   }
 
-  bool containsAnyCase(String? value, String contains) {
+  static bool containsAnyCase(String? value, String contains) {
     if (value == null || value.isEmpty) {
       return false;
     }
@@ -288,4 +286,38 @@ class Validators {
     }
     return false;
   }
+
+  static bool _isPasswordValid(String text) {
+    return PasswordValidators().isLoginPasswordValid(text);
+  }
+
+  static String? passwordValidator(String? text) {
+    if (text?.isEmpty ?? true) {
+      return null;
+    }
+    final isValid = _isPasswordValid(text!);
+    if (isValid) return null;
+    return SharedStrings.invalidPassword;
+  }
+}
+
+class PasswordValidators {
+  bool hasANumber(String password) {
+    return password.contains(RegExp(r'[0-9]+'));
+  }
+
+  bool hasAUpperCaseLetter(String password) {
+    return password.contains(RegExp(r'[A-Z]+'));
+  }
+
+  bool hasMinimumCharacters(String password) {
+    return password.length >= 5;
+  }
+
+  bool hasASpecialCharacter(String password) {
+    return password.contains(RegExp(r"[ !#$%&\(\)\*\+,\-\.\/\:\;<=>?@[\]^_`{|}~\'" '"' ']+'));
+  }
+
+  bool isLoginPasswordValid(password) =>
+      hasANumber(password) && hasAUpperCaseLetter(password) && hasMinimumCharacters(password);
 }

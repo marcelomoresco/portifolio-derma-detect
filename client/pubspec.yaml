@@ -5,7 +5,7 @@ publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.3.4
+  sdk: ">=3.2.0 <4.0.0"
 
 dependencies:
   flutter:
@@ -18,27 +18,41 @@ dependencies:
   dio: ^5.4.3+1
   dartz: ^0.10.1
   collection: ^1.16.0
-  auto_size_text: ^3.0.0
+  mime: ^1.0.4
   bloc: ^8.0.1
   google_fonts: 6.1.0
   equatable: ^2.0.3
   internet_connection_checker: 1.0.0+1
   intl: ^0.18.0
-  open_filex: ^4.1.1
   package_info_plus: ^8.0.0
   path_provider: ^2.0.10
+  path: 1.9.0
   permission_handler: ^10.4.3
   url_launcher: ^6.2.1
   uuid: ^4.4.2
   gap: ^3.0.1
+  auto_size_text: ^3.0.0
   awesome_dio_interceptor: ^1.2.0
   font_awesome_flutter: ^10.7.0
   smooth_page_indicator: ^1.2.0+3
   expandable_page_view: ^1.0.17
+  flutter_svg: ^1.1.6
+  geolocator: ^10.1.0
+  device_info_plus: ^9.1.1
+  flutter_secure_storage: ^9.2.2
+  shimmer: ^3.0.0
+  email_validator: ^3.0.0
+  lottie: ^3.1.3
+  image_picker: ^1.1.2
+  flutter_html: ^3.0.0-beta.2
+
   design_system:
     path: ./packages/design_system
   flutter_localizations:
     sdk: flutter
+
+dependency_overrides:
+  modular_core: 3.3.2
 
 dev_dependencies:
   flutter_test:
@@ -48,12 +62,14 @@ dev_dependencies:
   flutter_lints: ^4.0.0
   flutter_native_splash: ^2.3.10
   flutter_launcher_icons: ^0.14.1
+  mocktail: ^1.0.1
 
 # The following section is specific to Flutter packages.
 flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/animations/
     - assets/google_fonts/
 
 flutter_native_splash:

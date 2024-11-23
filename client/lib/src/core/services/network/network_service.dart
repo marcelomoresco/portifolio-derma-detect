@@ -6,4 +6,5 @@ abstract interface class NetworkService {
   Future<ClientResponse> post(ClientRequest clientRequest);
   Future<ClientResponse> put(ClientRequest clientRequest);
   Future<ClientResponse> delete(ClientRequest clientRequest);
+  Future<ClientResponse> formData(ClientRequest clientRequest);
 }

@@ -25,6 +25,10 @@ class ClientException extends DermaException {
   });
 }
 
+class ParseDataException extends DermaException {
+  ParseDataException({required super.message});
+}
+
 class Failure extends Equatable {
   final dynamic exception;
   final dynamic data;

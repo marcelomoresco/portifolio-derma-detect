@@ -29,8 +29,12 @@ class DioClientService implements NetworkService {
         body: response.data,
       );
     } on DioException catch (e, _) {
+      final errorMessage = e.response?.data is Map && e.response?.data.containsKey('message')
+          ? e.response?.data['message']
+          : 'Algo deu errado!';
+
       throw ClientException(
-        message: e.message ?? '',
+        message: errorMessage,
         statusCode: e.response?.statusCode ?? 0,
       );
     }
@@ -53,8 +57,12 @@ class DioClientService implements NetworkService {
         body: response.data,
       );
     } on DioException catch (e, _) {
+      final errorMessage = e.response?.data is Map && e.response?.data.containsKey('message')
+          ? e.response?.data['message']
+          : 'Algo deu errado';
+
       throw ClientException(
-        message: e.message ?? '',
+        message: errorMessage,
         statusCode: e.response?.statusCode ?? 0,
       );
     }
@@ -67,9 +75,7 @@ class DioClientService implements NetworkService {
         clientRequest.path,
         data: clientRequest.data,
         queryParameters: clientRequest.headers,
-        options: Options(
-          headers: clientRequest.headers,
-        ),
+        options: Options(headers: clientRequest.headers, contentType: "application/json"),
       );
 
       return ClientResponse(
@@ -77,8 +83,12 @@ class DioClientService implements NetworkService {
         body: response.data,
       );
     } on DioException catch (e, _) {
+      final errorMessage = e.response?.data is Map && e.response?.data.containsKey('message')
+          ? e.response?.data['message']
+          : 'Algo deu errado';
+
       throw ClientException(
-        message: e.message ?? '',
+        message: errorMessage,
         statusCode: e.response?.statusCode ?? 0,
       );
     }
@@ -101,8 +111,40 @@ class DioClientService implements NetworkService {
         body: response.data,
       );
     } on DioException catch (e, _) {
+      final errorMessage = e.response?.data is Map && e.response?.data.containsKey('message')
+          ? e.response?.data['message']
+          : 'Algo deu errado';
+
       throw ClientException(
-        message: e.message ?? '',
+        message: errorMessage,
+        statusCode: e.response?.statusCode ?? 0,
+      );
+    }
+  }
+
+  @override
+  Future<ClientResponse> formData(ClientRequest clientRequest) async {
+    try {
+      final response = await dio.post(
+        clientRequest.path,
+        data: clientRequest.formData,
+        queryParameters: clientRequest.queryParameters,
+        options: Options(
+          headers: clientRequest.headers,
+        ),
+      );
+
+      return ClientResponse(
+        statusCode: response.statusCode!,
+        body: response.data,
+      );
+    } on DioException catch (e, _) {
+      final errorMessage = e.response?.data is Map && e.response?.data.containsKey('message')
+          ? e.response?.data['message']
+          : 'Algo deu errado';
+
+      throw ClientException(
+        message: errorMessage,
         statusCode: e.response?.statusCode ?? 0,
       );
     }
