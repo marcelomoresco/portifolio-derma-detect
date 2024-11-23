@@ -72,6 +72,10 @@ const getAnalysisById = async (req, res) => {
 
     const analysis = await Analysis.findById(id);
 
+    if (!analysis) {
+      return res.status(404).json({ message: "Análise não encontrada" });
+    }
+
     const prompt = `
 Baseado nos seguintes resultados de uma análise de imagem:
 - Classe prevista: ${analysis.predictedClass}, lembrando que está em inglês traduza para o portugues
@@ -80,10 +84,6 @@ Gere um texto explicativo retornando um HTML, quero que contenha todas as inform
     `;
 
     const responsePrompt = await sendPrompt(prompt);
-
-    if (!analysis) {
-      return res.status(404).json({ message: "Análise não encontrada" });
-    }
 
     res.status(200).json({ analysis, prompt: responsePrompt });
   } catch (error) {
