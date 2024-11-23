@@ -126,7 +126,7 @@ Combinando o Clean Architecture no frontend e o MVC no backend, complementados p
 - O código passa por testes unitários para garantir sua funcionalidade.
 - Testes específicos do modelo de IA garantem precisão na predição de mais de 20 condições de pele, que foi treinado em cerca de 20 épocas.
 
-**8. CI/CD**
+**8. CI**
 
 - A integração contínua é realizada com GitHub Actions e armazenamento local para versões de desenvolvimento.
 
@@ -149,25 +149,9 @@ O aplicativo é voltado para o apoio a profissionais médicos e pacientes no dia
 
 ---
 
-## Trade-offs
-
-- **Portabilidade:** Disponível em dispositivos móveis Android, mas ainda não publicado oficialmente.
-- **Eficiência:** Processamento de imagens e inferências no backend podem gerar pequenas latências.
-- **Confiabilidade:** O backend é hospedado em uma instância EC2 na AWS, garantindo alta disponibilidade.
-- **Usabilidade:** Interface intuitiva priorizando clareza e acessibilidade para todos os públicos.
-- **Escalabilidade:** O uso do MongoDB e da AWS EC2 permite expansão futura conforme a necessidade.
-
----
-
-## C4 Model
-
-Os diagramas do modelo C4 encontram-se [aqui](Docs/C4diagrams.md).
-
----
-
 ## Requisitos e Casos de Uso
 
-Os requisitos funcionais e não funcionais estão detalhados [aqui](Docs/requisitos.md).
+Os requisitos funcionais e não funcionais estão detalhados [aqui](docs/requisitos.md).
 
 ---
 
