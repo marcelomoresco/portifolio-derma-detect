@@ -11,7 +11,12 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _precacheImages(context);
-
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.light,
+      ),
+    );
     return MaterialApp.router(
       title: 'DermaCheck App',
       debugShowCheckedModeBanner: false,

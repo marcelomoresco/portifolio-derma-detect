@@ -16,6 +16,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends DermaCubitState<HomePage, HomeCubit> {
   @override
+  void initState() {
+    cubit.onInit();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
       bloc: cubit,
