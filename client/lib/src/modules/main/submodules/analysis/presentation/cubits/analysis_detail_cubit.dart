@@ -15,7 +15,7 @@ class AnalysisDetailCubit extends DermaCubit<AnalysisDetailState> {
   })  : _sharedNavigator = sharedNavigator,
         _getByIdAnalysisUsecase = getByIdAnalysisUsecase,
         _params = params,
-        super(const AnalysisDetailState());
+        super(AnalysisDetailState(analysis: params.analysis));
 
   final SharedNavigator _sharedNavigator;
   final GetByIdAnalysisUsecase _getByIdAnalysisUsecase;
@@ -26,7 +26,7 @@ class AnalysisDetailCubit extends DermaCubit<AnalysisDetailState> {
   }
 
   void _getByIdAnalysis() async {
-    emit(state.copyWith());
+    emit(state.copyWith(analysisStatus: Status.loading));
     final result = await _getByIdAnalysisUsecase(GetByIdAnalysisUsecaseParams(id: _params.analysis.id!));
     result.fold(
       (failure) => emit(state.copyWith(

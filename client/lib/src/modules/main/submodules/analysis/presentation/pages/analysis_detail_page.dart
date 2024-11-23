@@ -19,6 +19,12 @@ class AnalysisDetailPage extends StatefulWidget {
 
 class _AnalysisDetailPageState extends DermaCubitState<AnalysisDetailPage, AnalysisDetailCubit> {
   @override
+  void initState() {
+    cubit.onInit();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocBuilder<AnalysisDetailCubit, AnalysisDetailState>(
       bloc: cubit,
@@ -39,7 +45,10 @@ class _AnalysisDetailPageState extends DermaCubitState<AnalysisDetailPage, Analy
               ),
             ),
           ),
-          body: const AnalysisDetailTemplate(),
+          body: AnalysisDetailTemplate(
+            analysis: state.analysis,
+            analysisStatus: state.analysisStatus,
+          ),
         );
       },
     );

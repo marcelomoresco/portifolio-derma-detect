@@ -3,11 +3,11 @@ part of 'analysis_detail_cubit.dart';
 class AnalysisDetailState extends Equatable {
   const AnalysisDetailState({
     this.analysisStatus = Status.initial,
-    this.analysis,
+    required this.analysis,
     this.failure,
   });
   final Status analysisStatus;
-  final Analysis? analysis;
+  final Analysis analysis;
   final Failure? failure;
 
   @override

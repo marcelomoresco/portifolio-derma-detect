@@ -72,7 +72,7 @@ class AnalysisRemoteDatasourceImpl implements AnalysisRemoteDatasource {
       ),
     );
     try {
-      Analysis result = AnalysisModel.fromJson(response.body);
+      Analysis result = AnalysisModel.fromDetailJson(response.body);
       return result;
     } catch (error) {
       throw ParseDataException(message: 'DermaMapper parse error: $error');

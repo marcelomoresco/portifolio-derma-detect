@@ -2,6 +2,7 @@ const Analysis = require("../models/analysisModel");
 const fs = require("fs");
 const path = require("path");
 const { processImageAndPredict } = require("../services/tensorFlowService");
+const { sendPrompt } = require("../services/open_ai_service");
 
 // Criar nova análise
 const createAnalysis = async (req, res) => {
@@ -70,11 +71,20 @@ const getAnalysisById = async (req, res) => {
 
     const analysis = await Analysis.findById(id);
 
+    const prompt = `
+Baseado nos seguintes resultados de uma análise de imagem:
+- Classe prevista: ${analysis.predictedClass}, lembrando que está em inglês traduza para o portugues
+
+Gere um texto explicativo retornando um HTML, quero que contenha todas as informações necessárias para o user, como como posso tratar, quais riscos estou correndo e como a acne se desenvolve, o que evitar para aumentar o problema 
+    `;
+
+    const responsePrompt = await sendPrompt(prompt);
+
     if (!analysis) {
       return res.status(404).json({ message: "Análise não encontrada" });
     }
 
-    res.status(200).json(analysis);
+    res.status(200).json({ analysis, prompt: responsePrompt });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Erro ao buscar análise", error });

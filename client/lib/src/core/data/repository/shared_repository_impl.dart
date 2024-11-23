@@ -44,4 +44,14 @@ class SharedRepositoryImpl implements SharedRepository {
       return Left(Failure(exception: error));
     }
   }
+
+  @override
+  Future<Either<Failure, String>> sendPrompt(String params) async {
+    try {
+      final result = await _remoteDatasource.sendPrompt(params);
+      return Right(result);
+    } catch (error) {
+      return Left(Failure(exception: error));
+    }
+  }
 }

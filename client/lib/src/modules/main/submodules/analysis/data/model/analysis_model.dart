@@ -10,16 +10,30 @@ class AnalysisModel extends Analysis {
     super.confidence,
     super.createdAt,
     super.riskLevel,
+    super.promptGenerated,
   });
   factory AnalysisModel.fromJson(Map<String, dynamic> json) {
     final disease = DiseaseCategoryMapper.fromJson(json['predict']);
     return AnalysisModel(
-      id: json['id'],
+      id: json['_id'],
       image: json['image'],
       confidence: json['confidence'],
       diseaseCategory: disease,
       createdAt: json['date'] != null ? DateTime.parse(json['date']) : null,
       riskLevel: RiskLevelMapper.getRiskLevel(disease),
+    );
+  }
+
+  factory AnalysisModel.fromDetailJson(Map<String, dynamic> json) {
+    final disease = DiseaseCategoryMapper.fromJson(json['analysis']['predictedClass']);
+    return AnalysisModel(
+      id: json['analysis']['_id'],
+      image: json['analysis']['image'],
+      confidence: json['analysis']['confidence'],
+      diseaseCategory: disease,
+      createdAt: json['analysis']['createdAt'] != null ? DateTime.parse(json['analysis']['createdAt']) : null,
+      riskLevel: RiskLevelMapper.getRiskLevel(disease),
+      promptGenerated: json['prompt'],
     );
   }
 }

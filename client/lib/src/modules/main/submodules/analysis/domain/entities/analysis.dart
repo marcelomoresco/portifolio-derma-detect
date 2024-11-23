@@ -10,6 +10,7 @@ class Analysis extends Equatable {
     this.confidence,
     this.createdAt,
     this.riskLevel,
+    this.promptGenerated,
   });
 
   final String? id;
@@ -18,6 +19,7 @@ class Analysis extends Equatable {
   final double? confidence;
   final DateTime? createdAt;
   final RiskLevel? riskLevel;
+  final String? promptGenerated;
 
   @override
   List<Object?> get props => [
@@ -26,5 +28,6 @@ class Analysis extends Equatable {
         diseaseCategory,
         confidence,
         createdAt,
+        promptGenerated,
       ];
 }

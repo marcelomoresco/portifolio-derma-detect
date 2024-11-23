@@ -6,6 +6,7 @@ import 'package:derma_detect/src/modules/auth/domain/entities/derma_user.dart';
 
 abstract class SharedRemoteDatasource {
   Future<DermaUser> getUserProfile();
+  Future<String> sendPrompt(String params);
 }
 
 class SharedRemoteDatasourceImpl implements SharedRemoteDatasource {
@@ -24,6 +25,24 @@ class SharedRemoteDatasourceImpl implements SharedRemoteDatasource {
     );
     try {
       DermaUser result = DermaUserModel.fromProfile(response.body);
+      return result;
+    } catch (error) {
+      throw ParseDataException(message: 'DermaMapper parse error: $error');
+    }
+  }
+
+  @override
+  Future<String> sendPrompt(String params) async {
+    final response = await _networkService.get(
+      ClientRequest(
+        path: "/externals/send-prompt",
+        data: {
+          'prompt': params,
+        },
+      ),
+    );
+    try {
+      String result = response.body['prompt'];
       return result;
     } catch (error) {
       throw ParseDataException(message: 'DermaMapper parse error: $error');

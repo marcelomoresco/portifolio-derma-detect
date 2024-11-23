@@ -6,4 +6,5 @@ abstract interface class SharedRepository {
   Future<Either<Failure, void>> setToken(String token);
   Future<Either<Failure, String?>> getToken();
   Future<Either<Failure, DermaUser>> getUserProfile();
+  Future<Either<Failure, String>> sendPrompt(String params);
 }
