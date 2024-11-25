@@ -1,3 +1,10 @@
+name: CI - DERMA CHECK
+
+on:
+  push:
+    paths-ignore:
+      - "*/.md"
+
 jobs:
   build:
     runs-on: ubuntu-latest
