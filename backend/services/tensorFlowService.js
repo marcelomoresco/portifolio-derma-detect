@@ -73,8 +73,8 @@ const processImageAndPredict = async (filePath) => {
       console.log("Predição: Não identificado");
       console.log(`Confiança: ${confidence.toFixed(2)}`);
       return {
-        predictedClass: "Não identificado",
-        confidence: confidence.toFixed(2),
+        predictedClass: null,
+        confidence: confidence,
       };
     }
 

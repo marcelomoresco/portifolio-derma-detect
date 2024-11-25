@@ -22,6 +22,12 @@ const createAnalysis = async (req, res) => {
     const imageBase64 = fileBuffer.toString("base64");
 
     const result = await processImageAndPredict(filePath);
+    if (result.predictedClass === null) {
+      res.status(500).json({
+        message: "Não foi possível identificar o problema",
+      });
+      return;
+    }
 
     const analysis = new Analysis({
       user: req.user.id,
