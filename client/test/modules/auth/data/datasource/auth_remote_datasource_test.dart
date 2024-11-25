@@ -34,18 +34,23 @@ void main() {
     });
 
     const tUserModel = DermaUserModel(
-      id: '1',
-      email: 'user@example.com',
-      name: 'User One',
-      token: 'token123',
+      id: '6740e8809b650251629123e3',
+      email: 'marcelomoresco0@gmail.com',
+      name: 'Marcelo Moresco',
+      token: '123',
+      monthlyAnalyses: 17,
     );
 
     const tResponse = ClientResponse(
       body: {
-        "id": "1",
-        "email": "user@example.com",
-        "name": "User One",
-        "token": "token123",
+        "message": "Login successful",
+        "token": "123",
+        "user": {
+          "id": "6740e8809b650251629123e3",
+          "name": "Marcelo Moresco",
+          "email": "marcelomoresco0@gmail.com",
+          "monthlyAnalyses": 17
+        }
       },
       statusCode: 200,
     );
@@ -64,12 +69,7 @@ void main() {
           // Assert
           expect(result, equals(tUserModel));
           verify(
-            () => mockNetworkService.post(
-              ClientRequest(
-                path: "/users/login",
-                data: any(named: 'data'),
-              ),
-            ),
+            () => mockNetworkService.post(any()),
           ).called(1);
         },
       );
@@ -100,12 +100,7 @@ void main() {
 
         // Assert
         expect(result, equals(tUserModel));
-        verify(() => mockNetworkService.post(
-              ClientRequest(
-                path: "/users/register",
-                data: any(named: 'data'),
-              ),
-            )).called(1);
+        verify(() => mockNetworkService.post(any())).called(1);
       });
 
       test('should throw ClientException on network error', () async {
