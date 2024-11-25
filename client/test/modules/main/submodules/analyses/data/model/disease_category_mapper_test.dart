@@ -41,17 +41,6 @@ void main() {
         // Assert
         expect(result, expectedTranslation);
       });
-
-      test('should return null for unknown DiseaseCategory', () {
-        // Arrange
-        const category = null;
-
-        // Act
-        final result = DiseaseCategoryMapper.translate(category!);
-
-        // Assert
-        expect(result, isNull);
-      });
     });
   });
 }

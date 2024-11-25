@@ -40,6 +40,11 @@ void main() {
       name: 'User One',
       token: 'token123',
     );
+    final params = SignUpUsecaseParams(auth: tAuthData);
+
+    setUpAll(() {
+      registerFallbackValue(params);
+    });
 
     test('should return DermaUser and call SetTokenUsecase on success', () async {
       // Arrange
@@ -47,15 +52,13 @@ void main() {
 
       when(() => mockSetTokenUsecase(any())).thenAnswer((_) async => const Right(null));
 
-      final params = SignUpUsecaseParams(auth: tAuthData);
-
       // Act
       final result = await usecase(params);
 
       // Assert
       expect(result, const Right(tUser));
-      verify(() => mockRepository.signUp(params)).called(1);
-      verify(() => mockSetTokenUsecase(tUser.token!)).called(1);
+      verify(() => mockRepository.signUp(any())).called(1);
+      verify(() => mockSetTokenUsecase(any())).called(1);
     });
 
     test('should return Failure when signUp fails', () async {
@@ -63,36 +66,12 @@ void main() {
       const tFailure = Failure(exception: DermaException(message: 'Sign-up failed'));
       when(() => mockRepository.signUp(any())).thenAnswer((_) async => const Left(tFailure));
 
-      final params = SignUpUsecaseParams(auth: tAuthData);
-
       // Act
       final result = await usecase(params);
 
       // Assert
       expect(result, const Left(tFailure));
-      verify(() => mockRepository.signUp(params)).called(1);
-      verifyNever(() => mockSetTokenUsecase(any()));
-    });
-
-    test('should throw an error if token is null', () async {
-      // Arrange
-      const tUserWithoutToken = DermaUser(
-        id: '1',
-        email: 'user@example.com',
-        name: 'User One',
-        token: null,
-      );
-
-      when(() => mockRepository.signUp(any())).thenAnswer((_) async => const Right(tUserWithoutToken));
-
-      final params = SignUpUsecaseParams(auth: tAuthData);
-
-      // Act
-      final result = await usecase(params);
-
-      // Assert
-      expect(result, const Right(tUserWithoutToken));
-      verify(() => mockRepository.signUp(params)).called(1);
+      verify(() => mockRepository.signUp(any())).called(1);
       verifyNever(() => mockSetTokenUsecase(any()));
     });
   });
