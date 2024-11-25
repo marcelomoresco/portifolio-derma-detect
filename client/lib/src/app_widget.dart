@@ -42,5 +42,6 @@ class AppWidget extends StatelessWidget {
     precacheImage(const AssetImage(AppAssets.welcomeImg1), context);
     precacheImage(const AssetImage(AppAssets.welcomeImg2), context);
     precacheImage(const AssetImage(AppAssets.welcomeImg3), context);
+    precacheImage(const AssetImage(AppAssets.logo), context);
   }
 }
