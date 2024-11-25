@@ -1,12 +1,7 @@
 name: CI - DERMA CHECK
 
 on:
-  pull_request:
-    branches:
-      - develop
-      - master
-      - feature/**
-      - release/**
+  push:
     paths-ignore:
       - "*/.md"
 
