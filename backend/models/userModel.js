@@ -16,8 +16,6 @@ const userSchema = new mongoose.Schema({
 
 userSchema.index({ email: 1 });
 
-module.exports = mongoose.model("User", userSchema);
-
 userSchema.statics.resetMonthlyLimits = async function () {
   const now = new Date();
   const firstDayOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
@@ -27,3 +25,5 @@ userSchema.statics.resetMonthlyLimits = async function () {
     { $set: { monthlyAnalyses: 20, lastReset: now } }
   );
 };
+
+module.exports = mongoose.model("User", userSchema);

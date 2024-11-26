@@ -43,7 +43,7 @@ const loadModel = async () => {
   }
 };
 
-// Função para processar a imagem e fazer a previsão
+// processar a imagem e fazer a previsão
 const processImageAndPredict = async (filePath) => {
   try {
     await loadModel();
@@ -60,13 +60,13 @@ const processImageAndPredict = async (filePath) => {
 
     const normalizedTensor = inputTensor.div(255.0);
 
-    // Fazer a previsão
+    // previsão
     const prediction = model.predict(normalizedTensor);
 
-    // Obter o índice da classe com maior probabilidade
+    // índice da classe com maior probabilidade
     const predictedIndex = prediction.argMax(-1).arraySync()[0];
 
-    // Obter a confiança da previsão
+    // confiança da previsão
     const confidence = prediction.arraySync()[0][predictedIndex];
 
     if (confidence < CONFIDENCE_THRESHOLD) {
