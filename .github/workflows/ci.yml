@@ -42,7 +42,7 @@ jobs:
 
       - name: Clear npm cache
         working-directory: backend
-        run: npm cache clean --force
+        run: rm -rf backend/node_modules
 
       - name: Install JavaScript dependencies
         working-directory: backend
