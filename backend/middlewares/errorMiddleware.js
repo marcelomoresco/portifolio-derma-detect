@@ -1,10 +1,10 @@
 const errorHandler = (err, req, res, next) => {
-  // Se o statusCode ainda não foi definido, vamos definir como 500 (Internal Server Error)
+  // padrao 500
   let statusCode =
     res.statusCode && res.statusCode !== 200 ? res.statusCode : 500;
   let message = err.message;
 
-  // Tratamento de erro de validação do MongoDB
+  // validação do MongoDB
   if (err.name === "ValidationError") {
     statusCode = 400;
     message = Object.values(err.errors)
@@ -12,7 +12,7 @@ const errorHandler = (err, req, res, next) => {
       .join(", ");
   }
 
-  // Tratamento de erro de duplicação de chave única no MongoDB
+  //  duplicação de chave única no MongoDB
   if (err.code && err.code === 11000) {
     statusCode = 400;
     message = "Duplicated field value entered";
@@ -23,7 +23,7 @@ const errorHandler = (err, req, res, next) => {
     message = `Resource not found with id of ${err.value}`;
   }
 
-  // Tratamento de erro de autenticação JWT
+  //  erro de autenticação JWT
   if (err.name === "JsonWebTokenError") {
     statusCode = 401;
     message = "Invalid token. Authorization denied";
@@ -34,11 +34,10 @@ const errorHandler = (err, req, res, next) => {
     message = "Token expired. Please log in again";
   }
 
-  // Retorna o erro no formato solicitado
   res.status(statusCode).json({
     message: message,
     statusCode: statusCode,
-    exception: process.env.NODE_ENV === "development" ? err.stack : undefined, // Exibe a stack somente em desenvolvimento
+    exception: process.env.NODE_ENV === "development" ? err.stack : undefined,
   });
 };
 

@@ -146,6 +146,10 @@ O aplicativo é voltado para o apoio a profissionais médicos e pacientes no dia
 
 ## Diagramas
 
+O Diagrama de caso de uso:
+
+<img width="482" alt="Captura de Tela 2024-11-26 às 19 47 07" src="https://github.com/user-attachments/assets/223e9a39-7670-475e-92d4-088ee5c1a813">
+
 ---
 
 ## Restrições
