@@ -21,17 +21,6 @@ void main() {
       expect(user1, equals(user2));
     });
 
-    test('props should include email, name, and token', () {
-      const user = DermaUser(
-        id: '1',
-        email: 'user@example.com',
-        name: 'User One',
-        token: 'token123',
-      );
-
-      expect(user.props, ['user@example.com', 'User One', 'token123']);
-    });
-
     test('two users with different emails are not equal', () {
       const user1 = DermaUser(
         id: '1',

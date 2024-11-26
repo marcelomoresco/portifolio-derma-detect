@@ -34,10 +34,9 @@ void main() {
     });
 
     test('isValidLogin returns true for valid email and password', () {
-      // Email válido e senha aceita pelo mock
       const auth = AuthData(
         email: 'user@example.com',
-        password: 'password123',
+        password: 'Password123!',
       );
 
       when(() => mockValidators.isLoginPasswordValid(auth.password)).thenReturn(true);

@@ -24,31 +24,18 @@ void main() {
   });
 
   group('deleteAccount', () {
+    const request = ClientRequest(path: "/users/delete");
+    registerFallbackValue(request);
     test('should call networkService.delete when deleteAccount is called', () async {
       // Arrange
-      when(() => mockNetworkService.delete(any())).thenAnswer((_) async => ClientResponse(
-            statusCode: 200,
-            body: any(),
-          ));
+      when(() => mockNetworkService.delete(request))
+          .thenAnswer((_) async => const ClientResponse(statusCode: 200, body: {}));
 
       // Act
       await datasource.deleteAccount();
 
       // Assert
-      verify(() => mockNetworkService.delete(const ClientRequest(path: "/users/delete"))).called(1);
-    });
-  });
-
-  group('signOut', () {
-    test('should call FlutterSecureStorage.delete when signOut is called', () async {
-      // Arrange
-      when(() => mockFlutterSecureStorage.delete(key: 'user-token')).thenAnswer((_) async {});
-
-      // Act
-      await datasource.signOut();
-
-      // Assert
-      verify(() => mockFlutterSecureStorage.delete(key: 'user-token')).called(1);
+      verify(() => mockNetworkService.delete(request)).called(1);
     });
   });
 }

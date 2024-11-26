@@ -1,12 +1,7 @@
 name: CI - DERMA CHECK
 
 on:
-  pull_request:
-    branches:
-      - develop
-      - master
-      - feature/**
-      - release/**
+  push:
     paths-ignore:
       - "*/.md"
 
@@ -24,17 +19,18 @@ jobs:
           flutter-version: "3.19.6"
           channel: "stable"
 
-      - name: Enter in frontend
-        run: cd client
-
       - name: Install dependencies - Main Project
+        working-directory: client
         run: flutter pub get
 
       - name: Install dependencies in design system - Main Project
-        run: cd packages/design_system/ && flutter pub get
+        working-directory: client/packages/design_system
+        run: flutter pub get
 
       - name: Format Dart Code
+        working-directory: client
         run: dart format --set-exit-if-changed --line-length 120 . || true
 
       - name: "Run Tests"
+        working-directory: client
         run: flutter test --test-randomize-ordering-seed=random
