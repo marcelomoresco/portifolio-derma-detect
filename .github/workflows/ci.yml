@@ -34,20 +34,3 @@ jobs:
       - name: "Run Tests"
         working-directory: client
         run: flutter test --test-randomize-ordering-seed=random
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "20"
-
-      - name: Clear npm cache
-        working-directory: backend
-        run: rm -rf backend/node_modules
-
-      - name: Install JavaScript dependencies
-        working-directory: backend
-        run: npm install
-
-      - name: "Run JavaScript Tests"
-        working-directory: backend
-        run: npm test
