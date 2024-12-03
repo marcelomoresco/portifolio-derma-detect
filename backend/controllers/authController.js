@@ -2,7 +2,6 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const User = require("../models/userModel");
 
-// Gera o token JWT
 const generateToken = (userId) => {
   return jwt.sign({ id: userId }, process.env.JWT_SECRET);
 };
@@ -11,13 +10,11 @@ const registerUser = async (req, res) => {
   const { name, email, password } = req.body;
 
   try {
-    // Verifica se o usuário já existe
     const userExists = await User.findOne({ email });
     if (userExists) {
       return res.status(400).json({ message: "Usuário já cadastrado" });
     }
 
-    // Criptografa a senha
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = await User.create({
@@ -26,7 +23,6 @@ const registerUser = async (req, res) => {
       password: hashedPassword,
     });
 
-    // Gera o token JWT para o novo usuário
     const token = generateToken(user._id);
 
     res.status(201).json({
@@ -62,7 +58,6 @@ const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    // Verifica se o usuário existe
     const user = await User.findOne({ email });
     if (!user) {
       return res
@@ -70,7 +65,6 @@ const loginUser = async (req, res) => {
         .json({ message: "E-mail inválido ou senha incorreta!" });
     }
 
-    // Verifica se a senha está correta
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
       return res
@@ -95,7 +89,6 @@ const loginUser = async (req, res) => {
   }
 };
 
-// Obter perfil do usuário autenticado
 const getUserProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("-password");

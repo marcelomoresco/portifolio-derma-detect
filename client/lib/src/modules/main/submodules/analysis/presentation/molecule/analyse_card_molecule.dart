@@ -3,7 +3,7 @@ import 'package:derma_detect/src/core/consts/app_textstyles.dart';
 import 'package:derma_detect/src/core/consts/core_dimens.dart';
 import 'package:derma_detect/src/modules/main/submodules/analysis/data/model/disease_category_model.dart';
 import 'package:derma_detect/src/modules/main/submodules/analysis/domain/entities/analysis.dart';
-import 'package:derma_detect/src/modules/main/submodules/analysis/presentation/atoms/risk_status_atom.dart';
+import 'package:derma_detect/src/modules/main/submodules/analysis/presentation/atoms/date_atom.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -44,11 +44,11 @@ class AnalyseCardMolecule extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    'Risco: ',
+                    'Data: ',
                     style: AppTextStyles.interBold14,
                   ),
                   const Gap(kMarginDetail),
-                  RiskStatusAtom(riskStatus: analysis.riskLevel!),
+                  DateAtom(date: analysis.createdAt ?? DateTime.now()),
                 ],
               ),
             const Gap(kMarginSmall),

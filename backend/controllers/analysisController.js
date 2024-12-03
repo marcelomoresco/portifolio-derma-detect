@@ -3,8 +3,8 @@ const fs = require("fs");
 const path = require("path");
 const { processImageAndPredict } = require("../services/tensorFlowService");
 const { sendPrompt } = require("../services/open_ai_service");
+const DiseaseCategoryMapper = require("../mapper/diseaseCategoryMapper");
 
-// Criar nova análise
 const createAnalysis = async (req, res) => {
   console.log("File:", req.file);
 
@@ -13,11 +13,8 @@ const createAnalysis = async (req, res) => {
   }
 
   try {
-    console.log("req.file:", req.file); // Log para depuração
-
     const filePath = req.file.path;
 
-    // Leia o arquivo e converta para Base64
     const fileBuffer = fs.readFileSync(filePath);
     const imageBase64 = fileBuffer.toString("base64");
 
@@ -43,8 +40,8 @@ const createAnalysis = async (req, res) => {
 
     fs.unlinkSync(filePath);
 
-    const responseAnalysis = analysis.toObject(); // Converte para objeto simples
-    delete responseAnalysis.image; // Remove o campo `image`
+    const responseAnalysis = analysis.toObject();
+    delete responseAnalysis.image;
 
     res.status(201).json({
       message: "Análise criada com sucesso",
@@ -82,12 +79,22 @@ const getAnalysisById = async (req, res) => {
       return res.status(404).json({ message: "Análise não encontrada" });
     }
 
-    const prompt = `
-Baseado nos seguintes resultados de uma análise de imagem:
-- Classe prevista: ${analysis.predictedClass}, lembrando que está em inglês traduza para o portugues
+    const diseasePredicted =
+      DiseaseCategoryMapper.fromJson(analysis.predictedClass) ||
+      analysis.predictedClass;
 
-Gere um texto explicativo retornando um HTML, quero que contenha todas as informações necessárias para o user, como como posso tratar, quais riscos estou correndo e como ${analysis.predictedClass} se desenvolve, o que evitar para aumentar o problema 
-    `;
+    const prompt = `
+Com base nos resultados da análise de imagem:
+- Classe prevista: ${diseasePredicted} (traduza para o português)
+
+Gere um conteúdo explicativo em HTML, incluindo as seguintes informações:
+1. O que é ${diseasePredicted} (traduzido para o português) e como se desenvolve.
+2. Quais os riscos e complicações associados a ${diseasePredicted} (traduzido).
+3. Como tratar ${diseasePredicted} (traduzido) de forma eficaz.
+4. O que evitar para prevenir a propagação ou agravamento da infecção.
+
+Responda **inteiramente em português**, incluindo o nome da predição traduzido
+`;
 
     const responsePrompt = await sendPrompt(prompt);
 

@@ -21,11 +21,11 @@ services:
     depends_on:
       - mongodb
     volumes:
-      - .:/app # Montar o diretório atual para desenvolvimento local
-      - /app/node_modules # Isolar o node_modules dentro do contêiner
+      - .:/app
+      - /app/node_modules
     command: npm start
     expose:
-      - "5001" # Expor a porta internamente para o Prometheus
+      - "5001"
 
   prometheus:
     image: prom/prometheus
