@@ -2,9 +2,7 @@ const { OpenAI } = require("openai");
 
 // inicialize o cliente OpenAI
 const openai = new OpenAI({
-  apiKey:
-    process.env.OPENAI_API_KEY ||
-    "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",
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
 // enviar o prompt
