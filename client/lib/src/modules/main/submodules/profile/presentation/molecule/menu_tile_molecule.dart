@@ -60,8 +60,6 @@ class MenuTileMolecule extends StatelessWidget {
                 ),
               ),
               (optionalWidget == null) ? const SizedBox() : optionalWidget!,
-              //TODO: OptionalWidget to use a NotificationIdicator,
-              //as required on Figma, but not implemented yet
               IconButton(
                 icon: const Icon(Icons.keyboard_arrow_right),
                 splashRadius: kMarginDefault,

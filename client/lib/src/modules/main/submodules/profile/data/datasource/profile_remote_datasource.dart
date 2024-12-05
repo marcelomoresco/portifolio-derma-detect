@@ -18,12 +18,11 @@ class ProfileRemoteDatasourceImpl implements ProfileRemoteDatasource {
 
   @override
   Future<void> deleteAccount([NoParams? params]) async {
-    final result = await _networkService.delete(
+    await _networkService.delete(
       const ClientRequest(
         path: "/users/delete",
       ),
     );
-    print(result);
   }
 
   @override

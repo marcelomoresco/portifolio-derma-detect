@@ -25,14 +25,16 @@ class AnalysisDetailCubit extends DermaCubit<AnalysisDetailState> {
     _getByIdAnalysis();
   }
 
-  void _getByIdAnalysis() async {
+  Future<void> _getByIdAnalysis() async {
     emit(state.copyWith(analysisStatus: Status.loading));
     final result = await _getByIdAnalysisUsecase(GetByIdAnalysisUsecaseParams(id: _params.analysis.id!));
     result.fold(
-      (failure) => emit(state.copyWith(
-        failure: failure,
-        analysisStatus: Status.failure,
-      )),
+      (failure) => emit(
+        state.copyWith(
+          failure: failure,
+          analysisStatus: Status.failure,
+        ),
+      ),
       (analysis) => emit(
         state.copyWith(
           analysisStatus: Status.success,

@@ -1,6 +1,5 @@
 import 'package:derma_detect/src/core/consts/app_textstyles.dart';
 import 'package:derma_detect/src/core/consts/core_dimens.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -58,11 +57,11 @@ class DermaCard extends StatelessWidget {
                         ),
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
               const Gap(kMarginSmall),
-              const Icon(Icons.chevron_right)
+              const Icon(Icons.chevron_right),
             ],
           ),
         ),

@@ -48,7 +48,7 @@ class OnboardingNewAnalysisCubit extends DermaCubit<OnboardingNewAnalysisState> 
 
   final _imagePicker = ImagePicker();
 
-  void onTapCamera() async {
+  Future<void> onTapCamera() async {
     final image = await _imagePicker.pickImage(source: ImageSource.camera);
     if (image == null) {
       Modular.to.pop();
@@ -60,7 +60,7 @@ class OnboardingNewAnalysisCubit extends DermaCubit<OnboardingNewAnalysisState> 
     _sharedNavigator.openAnalyzeProcessing(file);
   }
 
-  void onTapGallery() async {
+  Future<void> onTapGallery() async {
     final image = await _imagePicker.pickImage(source: ImageSource.gallery);
     if (image == null) {
       Modular.to.pop();

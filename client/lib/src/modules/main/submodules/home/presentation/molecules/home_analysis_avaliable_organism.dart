@@ -73,7 +73,7 @@ class _HomeAnalysisAvaliableMoleculeState extends State<HomeAnalysisAvaliableMol
           onPressed: widget.onTapButton,
           text: "Realizar análise",
           isEnable: widget.onTapButton != null,
-        )
+        ),
       ],
     );
   }

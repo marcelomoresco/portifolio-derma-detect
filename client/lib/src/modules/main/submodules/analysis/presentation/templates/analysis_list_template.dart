@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:derma_detect/src/core/consts/app_assets.dart';
 import 'package:derma_detect/src/core/consts/core_dimens.dart';
 import 'package:derma_detect/src/core/utils/shared_navigator.dart';
@@ -9,7 +8,6 @@ import 'package:derma_detect/src/modules/main/submodules/analysis/domain/entitie
 import 'package:derma_detect/src/modules/main/submodules/analysis/presentation/organism/analysis_list_organism.dart';
 import 'package:derma_detect/src/modules/main/submodules/analysis/presentation/organism/empty_analysis_organism.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:gap/gap.dart';
 import 'package:lottie/lottie.dart';
@@ -64,8 +62,8 @@ class AnalysisListTemplate extends StatelessWidget {
                   analyses: analysis,
                   onTapAnalysis: onTapAnalysis,
                   analysisStatus: analysisStatus,
-                )
-              ]
+                ),
+              ],
             ],
           ),
         ),

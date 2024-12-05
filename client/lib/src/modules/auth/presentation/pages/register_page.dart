@@ -106,7 +106,7 @@ class _RegisterPageState extends DermaCubitState<RegisterPage, RegisterCubit> {
                   ),
                 ),
               ),
-            )
+            ),
           ],
         );
       },

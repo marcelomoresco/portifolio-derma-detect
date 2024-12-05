@@ -46,7 +46,7 @@ class SkinCareTipsSection extends StatelessWidget {
               );
             }).toList(),
           ),
-          const Gap(kMarginDefault)
+          const Gap(kMarginDefault),
         ],
       ),
     );

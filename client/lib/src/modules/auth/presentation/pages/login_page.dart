@@ -89,7 +89,7 @@ class _LoginPageState extends DermaCubitState<LoginPage, LoginCubit> {
                   ),
                 ),
               ),
-            )
+            ),
           ],
         );
       },

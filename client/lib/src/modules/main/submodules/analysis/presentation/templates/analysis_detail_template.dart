@@ -88,7 +88,7 @@ class AnalysisDetailTemplate extends StatelessWidget {
                   if (analysis.riskLevel != null)
                     DateAtom(
                       date: analysis.createdAt ?? DateTime.now(),
-                    )
+                    ),
                 ],
               ),
               CustomShimmerWidget(

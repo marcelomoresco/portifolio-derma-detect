@@ -61,7 +61,7 @@ class ProfileCubit extends DermaCubit<ProfileState> {
     );
   }
 
-  void deleteAccount() async {
+  Future<void> deleteAccount() async {
     emit(state.copyWith(deleteStatus: Status.loading));
     final result = await _deleteAccountUsecase(NoParams());
     result.fold(

@@ -25,7 +25,7 @@ class ModalPermissionOrganism extends StatelessWidget {
   Widget build(BuildContext context) {
     return ModalOrganism(
       isPopModalAllowed: isPopModalAllowed,
-      icon: FontAwesomeIcons.warning,
+      icon: FontAwesomeIcons.triangleExclamation,
       title: title,
       description: description,
       firstButtonTitle: "Abrir configurações",

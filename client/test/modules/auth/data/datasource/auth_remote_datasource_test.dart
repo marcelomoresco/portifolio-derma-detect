@@ -49,8 +49,8 @@ void main() {
           "id": "6740e8809b650251629123e3",
           "name": "Marcelo Moresco",
           "email": "marcelomoresco0@gmail.com",
-          "monthlyAnalyses": 17
-        }
+          "monthlyAnalyses": 17,
+        },
       },
       statusCode: 200,
     );

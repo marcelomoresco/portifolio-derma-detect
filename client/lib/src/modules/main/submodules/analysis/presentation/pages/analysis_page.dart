@@ -5,7 +5,6 @@ import 'package:derma_detect/src/modules/main/main_module.dart';
 import 'package:derma_detect/src/modules/main/submodules/analysis/presentation/cubits/analysis_cubit.dart';
 import 'package:derma_detect/src/modules/main/submodules/analysis/presentation/templates/analysis_list_template.dart';
 import 'package:design_system/design_system.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

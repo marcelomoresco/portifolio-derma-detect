@@ -53,7 +53,7 @@ class ProgressBarAtom extends StatelessWidget {
             width: progressWidth,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(kCornerSmall),
-              color: (barColor ?? Colors.black),
+              color: barColor ?? Colors.black,
             ),
           ),
         ],

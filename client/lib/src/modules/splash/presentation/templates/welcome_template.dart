@@ -62,7 +62,7 @@ class WelcomeTemplate extends StatelessWidget {
                         DermaButton(
                           onPressed: onRegisterTap,
                           text: SplashStrings.register,
-                        )
+                        ),
                       ],
                     ),
                   ),
