@@ -28,7 +28,7 @@ class HomeCubit extends DermaCubit<HomeState> {
     _fetchData();
   }
 
-  void _fetchData() async {
+  Future<void> _fetchData() async {
     await Future.wait(
       [
         _getUserProfile(),

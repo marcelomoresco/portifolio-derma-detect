@@ -1,10 +1,9 @@
 const multer = require("multer");
 const path = require("path");
 
-// Configurar armazenamento com multer
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, "../uploads/")); // Diretório para salvar os arquivos
+    cb(null, path.join(__dirname, "../uploads/"));
   },
   filename: (req, file, cb) => {
     cb(null, `${Date.now()}-${file.originalname}`);
@@ -13,16 +12,16 @@ const storage = multer.diskStorage({
 
 const fileFilter = (req, file, cb) => {
   console.log(file.mimetype);
-  const allowedTypes = /jpeg|jpg|png|gif/; // Tipos permitidos
+  const allowedTypes = /jpeg|jpg|png|gif/;
   const extname = allowedTypes.test(
     path.extname(file.originalname).toLowerCase()
   );
   const mimetype = allowedTypes.test(file.mimetype);
 
   if (extname && mimetype) {
-    cb(null, true); // Arquivo permitido
+    cb(null, true);
   } else {
-    cb(new Error("Tipo de arquivo não suportado")); // Rejeita o arquivo
+    cb(new Error("Tipo de arquivo não suportado"));
   }
 };
 

@@ -38,11 +38,12 @@ class _ProfilePageState extends DermaCubitState<ProfilePage, ProfileCubit> {
 
     final List<ProfileTileInfoEntity> menuListContent = [
       ProfileTileInfoEntity(
-          name: ProfileStrings.menuTile.notificationsFieldName,
-          description: ProfileStrings.menuTile.notificationsDescription,
-          icon: Icons.notification_add,
-          enabled: false,
-          onPressed: () {}),
+        name: ProfileStrings.menuTile.notificationsFieldName,
+        description: ProfileStrings.menuTile.notificationsDescription,
+        icon: Icons.notification_add,
+        enabled: false,
+        onPressed: () {},
+      ),
       ProfileTileInfoEntity(
         name: ProfileStrings.menuTile.helpMeFieldName,
         description: ProfileStrings.menuTile.helpMeDescription,
@@ -81,8 +82,8 @@ class _ProfilePageState extends DermaCubitState<ProfilePage, ProfileCubit> {
       context: context,
       useSafeArea: false,
       barrierColor: Colors.black.withOpacity(0.4),
-      builder: (context) => WillPopScope(
-        onWillPop: () async => false,
+      builder: (context) => PopScope(
+        canPop: false,
         child: BlocBuilder<ProfileCubit, ProfileState>(
           bloc: cubit,
           builder: (context, state) {
@@ -108,8 +109,8 @@ class _ProfilePageState extends DermaCubitState<ProfilePage, ProfileCubit> {
       context: context,
       useSafeArea: false,
       barrierColor: Colors.black.withOpacity(0.4),
-      builder: (context) => WillPopScope(
-        onWillPop: () async => false,
+      builder: (context) => PopScope(
+        canPop: false,
         child: BlocConsumer<ProfileCubit, ProfileState>(
           bloc: cubit,
           listener: (context, state) {

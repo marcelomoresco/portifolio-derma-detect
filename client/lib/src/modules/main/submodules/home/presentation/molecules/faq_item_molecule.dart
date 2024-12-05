@@ -60,7 +60,7 @@ class HomeFaqItemMolecule extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 12),
-          const Icon(Icons.chevron_right_outlined)
+          const Icon(Icons.chevron_right_outlined),
         ],
       ),
     );

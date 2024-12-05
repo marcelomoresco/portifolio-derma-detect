@@ -41,7 +41,7 @@ class RegisterCubit extends DermaCubit<RegisterState> {
 
   void toggleShowPassword() => emit(state.copyWith(showPassword: !state.showPassword));
 
-  void onRegister() async {
+  Future<void> onRegister() async {
     emit(state.copyWith(isContinueButtonLoading: true));
 
     if (state.authData == null) {

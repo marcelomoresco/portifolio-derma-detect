@@ -92,7 +92,6 @@ class DioClientService implements NetworkService {
         statusCode: e.response?.statusCode ?? 0,
       );
     } catch (e) {
-      print(e);
       rethrow;
     }
   }

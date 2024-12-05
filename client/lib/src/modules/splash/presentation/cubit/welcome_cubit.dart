@@ -31,7 +31,7 @@ class WelcomeCubit extends DermaCubit<WelcomeState> {
       (failure) => null,
       (token) {
         if (token == null) return;
-        _sharedNavigator.openMain();
+        //_sharedNavigator.openMain();
       },
     );
   }

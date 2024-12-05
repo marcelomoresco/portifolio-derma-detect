@@ -7,7 +7,7 @@ import 'package:derma_detect/src/core/widgets/molecules/container_shimmer_molecu
 import 'package:derma_detect/src/core/widgets/molecules/custom_shimmer_widget.dart';
 import 'package:derma_detect/src/modules/main/submodules/analysis/data/model/disease_category_model.dart';
 import 'package:derma_detect/src/modules/main/submodules/analysis/domain/entities/analysis.dart';
-import 'package:derma_detect/src/modules/main/submodules/analysis/presentation/atoms/risk_status_atom.dart';
+import 'package:derma_detect/src/modules/main/submodules/analysis/presentation/atoms/date_atom.dart';
 import 'package:derma_detect/src/modules/main/submodules/analysis/presentation/organism/analysis_detail_shimmer_organism.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
@@ -63,18 +63,6 @@ class AnalysisDetailTemplate extends StatelessWidget {
                       minFontSize: 12,
                     ),
                   ),
-                  Row(
-                    children: [
-                      Text(
-                        'Risco: ',
-                        style: AppTextStyles.interRegular16,
-                      ),
-                      if (analysis.riskLevel != null)
-                        RiskStatusAtom(
-                          riskStatus: analysis.riskLevel!,
-                        )
-                    ],
-                  ),
                 ],
               ),
               const Gap(kMarginSmall),
@@ -88,6 +76,19 @@ class AnalysisDetailTemplate extends StatelessWidget {
                     "${(analysis.confidence! * 100).toStringAsFixed(2)}%",
                     style: AppTextStyles.interSemiBold18,
                   ),
+                ],
+              ),
+              const Gap(kMarginSmall),
+              Row(
+                children: [
+                  Text(
+                    'Data: ',
+                    style: AppTextStyles.interRegular16,
+                  ),
+                  if (analysis.riskLevel != null)
+                    DateAtom(
+                      date: analysis.createdAt ?? DateTime.now(),
+                    ),
                 ],
               ),
               CustomShimmerWidget(

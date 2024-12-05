@@ -39,7 +39,7 @@ class LoginCubit extends DermaCubit<LoginState> {
     _sharedNavigator.openRegister();
   }
 
-  void onLoginTap() async {
+  Future<void> onLoginTap() async {
     emit(state.copyWith(isContinueButtonLoading: true));
     if (state.authData == null) return;
 

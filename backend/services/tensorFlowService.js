@@ -30,7 +30,7 @@ const CONFIDENCE_THRESHOLD = 0.3;
 
 const loadModel = async () => {
   if (!model) {
-    const modelDir = path.join(__dirname, "../tfjs_model");
+    const modelDir = path.join(__dirname, "../derma_check_model");
     const modelPath = path.join(modelDir, "model.json");
 
     if (!fs.existsSync(modelPath)) {
@@ -43,30 +43,26 @@ const loadModel = async () => {
   }
 };
 
-// processar a imagem e fazer a previsão
 const processImageAndPredict = async (filePath) => {
   try {
     await loadModel();
 
     const processedImage = await sharp(filePath)
-      .resize({ width: 224, height: 224 })
+      .resize({ width: 192, height: 192 })
+      .removeAlpha()
+      .toColourspace("sRGB")
       .raw()
       .toBuffer();
 
     const inputTensor = tf.tensor(
       new Uint8Array(processedImage),
-      [1, 224, 224, 3]
+      [1, 192, 192, 3],
+      "float32"
     );
 
-    const normalizedTensor = inputTensor.div(255.0);
+    const prediction = model.predict(inputTensor);
 
-    // previsão
-    const prediction = model.predict(normalizedTensor);
-
-    // índice da classe com maior probabilidade
     const predictedIndex = prediction.argMax(-1).arraySync()[0];
-
-    // confiança da previsão
     const confidence = prediction.arraySync()[0][predictedIndex];
 
     if (confidence < CONFIDENCE_THRESHOLD) {

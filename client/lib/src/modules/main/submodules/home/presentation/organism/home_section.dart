@@ -60,7 +60,7 @@ class HomeGenericSectionOrganism extends StatelessWidget {
                                   FontAwesomeIcons.circleQuestion,
                                   size: 18,
                                 ),
-                              )
+                              ),
                           ],
                         ),
                         const SizedBox(
