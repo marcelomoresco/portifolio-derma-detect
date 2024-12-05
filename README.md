@@ -8,11 +8,11 @@
 - [Restrições](#restrições)
 - [Trade Offs](#trade-offs)
 - [Diagramas](#diagramas)
-- [Requisitos e Casos de Uso](docs/requisitos.md)
+- [Requisitos de Software](#requisitos-de-software)
 - [Modelagem](#modelagem)
 - [Observabilidade](#observabilidade)
 - [Stacks](#stacks)
-- [Rede Neural](#rede-neural)
+- [Modelo de Rede Neural Convolucional](#modelo-de-rede-neural-convolucional)
 - [Instruções de uso](#instruções-de-uso)
 
 ---
@@ -167,9 +167,39 @@ Diagrama de Container:
 
 ---
 
-## Requisitos e Casos de Uso
+## Requisitos de Software
 
-Os requisitos funcionais e não funcionais estão detalhados [aqui](docs/requisitos.md).
+## Requisitos Funcionais:
+
+1. **Cadastro e Autenticação de Usuários:**
+
+   - **RF01:** O sistema deve permitir o cadastro de usuários.
+   - **RF02:** O sistema deve permitir o login de usuários cadastrados com autenticação **JWT (JSON Web Token)**.
+   - **RF03:** O sistema deve permitir que o usuário delete sua conta.
+   - **RF04:** O sistema deve permitir que o usuário encerre sua sessão.
+
+2. **Análise de Problemas de Pele:**
+
+   - **RF05:** O sistema permite até **20 análises mensais** por usuário.
+   - **RF06:** O sistema deve exibir as todas as análises do usuário.
+   - **RF07:** O sistema deve permitir realizar análises a partir da câmera ou galeria do dispositivo.
+   - **RF08:** O modelo gerado deve ser um modelo CNN para a classificação de imagens.
+   - **RF09:** Apenas análises com confiança superior a **0.4** são exibidas com detalhes para os usuários.
+
+   - **RF10:** O sistema deve exibir detalhes sobre cada análise feita pelo usuário.
+   - **RF11:** O sistema deve exibir conteúdo sobre a análise feita pelo usuário.
+
+## Requisitos Não Funcionais:
+
+**RNF01:** O sistema deve garantir a segurança dos dados do usuário.
+
+**RNF02:** O sistema deve ter um bom desempenho.
+
+**RNF03:** O sistema deve ter uma interface intuitiva e fácil de utilizar.
+
+**RNF04:** O sistema deve ser modular e bem arquitetado, permitindo atualizações futuras e fácil manutenção.
+
+**RNF05:** O sistema deve apresentar testes unitários.
 
 ---
 
@@ -202,9 +232,45 @@ Além disso, o projeto utiliza **SonarLint** no backend para garantir a qualidad
 
 ---
 
-## **Rede Neural**
+## **Modelo de Rede Neural Convolucional**
 
-O modelo foi construído utilizando **MobileNetV2** como base e adaptado para atender às necessidades específicas do projeto, focado na classificação de problemas de pele.
+Foi utilizado um dataset do kaggle para fazer a rede neural convolucional, que contém mais de 20 doenças de pele.
+
+**Dataset**: https://www.kaggle.com/datasets/haroonalam16/20-skin-diseases-dataset
+
+2. **Pré-Processamento e Aumento de Dados (Augmentation):**
+
+   - As imagens são redimensionadas para 192x192 pixels e normalizadas (valores entre 0 e 1).
+   - Técnicas de aumento de dados, como rotações, zoom e inversão horizontal, foram aplicadas para aumentar a variedade do conjunto de treino e evitar que o modelo sofra overfitting em um padrão específico.
+
+3. **Codificação dos Rótulos (Labels):**
+   - Os nomes das classes são convertidos em números.
+   - Depois disso, usa-se uma representação "one-hot", onde cada classe é representada por um vetor com 1 na posição da classe e 0 nas demais.
+
+## Estrutura do Modelo
+
+O modelo é uma CNN composta por:
+
+- **Camadas Convolucionais:** Extrair características visuais (textura, cores, bordas).
+- **Batch Normalization:** Ajudar a estabilizar e acelerar o treinamento.
+- **Max Pooling:** Reduzir a resolução gradualmente, resumindo informações importantes.
+- **Dropout:** Prevenir overfitting (o modelo “decorar” o treinamento).
+- **Camadas Densas Finais:** Combinar as características extraídas e classificar a imagem na classe correta.
+
+A última camada usa a função de ativação _softmax_, produzindo uma probabilidade para cada uma das 20 classes.
+
+## Treinamento
+
+- **Função de Perda:** `categorical_crossentropy`, adequada para problemas de classificação com múltiplas classes.
+- **Otimizador:** `Adam` com taxa de aprendizado baixa (1e-4), para ajustes de pesos mais suaves.
+- **Métrica:** `accuracy` (acurácia), indicando o percentual de acertos.
+- **Número de Épocas:** 14, o que significa que o modelo “viu” o conjunto de treino completo 14 vezes.
+
+No processo de treinamento, também foi usado um conjunto de validação para monitorar se o modelo estava aprendendo de forma adequada e não apenas decorando os dados de treino.
+
+## Resultados
+
+Plotar gráfico e .summary do modelo
 
 ---
 
