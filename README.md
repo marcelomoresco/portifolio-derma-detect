@@ -219,6 +219,10 @@ Nosso sistema de monitoramento utiliza **Prometheus** e **Grafana** para coletar
 
 Além disso, o projeto utiliza **SonarLint** no backend para garantir a qualidade do código e **Flutter Analysis Options** no frontend para padronizar e validar as melhores práticas durante o desenvolvimento mobile.
 
+<img width="700" alt="Captura de Tela 2024-11-23 às 14 03 57" src="https://github.com/user-attachments/assets/5dd60585-ebf8-411a-85d7-6c0e68927ff6">
+
+<img width="700" alt="Captura de Tela 2024-11-23 às 14 04 12" src="https://github.com/user-attachments/assets/5234c178-b983-4c97-af78-7f7d74047df2">
+
 ---
 
 ## Stacks
@@ -270,7 +274,24 @@ No processo de treinamento, também foi usado um conjunto de validação para mo
 
 ## Resultados
 
-Plotar gráfico e .summary do modelo
+<table style="border:1px solid #ccc; border-collapse: collapse; text-align: center;">
+  <tr style="border:1px solid #ccc;">
+    <td style="border:1px solid #ccc; padding:10px;">
+      <img width="517" alt="Exemplo 1" src="https://github.com/user-attachments/assets/4d7e9235-a061-48fd-bd47-739b196f4e82">
+    </td>
+  </tr>
+  <tr style="border:1px solid #ccc;">
+    <td style="border:1px solid #ccc; padding:10px;">
+      <img width="460" alt="Exemplo 2" src="https://github.com/user-attachments/assets/0331b37d-3dc6-4fc9-81cf-5b26c7daeac6">
+    </td>
+  </tr>
+  <tr style="border:1px solid #ccc;">
+    <td style="border:1px solid #ccc; padding:10px;">
+      <img width="460" alt="Exemplo 3" src="https://github.com/user-attachments/assets/c2c76176-a67c-4332-a350-4f2975ed62f5">
+    </td>
+  </tr>
+</table>
+
 
 ---
 
