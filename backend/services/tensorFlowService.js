@@ -64,6 +64,7 @@ const processImageAndPredict = async (filePath) => {
 
     const predictedIndex = prediction.argMax(-1).arraySync()[0];
     const confidence = prediction.arraySync()[0][predictedIndex];
+    console.log(`Predição: ${classNames[predictedIndex]}`);
 
     if (confidence < CONFIDENCE_THRESHOLD) {
       console.log("Predição: Não identificado");
