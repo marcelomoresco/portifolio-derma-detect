@@ -157,13 +157,20 @@ Apesar de o backend utilizar técnicas avançadas como CNNs, a interface é simp
 
 ## Diagramas
 
-O Diagrama de caso de uso:
+**Diagrama de caso de uso:**
 
-<img width="482" alt="Captura de Tela 2024-11-26 às 19 47 07" src="https://github.com/user-attachments/assets/223e9a39-7670-475e-92d4-088ee5c1a813">
+<img width="500" alt="Captura de Tela 2024-11-26 às 19 47 07" src="https://github.com/user-attachments/assets/223e9a39-7670-475e-92d4-088ee5c1a813">
 
-Diagrama de Container:
+**Diagrama de Container:**
 
 <img width="700" src="https://github.com/user-attachments/assets/9b253990-3b73-49d6-958b-a8c711a92fce">
+
+**Diagrama de classe:**
+
+O diagrama de classes mostra duas classes principais: User, que representa o usuário do sistema (contendo informações de identificação, credenciais e limite de análises mensais), e Analysis, que representa cada análise de imagem realizada (armazenando referência ao usuário, imagem analisada, classificação prevista, confiança e data). A relação entre elas indica que um usuário pode ter várias análises associadas, refletindo o fluxo de uso do sistema.
+
+<img width="500" src="https://github.com/user-attachments/assets/2dbba672-d4f2-4e8f-8a4e-e9a3e29ecef8">
+
 
 ---
 
