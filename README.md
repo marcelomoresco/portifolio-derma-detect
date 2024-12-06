@@ -176,7 +176,7 @@ O diagrama de classes mostra duas classes principais: User, que representa o usu
 
 ## Requisitos de Software
 
-## Requisitos Funcionais:
+### Requisitos Funcionais:
 
 1. **Cadastro e Autenticação de Usuários:**
 
@@ -196,7 +196,7 @@ O diagrama de classes mostra duas classes principais: User, que representa o usu
    - **RF10:** O sistema deve exibir detalhes sobre cada análise feita pelo usuário.
    - **RF11:** O sistema deve exibir conteúdo sobre a análise feita pelo usuário.
 
-## Requisitos Não Funcionais:
+### Requisitos Não Funcionais:
 
 **RNF01:** O sistema deve garantir a segurança dos dados do usuário.
 
