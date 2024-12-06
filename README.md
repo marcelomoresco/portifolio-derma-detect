@@ -171,7 +171,6 @@ O diagrama de classes mostra duas classes principais: User, que representa o usu
 
 <img width="500" src="https://github.com/user-attachments/assets/2dbba672-d4f2-4e8f-8a4e-e9a3e29ecef8">
 
-
 ---
 
 ## Requisitos de Software
@@ -191,7 +190,7 @@ O diagrama de classes mostra duas classes principais: User, que representa o usu
    - **RF06:** O sistema deve exibir as todas as análises do usuário.
    - **RF07:** O sistema deve permitir realizar análises a partir da câmera ou galeria do dispositivo.
    - **RF08:** O modelo gerado deve ser um modelo CNN para a classificação de imagens.
-   - **RF09:** Apenas análises com confiança superior a **0.4** são exibidas com detalhes para os usuários.
+   - **RF09:** Apenas análises com confiança superior a **0.3** são exibidas com detalhes para os usuários.
 
    - **RF10:** O sistema deve exibir detalhes sobre cada análise feita pelo usuário.
    - **RF11:** O sistema deve exibir conteúdo sobre a análise feita pelo usuário.
@@ -300,7 +299,6 @@ O modelo desenvolvido está disponível no repositório neste [Link](./model/mod
     </td>
   </tr>
 </table>
-
 
 ---
 
