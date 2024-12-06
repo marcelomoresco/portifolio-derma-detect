@@ -159,7 +159,7 @@ Apesar de o backend utilizar técnicas avançadas como CNNs, a interface é simp
 
 **Diagrama de caso de uso:**
 
-<img width="500" alt="Captura de Tela 2024-11-26 às 19 47 07" src="https://github.com/user-attachments/assets/223e9a39-7670-475e-92d4-088ee5c1a813">
+<img width="700" src="https://github.com/user-attachments/assets/81500ad6-5dcc-4dc3-a702-cf3b0e0643ff">
 
 **Diagrama de Container:**
 
