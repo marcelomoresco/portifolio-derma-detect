@@ -279,6 +279,8 @@ A última camada usa a função de ativação _softmax_, produzindo uma probabil
 
 No processo de treinamento, também foi usado um conjunto de validação para monitorar se o modelo estava aprendendo de forma adequada e não apenas decorando os dados de treino.
 
+O modelo desenvolvido está disponível no repositório neste [Link](./model/modelo_derma_check_v2_oficial.ipynb).
+
 ## Resultados
 
 <table style="border:1px solid #ccc; border-collapse: collapse; text-align: center;">
