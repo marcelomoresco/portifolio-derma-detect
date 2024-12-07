@@ -5,6 +5,7 @@ import 'package:derma_detect/src/core/utils/status.dart';
 import 'package:derma_detect/src/modules/main/submodules/analysis/domain/entities/analysis.dart';
 import 'package:derma_detect/src/modules/main/submodules/analysis/domain/usecases/get_by_id_analyse_usecase.dart';
 import 'package:derma_detect/src/modules/main/submodules/analysis/presentation/cubits/analysis_cubit.dart';
+import 'package:derma_detect/src/modules/main/submodules/home/presentation/cubits/home_cubit.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 part 'analysis_detail_state.dart';
@@ -47,6 +48,7 @@ class AnalysisDetailCubit extends DermaCubit<AnalysisDetailState> {
   }
 
   void onBackButtonTap() {
+    Modular.get<HomeCubit>().getUserProfile();
     Modular.get<AnalysisCubit>().onInit();
 
     _sharedNavigator.openMain();
