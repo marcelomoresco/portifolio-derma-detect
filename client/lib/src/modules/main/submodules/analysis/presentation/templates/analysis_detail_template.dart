@@ -69,7 +69,7 @@ class AnalysisDetailTemplate extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    "Probabilidade: ",
+                    "Confiança: ",
                     style: AppTextStyles.interRegular18,
                   ),
                   Text(

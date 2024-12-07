@@ -88,7 +88,7 @@ class AnalyseCardMolecule extends StatelessWidget {
                             Row(
                               children: [
                                 Text(
-                                  "Probabilidade: ",
+                                  "Confiança: ",
                                   style: AppTextStyles.interRegular14,
                                 ),
                                 Flexible(
