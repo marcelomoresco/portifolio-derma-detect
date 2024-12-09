@@ -293,19 +293,20 @@ O modelo desenvolvido está disponível no repositório neste [Link](./model/mod
 <table style="border:1px solid #ccc; border-collapse: collapse; text-align: center;">
   <tr style="border:1px solid #ccc;">
     <td style="border:1px solid #ccc; padding:10px;">
-      <img width="517" alt="Exemplo 1" src="https://github.com/user-attachments/assets/4d7e9235-a061-48fd-bd47-739b196f4e82">
+     <img width="517" alt="Acuracia" src="https://github.com/user-attachments/assets/d014cc50-b646-4372-8848-f368bc67a0bd">
     </td>
   </tr>
   <tr style="border:1px solid #ccc;">
     <td style="border:1px solid #ccc; padding:10px;">
-      <img width="460" alt="Exemplo 2" src="https://github.com/user-attachments/assets/0331b37d-3dc6-4fc9-81cf-5b26c7daeac6">
+     <img width="460" alt="Captura de Tela 2024-12-08 às 22 14 58" src="https://github.com/user-attachments/assets/3d45a435-88bc-40e5-968f-484433d4307f">
     </td>
   </tr>
   <tr style="border:1px solid #ccc;">
     <td style="border:1px solid #ccc; padding:10px;">
-      <img width="460" alt="Exemplo 3" src="https://github.com/user-attachments/assets/c2c76176-a67c-4332-a350-4f2975ed62f5">
+     <img width="460" alt="Captura de Tela 2024-12-08 às 22 15 38" src="https://github.com/user-attachments/assets/4a62785a-bd5b-4c59-8fb2-a830fca1185e">
     </td>
   </tr>
+ 
 </table>
 
 ---
