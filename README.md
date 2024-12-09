@@ -221,6 +221,8 @@ Além disso, o projeto utiliza **SonarLint** no backend para garantir a qualidad
 
 <img width="700" alt="Captura de Tela 2024-11-23 às 14 04 12" src="https://github.com/user-attachments/assets/5234c178-b983-4c97-af78-7f7d74047df2">
 
+<img width="700" alt="Captura de Tela 2024-12-08 às 22 46 15" src="https://github.com/user-attachments/assets/051ea976-2bc6-40f6-bf74-56b423e6ebc1">
+
 ---
 
 ## Stacks
