@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/dbd51c2e-356b-4566-a3ae-6a1ba8d6d008)<img src="https://github.com/user-attachments/assets/eab1aa90-0812-42f0-bdfa-aca849293461" alt="logo-with-background" width="110"/>
+![image](https://github.com/user-attachments/assets/dbd51c2e-356b-4566-a3ae-6a1ba8d6d008)
 
 ## Índice
 
