@@ -29,14 +29,14 @@ O principal objetivo deste projeto é fornecer um **aplicativo móvel** que auxi
 **1. Coleta de Dados**
 
 - **Dados do Usuário:** Nome, e-mail, senha, e imagens carregadas pelo usuário para análise de possíveis problemas de pele. O processo de autenticação usa JWT o que garante uma alta segurança para o usuários.
-- **Interações:** Salvamos os registros das imagens enviadas, além de que o usuário tem 20 análises de limite por mês.
+- **Interações:** Salvo os registros das imagens enviadas, além de que o usuário tem 20 análises de limite por mês.
 - **Armazenamento de Imagens:** As imagens enviadas são salvas no banco de dados (MongoDB) em formato **Base64** para processamento e histórico.
 
 **2. Pré-processamento**
 
-- O backend, implementado em **Node.js**, processa os dados recebidos e interage com o modelo de machine learning para prever possíveis condições de pele. Para realizar essas predições, utilizamos um **algoritmo de CNN (Convolutional Neural Network)**.
+- O backend, implementado em **Node.js**, processa os dados recebidos e interage com o modelo de machine learning para prever possíveis condições de pele. Para realizar essas predições, utilizei um **algoritmo de CNN (Convolutional Neural Network)**.
 
-  **Por que utilizamos uma CNN?**  
+  **Por que utilizei uma CNN?**  
   Redes Neurais Convolucionais (CNNs) são uma classe de algoritmos de aprendizado profundo projetados especificamente para tarefas relacionadas a imagens. Elas se destacam em tarefas de **reconhecimento e classificação de padrões visuais**, sendo amplamente utilizadas para identificar objetos, texturas e outros elementos em imagens.
 
 **3. Design de Interface**
@@ -56,15 +56,15 @@ A escolha do banco de dados para o sistema foi guiada pelas necessidades especí
 
 - **Disponibilidade (A):** Garantir que o sistema esteja sempre acessível para os usuários, permitindo consultas e interações constantes, como envio de imagens e recuperação de diagnósticos.
 
-- **Tolerância à Partição (P):** Manter a funcionalidade mesmo em cenários de falhas ou desconexão de algum nó, pois trabalhamos com dados de usuários enviados de forma assíncrona.
+- **Tolerância à Partição (P):** Manter a funcionalidade mesmo em cenários de falhas ou desconexão de algum nó, pois trabalho com dados de usuários enviados de forma assíncrona.
 
-Dessa forma, **abrimos mão de consistência imediata**, optando por uma eventual consistência para equilibrar essas prioridades.
+Dessa forma, **abri mão de consistência imediata**, optando por uma eventual consistência para equilibrar essas prioridades.
 
 **6. Arquitetura do Sistema**
 
 ### **Frontend**
 
-No desenvolvimento do frontend, seguimos os **princípios do Clean Architecture**, uma abordagem que promove a separação de responsabilidades e a modularidade do sistema. O código foi estruturado em módulos distintos, garantindo organização e facilidade de manutenção. Cada módulo contém três camadas principais:
+No desenvolvimento do frontend, segui os **princípios do Clean Architecture**, uma abordagem que promove a separação de responsabilidades e a modularidade do sistema. O código foi estruturado em módulos distintos, garantindo organização e facilidade de manutenção. Cada módulo contém três camadas principais:
 
 1. **Data:**  
    Contém a lógica relacionada a fontes de dados, como APIs e serviços externos. É responsável por realizar chamadas ao backend e tratar as respostas, isolando o fluxo de dados de outras partes do módulo.
@@ -77,7 +77,7 @@ No desenvolvimento do frontend, seguimos os **princípios do Clean Architecture*
 
 ### **Backend**
 
-Para o backend, seguimos a **arquitetura padrão MVC (Model-View-Controller)**, uma escolha consolidada no desenvolvimento com **Node.js**, por sua simplicidade e eficácia em organizar o fluxo de dados. Os principais componentes são:
+Para o backend, segui a **arquitetura padrão MVC (Model-View-Controller)**, uma escolha consolidada no desenvolvimento com **Node.js**, por sua simplicidade e eficácia em organizar o fluxo de dados. Os principais componentes são:
 
 1. **Controller:**  
    Responsável por gerenciar as solicitações recebidas do cliente (frontend) e determinar as ações a serem executadas, delegando responsabilidades para o serviço correspondente.
@@ -98,11 +98,11 @@ Para o backend, seguimos a **arquitetura padrão MVC (Model-View-Controller)**, 
 
 **8. CI**
 
-- A integração contínua é realizada com GitHub Actions e armazenamento local para versões de desenvolvimento, além disso garantimos que nenhum novo código irá quebrar os testes aumentando a segurança do desenvolvedor sobre o app já desenvolvido.
+- A integração contínua é realizada com GitHub Actions e armazenamento local para versões de desenvolvimento, além disso garante que nenhum novo código irá quebrar os testes aumentando a segurança do desenvolvedor sobre o app já desenvolvido.
 
 **9. Observabilidade**
 
-- Utilizamos **Grafana** e **Prometheus** para monitorar métricas e eventos do sistema, como uso do banco de dados e desempenho das solicitações, além de utilizar o dashboard da OpenAI e o dashboard do MongoDB Atlas.
+- Utilizei **Grafana** e **Prometheus** para monitorar métricas e eventos do sistema, como uso do banco de dados e desempenho das solicitações, além de utilizar o dashboard da OpenAI e o dashboard do MongoDB Atlas.
 
 ---
 
