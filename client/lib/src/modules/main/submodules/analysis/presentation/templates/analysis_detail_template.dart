@@ -10,7 +10,9 @@ import 'package:derma_detect/src/modules/main/submodules/analysis/domain/entitie
 import 'package:derma_detect/src/modules/main/submodules/analysis/presentation/atoms/date_atom.dart';
 import 'package:derma_detect/src/modules/main/submodules/analysis/presentation/organism/analysis_detail_shimmer_organism.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
@@ -19,9 +21,11 @@ class AnalysisDetailTemplate extends StatelessWidget {
     super.key,
     required this.analysis,
     required this.analysisStatus,
+    required this.onTapWarning,
   });
   final Analysis analysis;
   final Status analysisStatus;
+  final VoidCallback onTapWarning;
 
   @override
   Widget build(BuildContext context) {
@@ -75,6 +79,15 @@ class AnalysisDetailTemplate extends StatelessWidget {
                   Text(
                     "${(analysis.confidence! * 100).toStringAsFixed(2)}%",
                     style: AppTextStyles.interSemiBold18,
+                  ),
+                  const Gap(kMarginSmall),
+                  GestureDetector(
+                    onTap: onTapWarning,
+                    child: const Icon(
+                      FontAwesomeIcons.triangleExclamation,
+                      color: Colors.yellow,
+                      size: 18,
+                    ),
                   ),
                 ],
               ),

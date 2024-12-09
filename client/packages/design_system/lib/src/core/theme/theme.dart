@@ -7,6 +7,7 @@ class AppTheme {
     textTheme: GoogleFonts.ralewayTextTheme(
       ThemeData.light().textTheme,
     ),
+    primaryColor: const Color(0xFFC1D4CE),
     bottomSheetTheme: const BottomSheetThemeData(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
