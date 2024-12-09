@@ -17,7 +17,7 @@ class AnalysisModel extends Analysis {
     return AnalysisModel(
       id: json['id'],
       image: json['image'],
-      confidence: json['confidence'],
+      confidence: (json['confidence'] as num?)?.toDouble(),
       diseaseCategory: disease,
       createdAt: json['date'] != null ? DateTime.parse(json['date']) : null,
       riskLevel: RiskLevelMapper.getRiskLevel(disease),

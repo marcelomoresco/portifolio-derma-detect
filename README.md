@@ -12,6 +12,7 @@
 - [Modelagem](#modelagem)
 - [Observabilidade](#observabilidade)
 - [Stacks](#stacks)
+- [Testes](#testes)
 - [Modelo de Rede Neural Convolucional](#modelo-de-rede-neural-convolucional)
 - [Instruções de uso](#instruções-de-uso)
 
@@ -28,7 +29,7 @@ O principal objetivo deste projeto é fornecer um **aplicativo móvel** que auxi
 **1. Coleta de Dados**
 
 - **Dados do Usuário:** Nome, e-mail, senha, e imagens carregadas pelo usuário para análise de possíveis problemas de pele. O processo de autenticação usa JWT o que garante uma alta segurança para o usuários.
-- **Interações:** Salvamos os registros das imagens enviadas, diagnósticos sugeridos e ações realizadas pelo usuário, além de que o usuário tem 20 análises de limite por mês.
+- **Interações:** Salvamos os registros das imagens enviadas, além de que o usuário tem 20 análises de limite por mês.
 - **Armazenamento de Imagens:** As imagens enviadas são salvas no banco de dados (MongoDB) em formato **Base64** para processamento e histórico.
 
 **2. Pré-processamento**
@@ -36,12 +37,11 @@ O principal objetivo deste projeto é fornecer um **aplicativo móvel** que auxi
 - O backend, implementado em **Node.js**, processa os dados recebidos e interage com o modelo de machine learning para prever possíveis condições de pele. Para realizar essas predições, utilizamos um **algoritmo de CNN (Convolutional Neural Network)**.
 
   **Por que utilizamos uma CNN?**  
-  Redes Neurais Convolucionais (CNNs) são uma classe de algoritmos de aprendizado profundo projetados especificamente para tarefas relacionadas a imagens. Elas se destacam em tarefas de **reconhecimento e classificação de padrões visuais**, sendo amplamente utilizadas para identificar objetos, texturas e outros elementos em imagens. No caso do nosso projeto, que lida com **diagnósticos de problemas de pele**, as CNNs são fundamentais por vários motivos:
+  Redes Neurais Convolucionais (CNNs) são uma classe de algoritmos de aprendizado profundo projetados especificamente para tarefas relacionadas a imagens. Elas se destacam em tarefas de **reconhecimento e classificação de padrões visuais**, sendo amplamente utilizadas para identificar objetos, texturas e outros elementos em imagens.
 
 **3. Design de Interface**
 
 - O frontend, desenvolvido em **Flutter/Dart**, oferece uma interface responsiva e intuitiva, de fácil entendimento.
-- As telas foram projetadas no **Figma** e priorizam a experiência do usuário, com explicações claras sobre como usar o app.
 
 **4. Desenvolvimento**
 
@@ -102,7 +102,7 @@ Para o backend, seguimos a **arquitetura padrão MVC (Model-View-Controller)**, 
 
 **9. Observabilidade**
 
-- Utilizamos **Grafana** e **Prometheus** para monitorar métricas e eventos do sistema, como uso do banco de dados e desempenho das solicitações.
+- Utilizamos **Grafana** e **Prometheus** para monitorar métricas e eventos do sistema, como uso do banco de dados e desempenho das solicitações, além de utilizar o dashboard da OpenAI e o dashboard do MongoDB Atlas.
 
 ---
 
@@ -116,6 +116,11 @@ O aplicativo é voltado para o apoio a profissionais médicos e pacientes no dia
 
 1. **Recursos financeiros limitados:** O app ainda não foi publicado na Play Store devido a restrições orçamentárias.
 2. **Processamento no backend:** Imagens de alta resolução podem consumir mais recursos computacionais.
+3. **Limitação de doenças detectáveis:** O sistema é capaz de identificar apenas 20 tipos de problemas de pele:
+
+   **Acne**, **carcinoma actínico**, **dermatite atópica**, **doenças bolhosas**, **celulite**, **eczema**, **erupções cutâneas por medicamentos**, **herpes e HPV**, **doenças relacionadas à luz**, **lúpus**, **melanoma**, **erupções de heras venenosas**, **psoríase**, **tumores benignos**, **doenças sistêmicas**, **tinha (infecção fúngica)**, **urticária**, **tumores vasculares**, **vasculite** e **infecções virais**.
+
+4. **Qualidade da imagem:** Para garantir a precisão da análise, as fotos enviadas devem ser de boa qualidade, nítidas, bem iluminadas e com foco claro na área afetada.
 
 ---
 
@@ -137,31 +142,19 @@ Modelos menores são mais rápidos, mas podem perder detalhes críticos.
 
 Faltam dados para diagnosticar graus avançados de algumas condições.
 
-- **Fidelidade Médica x Risco Legal:**
-
-Abranger mais doenças aumenta o risco de erros e possíveis consequências legais.
-
-- **Manutenção:**
-
-O código está sendo estruturado com base em princípios sólidos de engenharia de software, como modularidade, clareza e padrões de design, garantindo facilidade na manutenção, escalabilidade e integração de novas funcionalidades no futuro.
-
-- **Acessibilidade x Custo:**
-
-O aplicativo proporciona um diagnóstico acessível para uma ampla gama de usuários, reduzindo a necessidade de equipamentos médicos caros ou consultas frequentes.
-
-- **Simplicidade de Uso x Complexidade do Backend:**
-
-Apesar de o backend utilizar técnicas avançadas como CNNs, a interface é simples e amigável, permitindo que usuários sem conhecimento técnico utilizem o aplicativo facilmente.
-
 ---
 
 ## Diagramas
 
 **Diagrama de caso de uso:**
 
+Representa as interações do usuário com o sistema, incluindo cadastro, login, e envio de imagens para análise.
+
 <img width="700" src="https://github.com/user-attachments/assets/81500ad6-5dcc-4dc3-a702-cf3b0e0643ff">
 
 **Diagrama de Container:**
+
+Descreve a arquitetura do sistema dividida em containers, como frontend, backend e banco de dados
 
 <img width="700" src="https://github.com/user-attachments/assets/9b253990-3b73-49d6-958b-a8c711a92fce">
 
@@ -170,7 +163,6 @@ Apesar de o backend utilizar técnicas avançadas como CNNs, a interface é simp
 O diagrama de classes mostra duas classes principais: User, que representa o usuário do sistema (contendo informações de identificação, credenciais e limite de análises mensais), e Analysis, que representa cada análise de imagem realizada (armazenando referência ao usuário, imagem analisada, classificação prevista, confiança e data). A relação entre elas indica que um usuário pode ter várias análises associadas, refletindo o fluxo de uso do sistema.
 
 <img width="500" src="https://github.com/user-attachments/assets/2dbba672-d4f2-4e8f-8a4e-e9a3e29ecef8">
-
 
 ---
 
@@ -191,10 +183,9 @@ O diagrama de classes mostra duas classes principais: User, que representa o usu
    - **RF06:** O sistema deve exibir as todas as análises do usuário.
    - **RF07:** O sistema deve permitir realizar análises a partir da câmera ou galeria do dispositivo.
    - **RF08:** O modelo gerado deve ser um modelo CNN para a classificação de imagens.
-   - **RF09:** Apenas análises com confiança superior a **0.4** são exibidas com detalhes para os usuários.
+   - **RF09:** Apenas análises com confiança superior a **0.3s** são exibidas com detalhes para os usuários.
 
-   - **RF10:** O sistema deve exibir detalhes sobre cada análise feita pelo usuário.
-   - **RF11:** O sistema deve exibir conteúdo sobre a análise feita pelo usuário.
+   - **RF10:** O sistema deve exibir conteúdo sobre a análise feita pelo usuário.
 
 ### Requisitos Não Funcionais:
 
@@ -243,6 +234,22 @@ Além disso, o projeto utiliza **SonarLint** no backend para garantir a qualidad
 
 ---
 
+## Testes
+
+Foi utilizado de testes unitários para a realização do aplicativo, tanto no front-end tanto no backend, além disso, estamos rodando uma pipeline de integração continua em cada commit efetuado na develop, para rodar todos os testes e ver se nenhuma alteração compremeteu outro módulo do sistema
+
+1. **Testes Unitários:**
+
+   - **Backend:** Jest
+   - **Frontend:** Flutter Test
+
+2. **Testes do Modelo de IA:**  
+   **Métricas principais monitoradas:**
+   - **Acurácia:** Percentual de diagnósticos corretos.
+   - **Recall:** Capacidade do modelo de identificar todas as condições relevantes.
+
+---
+
 ## **Modelo de Rede Neural Convolucional**
 
 Foi utilizado um dataset do kaggle para fazer a rede neural convolucional, que contém mais de 20 doenças de pele.
@@ -263,23 +270,23 @@ Foi utilizado um dataset do kaggle para fazer a rede neural convolucional, que c
 O modelo é uma CNN composta por:
 
 - **Camadas Convolucionais:** Extrair características visuais (textura, cores, bordas).
-- **Batch Normalization:** Ajudar a estabilizar e acelerar o treinamento.
-- **Max Pooling:** Reduzir a resolução gradualmente, resumindo informações importantes.
-- **Dropout:** Prevenir overfitting (o modelo “decorar” o treinamento).
-- **Camadas Densas Finais:** Combinar as características extraídas e classificar a imagem na classe correta.
+- **Batch Normalization:** _Não implementado no notebook fornecido._
+- **Max Pooling:** Reduz a resolução gradualmente, resumindo informações importantes.
+- **Dropout:** _Não implementado no notebook fornecido._
+- **Camadas Densas Finais:** Combina as características extraídas e classifica a imagem na classe correta.
 
 A última camada usa a função de ativação _softmax_, produzindo uma probabilidade para cada uma das 20 classes.
 
 ## Treinamento
 
 - **Função de Perda:** `categorical_crossentropy`, adequada para problemas de classificação com múltiplas classes.
-- **Otimizador:** `Adam` com taxa de aprendizado baixa (1e-4), para ajustes de pesos mais suaves.
+- **Otimizador:** `Adamax` (variação do Adam), com ajustes para maior estabilidade.
 - **Métrica:** `accuracy` (acurácia), indicando o percentual de acertos.
-- **Número de Épocas:** 14, o que significa que o modelo “viu” o conjunto de treino completo 14 vezes.
+- **Número de Épocas:** 18, o que significa que o modelo “viu” o conjunto de treino completo 18 vezes.
 
 No processo de treinamento, também foi usado um conjunto de validação para monitorar se o modelo estava aprendendo de forma adequada e não apenas decorando os dados de treino.
 
-O modelo desenvolvido está disponível no repositório neste [Link](./model/modelo_derma_check_v2_oficial.ipynb).
+O modelo desenvolvido está disponível no repositório neste [Link](./model/modelo_derma_check_v3.ipynb).
 
 ## Resultados
 
@@ -300,7 +307,6 @@ O modelo desenvolvido está disponível no repositório neste [Link](./model/mod
     </td>
   </tr>
 </table>
-
 
 ---
 

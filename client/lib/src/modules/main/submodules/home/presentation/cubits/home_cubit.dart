@@ -31,7 +31,7 @@ class HomeCubit extends DermaCubit<HomeState> {
   Future<void> _fetchData() async {
     await Future.wait(
       [
-        _getUserProfile(),
+        getUserProfile(),
         _getLastAnalysis(),
       ],
     );
@@ -59,7 +59,7 @@ class HomeCubit extends DermaCubit<HomeState> {
     );
   }
 
-  Future<void> _getUserProfile() async {
+  Future<void> getUserProfile() async {
     emit(state.copyWith(userStatus: Status.loading));
     final result = await _getUserProfileUsecase();
     result.fold(

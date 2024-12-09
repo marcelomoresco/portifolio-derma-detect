@@ -63,6 +63,7 @@ class _AnalysisDetailPageState extends DermaCubitState<AnalysisDetailPage, Analy
           body: AnalysisDetailTemplate(
             analysis: state.analysis,
             analysisStatus: state.analysisStatus,
+            onTapWarning: _openModalWarning,
           ),
         );
       },
