@@ -1,4 +1,4 @@
-<img src="https://github.com/user-attachments/assets/eab1aa90-0812-42f0-bdfa-aca849293461" alt="logo-with-background" width="110"/>
+![image](https://github.com/user-attachments/assets/dbd51c2e-356b-4566-a3ae-6a1ba8d6d008)<img src="https://github.com/user-attachments/assets/eab1aa90-0812-42f0-bdfa-aca849293461" alt="logo-with-background" width="110"/>
 
 ## Índice
 
@@ -98,7 +98,7 @@ Para o backend, seguimos a **arquitetura padrão MVC (Model-View-Controller)**, 
 
 **8. CI**
 
-- A integração contínua é realizada com GitHub Actions e armazenamento local para versões de desenvolvimento, além disso garantimos que nenhum novo código irá quebrar nossos testes aumentando a segurança do desenvolvedor sobre o app já desenvolvido.
+- A integração contínua é realizada com GitHub Actions e armazenamento local para versões de desenvolvimento, além disso garantimos que nenhum novo código irá quebrar os testes aumentando a segurança do desenvolvedor sobre o app já desenvolvido.
 
 **9. Observabilidade**
 
@@ -213,7 +213,7 @@ Uma decisão estratégica foi a **conversão do modelo de Python para Node.js**,
 
 ## Observabilidade
 
-Nosso sistema de monitoramento utiliza **Prometheus** e **Grafana** para coletar e visualizar métricas, como latência, uso de CPU e memória, enquanto o **MongoDB Atlas** fornece insights detalhados do banco de dados, incluindo desempenho de queries e uso de recursos.
+O sistema de monitoramento utiliza **Prometheus** e **Grafana** para coletar e visualizar métricas, como latência, uso de CPU e memória, enquanto o **MongoDB Atlas** fornece insights detalhados do banco de dados, incluindo desempenho de queries e uso de recursos.
 
 Além disso, o projeto utiliza **SonarLint** no backend para garantir a qualidade do código e **Flutter Analysis Options** no frontend para padronizar e validar as melhores práticas durante o desenvolvimento mobile.
 
@@ -238,7 +238,7 @@ Além disso, o projeto utiliza **SonarLint** no backend para garantir a qualidad
 
 ## Testes
 
-Foi utilizado de testes unitários para a realização do aplicativo, tanto no front-end tanto no backend, além disso, estamos rodando uma pipeline de integração continua em cada commit efetuado na develop, para rodar todos os testes e ver se nenhuma alteração compremeteu outro módulo do sistema
+Foi utilizado de testes unitários para a realização do aplicativo, tanto no front-end tanto no backend, além disso, estou rodando uma pipeline de integração continua em cada commit efetuado na develop, para rodar todos os testes e ver se nenhuma alteração compremeteu outro módulo do sistema
 
 1. **Testes Unitários:**
 
