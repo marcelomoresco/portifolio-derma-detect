@@ -144,22 +144,25 @@ O diagrama de classes mostra duas classes principais: User, que representa o usu
 
 ### Requisitos Funcionais:
 
-1. **Cadastro e Autenticação de Usuários:**
+**RF01:** O sistema deve permitir o cadastro de usuários.
 
-   - **RF01:** O sistema deve permitir o cadastro de usuários.
-   - **RF02:** O sistema deve permitir o login de usuários cadastrados com autenticação **JWT (JSON Web Token)**.
-   - **RF03:** O sistema deve permitir que o usuário delete sua conta.
-   - **RF04:** O sistema deve permitir que o usuário encerre sua sessão.
+**RF02:** O sistema deve permitir o login de usuários cadastrados com autenticação **JWT (JSON Web Token)**.
 
-2. **Análise de Problemas de Pele:**
+**RF03:** O sistema deve permitir que o usuário delete sua conta.
 
-   - **RF05:** O sistema permite até **20 análises mensais** por usuário.
-   - **RF06:** O sistema deve exibir as todas as análises do usuário.
-   - **RF07:** O sistema deve permitir realizar análises a partir da câmera ou galeria do dispositivo.
-   - **RF08:** O modelo gerado deve ser um modelo CNN para a classificação de imagens.
-   - **RF09:** Apenas análises com confiança superior a **0.3s** são exibidas com detalhes para os usuários.
+**RF04:** O sistema deve permitir que o usuário encerre sua sessão.
 
-   - **RF10:** O sistema deve exibir conteúdo sobre a análise feita pelo usuário.
+**RF05:** O sistema permite até **20 análises mensais** por usuário.
+
+**RF06:** O sistema deve exibir as todas as análises do usuário.
+
+**RF07:** O sistema deve permitir realizar análises a partir da câmera ou galeria do dispositivo.
+
+**RF08:** O modelo gerado deve ser um modelo CNN para a classificação de imagens.
+
+**RF09:** Apenas análises com confiança superior a **0.3s** são exibidas com detalhes para os usuários.
+
+**RF10:** O sistema deve exibir conteúdo sobre a análise feita pelo usuário.
 
 ### Requisitos Não Funcionais:
 
