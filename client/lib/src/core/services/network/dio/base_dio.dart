@@ -8,9 +8,9 @@ class BaseDio extends DioForNative {
   }
 
   void _configureDio() {
-    options.baseUrl = "http://10.0.2.2:5001/api";
+    // options.baseUrl = "http://10.0.2.2:5001/api";
 
-    // options.baseUrl = "http://ec2-3-89-174-210.compute-1.amazonaws.com/api";
+    options.baseUrl = "http://ec2-3-89-174-210.compute-1.amazonaws.com/api";
     options.connectTimeout = const Duration(seconds: 30);
     interceptors.add(HeaderInterceptor());
     interceptors.add(

@@ -16,7 +16,7 @@ void main() {
   });
 
   test('should configure Dio correctly', () {
-    expect(baseDio.options.baseUrl, 'http://10.0.2.2:5001/api');
+    expect(baseDio.options.baseUrl, 'http://ec2-3-89-174-210.compute-1.amazonaws.com/api');
 
     expect(baseDio.options.connectTimeout, const Duration(seconds: 30));
 
