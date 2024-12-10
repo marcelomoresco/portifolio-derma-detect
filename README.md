@@ -55,42 +55,15 @@ O principal objetivo deste projeto é fornecer um **aplicativo móvel** que auxi
 
 A escolha do banco de dados para o sistema foi guiada pelas necessidades específicas do projeto e pelos princípios do **Teorema CAP (Consistência, Disponibilidade e Tolerância à Partição).**
 
-- **Disponibilidade (A):** Garantir que o sistema esteja sempre acessível para os usuários, permitindo consultas e interações constantes, como envio de imagens e recuperação de diagnósticos.
-
-- **Tolerância à Partição (P):** Manter a funcionalidade mesmo em cenários de falhas ou desconexão de algum nó, pois trabalho com dados de usuários enviados de forma assíncrona.
-
-Dessa forma, **abri mão de consistência imediata**, optando por uma eventual consistência para equilibrar essas prioridades.
-
 **6. Arquitetura do Sistema**
 
 ### **Frontend**
 
-No desenvolvimento do frontend, segui os **princípios do Clean Architecture**, uma abordagem que promove a separação de responsabilidades e a modularidade do sistema. O código foi estruturado em módulos distintos, garantindo organização e facilidade de manutenção. Cada módulo contém três camadas principais:
-
-1. **Data:**  
-   Contém a lógica relacionada a fontes de dados, como APIs e serviços externos. É responsável por realizar chamadas ao backend e tratar as respostas, isolando o fluxo de dados de outras partes do módulo.
-
-2. **Domain:**  
-   Reúne as regras de negócio do sistema, definindo a lógica essencial para o funcionamento do app. Essa camada é independente de detalhes de implementação e altamente testável, alinhada ao propósito de Clean Architecture.
-
-3. **Presentation:**  
-   Inclui todos os elementos relacionados à interface do usuário (UI) e ao fluxo de interação. É a camada que gerencia o que os usuários veem e interagem, garantindo que a experiência seja fluida e intuitiva.
+No desenvolvimento do frontend, segui os **princípios do Clean Architecture**, uma abordagem que promove a separação de responsabilidades e a modularidade do sistema. O código foi estruturado em módulos distintos, garantindo organização e facilidade de manutenção. Cada módulo contém três camadas principais: Data, Domain e Presentation.
 
 ### **Backend**
 
-Para o backend, segui a **arquitetura padrão MVC (Model-View-Controller)**, uma escolha consolidada no desenvolvimento com **Node.js**, por sua simplicidade e eficácia em organizar o fluxo de dados. Os principais componentes são:
-
-1. **Controller:**  
-   Responsável por gerenciar as solicitações recebidas do cliente (frontend) e determinar as ações a serem executadas, delegando responsabilidades para o serviço correspondente.
-
-2. **Router:**  
-   Define as rotas da aplicação, conectando endpoints HTTP às funções adequadas no Controller.
-
-3. **Models:**  
-   Representam as estruturas de dados e gerenciam a interação com o banco de dados. No caso, os modelos utilizam **MongoDB** para armazenar as informações necessárias, como imagens e diagnósticos.
-
-4. **Services:**  
-   Contêm a lógica de negócios e manipulação dos dados, funcionando como intermediários entre os controllers e os models. Eles garantem que o fluxo de dados siga as regras definidas.
+Para o backend, segui a **arquitetura padrão MVC (Model-View-Controller)**, uma escolha consolidada no desenvolvimento com **Node.js**, por sua simplicidade e eficácia em organizar o fluxo de dados. Os principais componentes são: Controller, Router, Models, Services.
 
 **7. Qualidade**
 
@@ -273,9 +246,9 @@ Foi utilizado um dataset do kaggle para fazer a rede neural convolucional, que c
 O modelo é uma CNN composta por:
 
 - **Camadas Convolucionais:** Extrair características visuais (textura, cores, bordas).
-- **Batch Normalization:** _Não implementado no notebook fornecido._
+- **Batch Normalization:**
 - **Max Pooling:** Reduz a resolução gradualmente, resumindo informações importantes.
-- **Dropout:** _Não implementado no notebook fornecido._
+- **Dropout:**
 - **Camadas Densas Finais:** Combina as características extraídas e classifica a imagem na classe correta.
 
 A última camada usa a função de ativação _softmax_, produzindo uma probabilidade para cada uma das 20 classes.
@@ -285,7 +258,7 @@ A última camada usa a função de ativação _softmax_, produzindo uma probabil
 - **Função de Perda:** `categorical_crossentropy`, adequada para problemas de classificação com múltiplas classes.
 - **Otimizador:** `Adamax` (variação do Adam), com ajustes para maior estabilidade.
 - **Métrica:** `accuracy` (acurácia), indicando o percentual de acertos.
-- **Número de Épocas:** 18, o que significa que o modelo “viu” o conjunto de treino completo 18 vezes.
+- **Número de Épocas:** 18.
 
 No processo de treinamento, também foi usado um conjunto de validação para monitorar se o modelo estava aprendendo de forma adequada e não apenas decorando os dados de treino.
 
