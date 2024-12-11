@@ -244,15 +244,14 @@ Foi utilizado um dataset do kaggle para fazer a rede neural convolucional, que c
    - Os nomes das classes são convertidos em números.
    - Depois disso, usa-se uma representação "one-hot", onde cada classe é representada por um vetor com 1 na posição da classe e 0 nas demais.
 
-## Estrutura do Modelo
+### **Estrutura do Modelo**
 
-O modelo é uma CNN composta por:
+O modelo é uma CNN projetada para classificação de imagens, composta por:
 
-- **Camadas Convolucionais:** Extrair características visuais (textura, cores, bordas).
-- **Batch Normalization:**
-- **Max Pooling:** Reduz a resolução gradualmente, resumindo informações importantes.
-- **Dropout:**
-- **Camadas Densas Finais:** Combina as características extraídas e classifica a imagem na classe correta.
+- **Camadas Convolucionais:** Responsáveis por extrair características visuais, como texturas, cores e bordas das imagens.
+- **Max Pooling:** Reduz gradualmente a resolução, resumindo as informações mais relevantes e diminuindo a complexidade computacional.
+- **Camadas Densas:** Integram as características extraídas pelas convoluções para realizar a classificação final.
+- **Função de Ativação Softmax:** Na última camada, converte as saídas em probabilidades, associando cada imagem a uma das 20 classes.
 
 A última camada usa a função de ativação _softmax_, produzindo uma probabilidade para cada uma das 20 classes.
 
