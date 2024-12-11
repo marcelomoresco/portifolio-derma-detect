@@ -22,7 +22,7 @@ class HomeProfileOrganism extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return HomeGenericSectionOrganism(
-      title: "Análises Diárias",
+      title: "Análises Mensais",
       description: 'Descubra informações valiosas sobre sua pele em segundos!',
       onTapQuestion: onTapQuestion,
       spacing: kMarginSmall,
